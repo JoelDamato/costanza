@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/home.jsx';
 import Login from './pages/login.jsx';
-import Cursosonline from './pages/Cursosonline.jsx';
+import VSl from './pages/Vsl.jsx';
 import Dashboard from './pages/Dashboard.jsx';
 import Cursos from './pages/Cursos.jsx';
 import PanelControl from './pages/Panel.jsx';
@@ -26,7 +26,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<><Home /></>} />
-        <Route path="/Cursosonline" element={<><Cursosonline/></>} />
+        <Route path="/vsl" element={<><VSl/></>} />
         <Route path="/Login" element={<><Login /></>} />
         <Route path="/Dashboard" element={<><Dashboard /></>} />
         <Route path="/PanelControl" element={<><PanelControl /></>} />
