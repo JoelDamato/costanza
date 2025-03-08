@@ -53,7 +53,7 @@ export default function WorkshopLanding() {
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#ffc400] to-black font-sans">
-            <img src="/LOGO1.png" alt="Logo" className='w-full mt-4 mb-4 md:w-1/2' />
+            <img src="/LOGO1.png" alt="Logo" className='w-[250px] mt-4 md:w-1/2' />
             <div className="bg-white rounded-2xl max-w-4xl w-[96%] p-2 md:p-6 mx-5 shadow-lg mt-2 md:mt-7">
                 <header className="text-center">
                     <h1 className="text-black text-3xl md:text-5xl font-bold drop-shadow-lg mt-2 mb-2">
