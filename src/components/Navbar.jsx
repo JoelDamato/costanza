@@ -13,9 +13,11 @@ function Navbar({ toggleMenu, isMenuOpen, handleLogout }) {
 
 
 
-  const API_BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://back-cursos.onrender.com'
-    : 'http://localhost:5000';
+  const API_BASE_URL = "https://back-cursos.onrender.com"
+  // process.env.NODE_ENV === 'production'
+  //   ? 'https://back-cursos.onrender.com'
+  //   : 'http://localhost:5000';
+
 
   // Llamada a la API para obtener los datos del usuario al montar el Navbar
   useEffect(() => {

@@ -10,7 +10,6 @@ import Capitulos from './pages/Capitulos.jsx';
 import Certificados from './pages/Certificados.jsx';
 import Certificadoscuty from './pages/Certificadoscuty.jsx';
 import Perfil from './pages/Perfil.jsx';
-import Regalo from './pages/Regalo.jsx'; 
 import Curses from './pages/Curses.jsx';
 import EjemploLanding from './landinpage/landingejemplo.jsx';
 import Landingbarberos from './landinpage/landingbarberos.jsx';
@@ -19,14 +18,14 @@ import Luisfer from './landinpage/Luisfer.jsx';
 import Stam from './landinpage/Stam.jsx';
 import Sdstudio from './landinpage/Sdstudio.jsx';
 import Celin from './landinpage/Celinbarber.jsx';
-import Metricas  from './pages/Metricas.jsx';
+import Metricas from './pages/Metricas.jsx';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<><Home /></>} />
-        <Route path="/vsl" element={<><VSl/></>} />
+        <Route path="/vsl" element={<><VSl /></>} />
         <Route path="/Login" element={<><Login /></>} />
         <Route path="/Dashboard" element={<><Dashboard /></>} />
         <Route path="/PanelControl" element={<><PanelControl /></>} />
@@ -35,7 +34,6 @@ function App() {
         <Route path="/Certificados" element={<><Certificados /></>} />
         <Route path="/Certificadoscuty" element={<><Certificadoscuty /></>} />
         <Route path="/Perfil" element={<><Perfil /></>} />
-        <Route path="/Regalo" element={<><Regalo /></>} />
         <Route path="/Curses" element={<><Curses /></>} />
         <Route path="/landing" element={<><EjemploLanding /></>} />
         <Route path="/homee" element={<><HM /></>} />
