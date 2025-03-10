@@ -22,14 +22,14 @@ export default function BarberAcademy() {
     "Barber Cash",
     "Agendas Ilimitadas",
     "Focus"
-];
+  ];
 
-const phoneNumber = "+59891640623" // Reemplaza con tu número de WhatsApp
+  const phoneNumber = "+59891640623" // Reemplaza con tu número de WhatsApp
 
-const getWhatsAppLink = (index) => {
+  const getWhatsAppLink = (index) => {
     const message = `Hola, estoy interesado en el curso "${courseNames[index]}". ¿Podrías darme más información?`;
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-};
+  };
 
 
   const nextCourse = () => {
@@ -53,40 +53,40 @@ const getWhatsAppLink = (index) => {
         <div className="relative z-10 text-white">
           {/* Navigation Bar */}
           <nav className="p-4 bg-black flex justify-between items-center">
-      {/* Botón de menú hamburguesa */}
-      <button 
-        className="text-white" 
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+            {/* Botón de menú hamburguesa */}
+            <button
+              className="text-white"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
 
-      {/* Menú desplegable */}
-      {isOpen && (
-        <div className="fixed top-10 left-0 w-full bg-black text-white flex flex-col items-center py-4 shadow-lg z-50">
-          <a 
-            href="/login" 
-            className="w-full text-center py-3 hover:bg-[#8B6914]/50 transition"
-          >
-            Iniciar sesión
-          </a>
-          <a 
-            href="/login" 
-            className="w-full text-center py-3 hover:bg-[#8B6914]/50 transition"
-          >
-            Registrarse
-          </a>
-        </div>
-      )}
-    </nav>
+            {/* Menú desplegable */}
+            {isOpen && (
+              <div className="fixed top-10 left-0 w-full bg-black text-white flex flex-col items-center py-4 shadow-lg z-50">
+                <a
+                  href="/login"
+                  className="w-full text-center py-3 hover:bg-[#8B6914]/50 transition"
+                >
+                  Iniciar sesión
+                </a>
+                <a
+                  href="/login"
+                  className="w-full text-center py-3 hover:bg-[#8B6914]/50 transition"
+                >
+                  Registrarse
+                </a>
+              </div>
+            )}
+          </nav>
 
 
           {/* Header Section */}
           <header className="px-6 pt-4 pb-8 bg-[url('https://i.ibb.co/jk0MLcD8/fondo.png')] bg-cover bg-center bg-no-repeat opacity-80">
-            
+
             <div className="mb-6">
               <img
-                src="/erickgomez.png"
+                src="/LOGO1.png"
                 alt="Erick Gomez Academy"
                 className="w-[180px]"
               />
@@ -131,43 +131,43 @@ const getWhatsAppLink = (index) => {
             <h2 className="text-xl font-bold text-center mb-2">CURSOS ONLINE</h2>
 
             <div className="flex justify-center items-center w-full">
-  <img 
-    src="https://i.ibb.co/v6XQcg8g/Pasos.png" 
-    className="w-full mb-[60px] md:w-1/2" 
-    alt="" 
-  />
-</div>
+              <img
+                src="https://i.ibb.co/v6XQcg8g/Pasos.png"
+                className="w-full mb-[60px] md:w-1/2"
+                alt=""
+              />
+            </div>
 
             {/* Course Card */}
             <div className="rounded-xl flex flex-col items-center md:justify-center mt-5">
-                <div className="relative">
-                    {/* Contenedor del fondo */}
-                    <div className="bg-[url('https://i.ibb.co/L7xrzRz/Social-proof-banner.png')] bg-cover bg-center bg-no-repeat w-screen h-[450px] bg-black/90 border-t-2 border-b-2 border-yellow-500 md:flex md:flex-col md:items-center">
-                    {/* Imagen dentro del contenedor */}
-                    
-                    <img
-                        src={courseImages[currentCourseIndex] || "/placeholder.svg"}
-                        alt={`Curso ${currentCourseIndex + 1}`}
-                        className="w-full object-cover rounded-lg mt-[-30px] mb-4 md:w-1/4"
-                    />
-                    </div>
+              <div className="relative">
+                {/* Contenedor del fondo */}
+                <div className="bg-[url('https://i.ibb.co/L7xrzRz/Social-proof-banner.png')] bg-cover bg-center bg-no-repeat w-screen h-[450px] bg-black/90 border-t-2 border-b-2 border-yellow-500 md:flex md:flex-col md:items-center">
+                  {/* Imagen dentro del contenedor */}
 
-                    {/* Botón izquierdo */}
-                    <button
-                    onClick={prevCourse}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-1"
-                    >
-                    <ChevronLeft size={20} />
-                    </button>
+                  <img
+                    src={courseImages[currentCourseIndex] || "/placeholder.svg"}
+                    alt={`Curso ${currentCourseIndex + 1}`}
+                    className="w-full object-cover rounded-lg mt-[-30px] mb-4 md:w-1/4"
+                  />
+                </div>
 
-                    {/* Botón derecho */}
-                    <button
-                    onClick={nextCourse}
-                    className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-1"
-                    >
-                    <ChevronRight size={20} />
-                    </button>
-            </div>
+                {/* Botón izquierdo */}
+                <button
+                  onClick={prevCourse}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-1"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                {/* Botón derecho */}
+                <button
+                  onClick={nextCourse}
+                  className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-1"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
 
 
 
@@ -179,30 +179,30 @@ const getWhatsAppLink = (index) => {
                 </div>
                 <span className="ml-2 text-md font-bold">1,560 calificaciones</span>
               </div>
-<button>
-              <a
-        href={getWhatsAppLink(currentCourseIndex)}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full bg-red-600 text-white py-3 rounded-md font-bold flex items-center justify-center p-5"
-    >
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-8 w-8 mr-2"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-        >
-            <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
-            />
-        </svg>
-        Obtener ahora
-    </a>
-    </button>
+              <button>
+                <a
+                  href={getWhatsAppLink(currentCourseIndex)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-red-600 text-white py-3 rounded-md font-bold flex items-center justify-center p-5"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Obtener ahora
+                </a>
+              </button>
             </div>
 
 

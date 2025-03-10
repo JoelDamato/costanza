@@ -19,58 +19,58 @@ function Home() {
       ? 'https://back-cursos.onrender.com'
       : 'http://localhost:5000';
 
-    
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        setError('');
-        setSuccessMessage('');
-    
-     
-    
-        
-    
-        // Validar confirmación de contraseña en registro
-        if (!isLogin && password !== confirmPassword) {
-          setError('Las contraseñas no coinciden.');
-          return;
-        }
-    
-        setIsLoading(true);
-    
-        try {
-          const endpoint = isLogin ? '/api/auth/login' : '/api/create/register';
-          const payload = isLogin
-            ? { email: email.toLowerCase(), password }
-            : { nombre, email: email.toLowerCase(), password, rol: 'user' };
-    
-          const response = await axios.post(`${API_BASE_URL}${endpoint}`, payload);
-    
-          if (response.status === 201) {
-            // Registro exitoso
-            setSuccessMessage('Cuenta creada exitosamente. ¡Ahora puedes iniciar sesión!');
-            setNombre('');
-            setEmail('');
-            setPassword('');
-            setConfirmPassword('');
-            setIsLogin(true); // Cambia al formulario de inicio de sesión
-          } else if (response.status === 200) {
-            // Login exitoso
-            const { token } = response.data;
-            localStorage.setItem('token', token);
-            localStorage.setItem('email', email.toLowerCase())
-            console.log('Respuesta completa del backend:', response.data);
-            
-    
-            navigate('/Dashboard');
-          }
-        } catch (err) {
-          setError(err.response?.data?.message || 'Error en el proceso. Intenta nuevamente.');
-        } finally {
-          setIsLoading(false);
-        }
-      };
-    
-  
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    setSuccessMessage('');
+
+
+
+
+
+    // Validar confirmación de contraseña en registro
+    if (!isLogin && password !== confirmPassword) {
+      setError('Las contraseñas no coinciden.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const endpoint = isLogin ? '/api/auth/login' : '/api/create/register';
+      const payload = isLogin
+        ? { email: email.toLowerCase(), password }
+        : { nombre, email: email.toLowerCase(), password, rol: 'user' };
+
+      const response = await axios.post(`${API_BASE_URL}${endpoint}`, payload);
+
+      if (response.status === 201) {
+        // Registro exitoso
+        setSuccessMessage('Cuenta creada exitosamente. ¡Ahora puedes iniciar sesión!');
+        setNombre('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        setIsLogin(true); // Cambia al formulario de inicio de sesión
+      } else if (response.status === 200) {
+        // Login exitoso
+        const { token } = response.data;
+        localStorage.setItem('token', token);
+        localStorage.setItem('email', email.toLowerCase())
+        console.log('Respuesta completa del backend:', response.data);
+
+
+        navigate('/Dashboard');
+      }
+    } catch (err) {
+      setError(err.response?.data?.message || 'Error en el proceso. Intenta nuevamente.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+
   const phoneNumber = "+59891640623"; // Reemplaza con tu número de WhatsApp en formato internacional
   const message = "Hola, tengo una consulta!."; // Mensaje predefinido opcional
 
@@ -85,7 +85,7 @@ function Home() {
     >
       {/* Logo */}
       <img
-        src="/erickgomez.png"
+        src="/LOGO1.png"
         alt="Logo"
         className="w-full sm:w-1/4 "
       />
@@ -111,11 +111,11 @@ function Home() {
           zIndex: 1000,
         }}
       >
-     <img
-  src="/soporte.png"
-  alt="Logo"
-  className="w-8 sm:w-13"
-/>
+        <img
+          src="/soporte.png"
+          alt="Logo"
+          className="w-8 sm:w-13"
+        />
 
         Soporte
       </a>
@@ -189,9 +189,8 @@ function Home() {
           {/* Botón con Loading */}
           <button
             type="submit"
-            className={`${
-              isLoading ? 'bg-gray-600' : 'bg-blue-600 hover:bg-blue-800'
-            } text-white font-bold py-3 rounded-lg flex justify-center items-center`}
+            className={`${isLoading ? 'bg-gray-600' : 'bg-blue-600 hover:bg-blue-800'
+              } text-white font-bold py-3 rounded-lg flex justify-center items-center`}
             disabled={isLoading}
           >
             {isLoading ? (
