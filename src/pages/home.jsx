@@ -87,7 +87,7 @@ export default function BarberAcademy() {
             <div className="mb-6">
               <img
                 src="/LOGO1.png"
-                alt="Erick Gomez Academy"
+                alt="Dario Costanza"
                 className="w-[180px]"
               />
             </div>
