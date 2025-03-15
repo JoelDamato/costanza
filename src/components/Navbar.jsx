@@ -132,7 +132,7 @@ function Navbar({ toggleMenu, isMenuOpen, handleLogout }) {
 
       <nav className="w-full bg-black text-white flex items-center justify-between px-6 py-4 mb-4 shadow-2xl border-b border-gray-500 sticky top-0 z-50">
         <div className="flex items-center gap-2">
-          <img src="/LOGO1.png" alt="Logo Dario Costanza" style={{ width: '6rem', height: '6rem' }} className="h-auto" />
+          <img src="/LOGO1.png" alt="Logo Dario Costanza" className="h-auto w-[150px]" />
 
 
 
