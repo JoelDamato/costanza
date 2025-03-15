@@ -1,19 +1,13 @@
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-import ReactPlayer from 'react-player';
 import Navbar from '../components/Navbar';
 import useUserStore from '../store/users';
+import NotFound from './NotFound.jsx'; // 👈 Añadido componente NotFound
 
 function Cursos() {
-  const API_BASE_URL = "https://back-cursos.onrender.com"
-  // process.env.NODE_ENV === 'production'
-  //   ? 'https://back-cursos.onrender.com'
-  //   : 'http://localhost:5000';
-
+  const API_BASE_URL = "https://back-cursos.onrender.com";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
-
-  // Obtener el estado del usuario y el perfil desde Zustand
   const user = useUserStore((state) => state.user);
   const clearUserData = useUserStore((state) => state.clearUserData);
   const showProfile = useUserStore((state) => state.showProfile);
@@ -21,12 +15,13 @@ function Cursos() {
   const { cursoId } = useParams();
 
   const [course, setCourse] = useState(null);
+  const [loading, setLoading] = useState(true);      //👈 Estado para manejar carga
+  const [courseNotFound, setCourseNotFound] = useState(false); //👈 Estado para página 404
 
   const sanitizeTitle = (title) => {
     return title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '');
   };
 
-  // Función para agrupar capítulos por módulo
   const groupChaptersByModule = (chapters) => {
     return chapters.reduce((acc, chapter) => {
       const { module } = chapter;
@@ -40,20 +35,23 @@ function Cursos() {
 
   useEffect(() => {
     const fetchCourseData = async () => {
+      setLoading(true);
       try {
-        // Fetch para obtener todos los cursos desde la API
         const response = await fetch(`${API_BASE_URL}/api/courses/getcourses`);
         const data = await response.json();
-        // Filtrar el curso específico según el cursoId recibido desde la URL
         const selectedCourse = data.find(course => sanitizeTitle(course.courseTitle) === cursoId);
 
         if (selectedCourse) {
-          // Agrupar capítulos por módulos
           const modules = groupChaptersByModule(selectedCourse.chapters);
           setCourse({ ...selectedCourse, modules });
+        } else {
+          setCourseNotFound(true); //👈 Marca que curso no existe
         }
       } catch (error) {
         console.error("Error al obtener el curso:", error);
+        setCourseNotFound(true); //👈 Error también dispara 404
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -62,21 +60,23 @@ function Cursos() {
     }
   }, [cursoId]);
 
-  // Restablecer el estado del perfil al montar el componente
   useEffect(() => {
     setShowProfile(false);
   }, [setShowProfile]);
 
-  // Función para cerrar sesión
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
-    clearUserData(); // Limpiar los datos del usuario en Zustand
+    clearUserData();
     navigate('/');
   };
 
-  if (!course) {
+  if (loading) {
     return <div className="text-white">Cargando curso...</div>;
+  }
+
+  if (courseNotFound) {
+    return <NotFound />;  //👈 Muestra la página 404 personalizada
   }
 
   return (
@@ -85,7 +85,8 @@ function Cursos() {
       style={{
         backgroundImage: "url('https://i.ibb.co/fGZCrFh/FONDO-BARBER.jpg')",
       }}
-    >      <Navbar
+    >
+      <Navbar
         toggleProfile={() => setShowProfile(!showProfile)}
         handleLogout={handleLogout}
         toggleMenu={() => setIsMenuOpen(!isMenuOpen)}
@@ -97,10 +98,7 @@ function Cursos() {
 
         {Object.entries(course.modules).map(([moduleName, chapters], moduleIndex) => (
           <div key={moduleIndex} className="mb-8 w-full">
-            <h2
-              className="text-4xl font-extrabold text-white shadow-lg mb-6 text-center rounded-lg tracking-wider bg-gradient-to-r from-black/0 via-black to-black/0"
-            >
-
+            <h2 className="text-4xl font-extrabold text-white shadow-lg mb-6 text-center rounded-lg tracking-wider bg-gradient-to-r from-black/0 via-black to-black/0">
               Módulo: {moduleName}
             </h2>
 
@@ -109,11 +107,11 @@ function Cursos() {
                 <div
                   key={chapterIndex}
                   className="bg-gradient-to-r from-black/80 to-black rounded-lg shadow-lg p-6 flex flex-col items-center justify-between h-96 w-72"
-                  style={{ minHeight: "26rem", maxHeight: "30rem" }} // Fija el tamaño de la tarjeta
+                  style={{ minHeight: "26rem", maxHeight: "30rem" }}
                 >
                   <h3
                     className="text-xl text-white font-bold mb-2 text-center"
-                    style={{ minHeight: "6rem", maxHeight: "6rem", overflow: "hidden" }} // Ajusta la altura del título
+                    style={{ minHeight: "6rem", maxHeight: "6rem", overflow: "hidden" }}
                   >
                     {chapter.title}
                   </h3>
@@ -128,11 +126,7 @@ function Cursos() {
 
                   <div
                     className="flex-grow flex items-center justify-center"
-                    style={{
-                      minHeight: "4rem",
-                      maxHeight: "4rem",
-                      overflow: "hidden", // Oculta texto que exceda el límite
-                    }}
+                    style={{ minHeight: "4rem", maxHeight: "4rem", overflow: "hidden" }}
                   >
                     <p className="text-gray-300 text-sm text-center mb-4 line-clamp-3">
                       {chapter.description}
@@ -151,7 +145,6 @@ function Cursos() {
                   </button>
                 </div>
               ))}
-
             </div>
           </div>
         ))}

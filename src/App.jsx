@@ -19,6 +19,8 @@ import Sdstudio from './landinpage/Sdstudio.jsx';
 import Celin from './landinpage/Celinbarber.jsx';
 import Metricas from './pages/Metricas.jsx';
 import Footer from './pages/Footer.jsx';
+import NotFound from './pages/NotFound.jsx';
+
 function App() {
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,8 +32,8 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/Dashboard" element={<Dashboard />} />
             <Route path="/PanelControl" element={<PanelControl />} />
-            <Route path="/:cursoId" element={<Cursos />} />
             <Route path="/cursos/:cursoId/:moduleName/:chapterId" element={<Capitulos />} />
+            <Route path="/:cursoId" element={<Cursos />} />
             <Route path="/Certificados" element={<Certificados />} />
             <Route path="/Certificadoscuty" element={<Certificadoscuty />} />
             <Route path="/Perfil" element={<Perfil />} />
@@ -44,6 +46,7 @@ function App() {
             <Route path="/Sdstudio" element={<Sdstudio />} />
             <Route path="/Celinbarber" element={<Celin />} />
             <Route path="/Metricas" element={<Metricas />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
       </div>
