@@ -58,7 +58,7 @@ function Home() {
         const { token } = response.data;
         localStorage.setItem('token', token);
         localStorage.setItem('email', email.toLowerCase())
-        console.log('Respuesta completa del backend:', response.data);
+        // console.log('Respuesta completa del backend:', response.data);
 
 
         navigate('/Dashboard');
