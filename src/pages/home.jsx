@@ -1,12 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight, Menu, X } from "lucide-react"
+import { ChevronLeft, ChevronRight, User } from "lucide-react"
 
 export default function BarberAcademy() {
   const [currentCourseIndex, setCurrentCourseIndex] = useState(0)
-  const [isOpen, setIsOpen] = useState(false);
-
+  
   const courseImages = [
     "https://i.ibb.co/cSNDmbZF/Tarjeta-Master-Fade.png",
     "https://i.ibb.co/8D8162hD/Tarjeta-Cutting-Mastery.png",
@@ -31,59 +30,38 @@ export default function BarberAcademy() {
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
   };
 
-
   const nextCourse = () => {
-    setCurrentCourseIndex((prevIndex) => (prevIndex === courseImages.length - 1 ? 0 : prevIndex + 1))
-  }
+    setCurrentCourseIndex((prevIndex) =>
+      prevIndex === courseImages.length - 1 ? 0 : prevIndex + 1
+    )
+  };
 
   const prevCourse = () => {
-    setCurrentCourseIndex((prevIndex) => (prevIndex === 0 ? courseImages.length - 1 : prevIndex - 1))
-  }
+    setCurrentCourseIndex((prevIndex) =>
+      prevIndex === 0 ? courseImages.length - 1 : prevIndex - 1
+    )
+  };
 
   return (
     <div className="min-h-screen bg-black">
       <div className="relative min-h-screen bg-gradient-to-r from-[#8B6914]/30 via-transparent to-[#8B6914]/30">
         {/* Background Image */}
-        <div className="absolute inset-0 " />
+        <div className="absolute inset-0" />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 " />
+        <div className="absolute inset-0" />
 
         {/* Content */}
         <div className="relative z-10 text-white">
           {/* Navigation Bar */}
-          <nav className="p-4 bg-black flex justify-between items-center">
-            {/* Botón de menú hamburguesa */}
-            <button
-              className="text-white"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-
-            {/* Menú desplegable */}
-            {isOpen && (
-              <div className="fixed top-10 left-0 w-full bg-black text-white flex flex-col items-center py-4 shadow-lg z-50">
-                <a
-                  href="/login"
-                  className="w-full text-center py-3 hover:bg-[#8B6914]/50 transition"
-                >
-                  Iniciar sesión
-                </a>
-                <a
-                  href="/login"
-                  className="w-full text-center py-3 hover:bg-[#8B6914]/50 transition"
-                >
-                  Registrarse
-                </a>
-              </div>
-            )}
+          <nav className="p-4 bg-black flex items-center">
+            <a href="/login">
+              <User size={32} className="text-white" />
+            </a>
           </nav>
-
 
           {/* Header Section */}
           <header className="px-6 pt-4 pb-8 bg-[url('https://i.ibb.co/jk0MLcD8/fondo.png')] bg-cover bg-center bg-no-repeat opacity-80">
-
             <div className="mb-6">
               <img
                 src="/LOGO1.png"
@@ -92,19 +70,21 @@ export default function BarberAcademy() {
               />
             </div>
 
-            <div className="flex  md:flex-row gap-8 z-10">
+            <div className="flex md:flex-row gap-8 z-10">
               <div className="md:w-2/3">
                 <h1 className="text-3xl font-bold mb-2 z-10">Mis Formaciones</h1>
                 <p className="relative text-lg text-gray-300 z-10">
-                  Si estás buscando perfeccionar tus técnicas de cortes y fade o escalar tu tus redes con Erick, este
-                  año tienes la oportunidad de hacerlo 100% online sin importar de donde seas.
+                  Si estás buscando perfeccionar tus técnicas de cortes y fade o escalar tus redes con Erick, este
+                  año tienes la oportunidad de hacerlo 100% online sin importar de dónde seas.
                 </p>
               </div>
 
-              <img src="https://i.ibb.co/mVH7LDYv/Erick-fondo.png" className="absolute top-[140px] left-[150px] z-0 md:left-[800px]" alt="" />
-              <div className="md:w-1/3 flex justify-center md:justify-end">
-
-              </div>
+              <img
+                src="https://i.ibb.co/mVH7LDYv/Erick-fondo.png"
+                className="absolute top-[140px] left-[150px] z-0 md:left-[800px]"
+                alt=""
+              />
+              <div className="md:w-1/3 flex justify-center md:justify-end" />
             </div>
 
             {/* Banner Section */}
@@ -144,7 +124,6 @@ export default function BarberAcademy() {
                 {/* Contenedor del fondo */}
                 <div className="bg-[url('https://i.ibb.co/L7xrzRz/Social-proof-banner.png')] bg-cover bg-center bg-no-repeat w-screen h-[450px] bg-black/90 border-t-2 border-b-2 border-yellow-500 md:flex md:flex-col md:items-center">
                   {/* Imagen dentro del contenedor */}
-
                   <img
                     src={courseImages[currentCourseIndex] || "/placeholder.svg"}
                     alt={`Curso ${currentCourseIndex + 1}`}
@@ -168,9 +147,6 @@ export default function BarberAcademy() {
                   <ChevronRight size={20} />
                 </button>
               </div>
-
-
-
 
               <div className="flex items-center justify-center mt-[160px] mb-4">
                 <span className="mr-2 font-bold">4.8</span>
@@ -204,12 +180,9 @@ export default function BarberAcademy() {
                 </a>
               </button>
             </div>
-
-
           </section>
         </div>
       </div>
     </div>
   )
 }
-
