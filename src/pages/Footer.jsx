@@ -1,8 +1,8 @@
 import React from 'react';
 
-const ComponentName = () => {
+const Footer = () => {
   return (
-    <footer className="bg-black text-white py-4">
+    <footer className="bg-black text-white py-4 mt-auto">
       <div className="container mx-auto flex flex-col items-center gap-4">
         {/* Logo */}
         <img
@@ -18,24 +18,15 @@ const ComponentName = () => {
 
         {/* Términos */}
         <p className="text-center text-sm">
-          <a
-            href="/politicas-de-privacidad"
-            className="hover:underline"
-          >
+          <a href="/politicas-de-privacidad" className="hover:underline">
             Políticas de privacidad
           </a>
           {" | "}
-          <a
-            href="/terminos-condiciones"
-            className="hover:underline"
-          >
+          <a href="/terminos-condiciones" className="hover:underline">
             Términos de condiciones y uso
           </a>
           {" | "}
-          <a
-            href="/politica-compra"
-            className="hover:underline"
-          >
+          <a href="/politica-compra" className="hover:underline">
             Política de compra
           </a>
         </p>
@@ -44,4 +35,4 @@ const ComponentName = () => {
   );
 };
 
-export default ComponentName;
+export default Footer;
