@@ -1,10 +1,10 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
-import { Users, BookOpen, UserCheck, Clock, Ticket } from "lucide-react"
-import axios from "axios"
-import Navbar from "../components/Navbar"
+import { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { Users, BookOpen, UserCheck, Clock, Ticket } from "lucide-react";
+import axios from "axios";
+import Navbar from "../components/Navbar";
+import useUserStore from '../store/users';
+import { useNavigate } from "react-router-dom";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#FF69B4", "#4BC0C0", "#36A2EB"]
 
@@ -19,6 +19,8 @@ const Metricas = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const clearUserData = useUserStore((state) => state.clearUserData);
+  const navigate = useNavigate();
 
   // Determinar la URL base en función del entorno
   const API_BASE_URL = "https://back-cursos.onrender.com"
