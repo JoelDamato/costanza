@@ -6,6 +6,7 @@ import Footer from './pages/Footer.jsx';
 const Home = lazy(() => import('./pages/home.jsx'));
 const Login = lazy(() => import('./pages/login.jsx'));
 const VSl = lazy(() => import('./pages/Vsl.jsx'));
+const VSl2 = lazy(() => import('./pages/Vsl2.jsx'));
 const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
 const Cursos = lazy(() => import('./pages/Cursos.jsx'));
 const PanelControl = lazy(() => import('./pages/Panel.jsx'));
@@ -33,6 +34,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/vsl" element={<VSl />} />
+              <Route path="/vsl2" element={<VSl2 />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/PanelControl" element={<PanelControl />} />
