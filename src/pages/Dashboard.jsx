@@ -114,7 +114,7 @@ function Dashboard() {
   // If still loading, show a loading indicator
   if (isLoading) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('https://i.ibb.co/fGZCrFh/FONDO-BARBER.jpg')" }}>
+      <div className="h-screen w-screen flex items-center justify-center bg-black">
         <div className="bg-black/80 p-8 rounded-lg text-white text-xl">
           Cargando...
         </div>
@@ -123,7 +123,7 @@ function Dashboard() {
   }
 
   return (
-    <div className="h-full w-screen flex flex-col items-center bg-fixed bg-cover bg-center" style={{ backgroundImage: "url('https://i.ibb.co/fGZCrFh/FONDO-BARBER.jpg')" }}>
+    <div className="h-full w-screen flex flex-col items-center bg-black/90">
       {/* Navbar */}
       <Navbar
         toggleProfile={toggleProfile}

@@ -80,14 +80,13 @@ function Home() {
 
   return (
     <div
-      className="w-screen min-h-screen pb-5 flex flex-col items-center justify-center bg-cover bg-center"
-      style={{ backgroundImage: "url('https://i.ibb.co/tJR6Gcz/FONDO-BARBER.jpg')" }}
+      className="w-screen min-h-screen pb-5 flex flex-col items-center justify-center bg-cover bg-center bg-black/95"
     >
       {/* Logo */}
       <img
         src="/LOGO1.png"
         alt="Logo"
-        className="w-full sm:w-1/4 "
+        className="w-[350px] mb-5"
       />
       <a
         href={whatsappLink}
