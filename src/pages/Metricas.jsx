@@ -116,9 +116,34 @@ const Metricas = () => {
     )
   }
 
+  // Function to log out
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('nombre');
+    clearUserData();
+    navigate('/');
+  };
+
+  // Function to show/hide profile
+  const toggleProfile = () => {
+    setShowProfile(!showProfile);
+    setIsMenuOpen(false);
+  };
+
+  // Function to show/hide menu (on mobile)
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        toggleProfile={toggleProfile}
+        handleLogout={handleLogout}
+        toggleMenu={toggleMenu}
+        isMenuOpen={isMenuOpen}
+      />
       <div className="bg-gray-100 p-6 w-full min-h-screen">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Dashboard de Métricas</h1>
 

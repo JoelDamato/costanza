@@ -176,21 +176,21 @@ function Navbar({ toggleMenu, isMenuOpen, handleLogout }) {
                   Dashboard
                 </button>
               )}
-              {user?.rol === 'admin' && (
-                <>
-                  <button onClick={() => handleNavigation('/PanelControl')} className="text-white text-lg hover:bg-blue-800 flex items-center gap-2 border-b border-white pb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
-                    </svg>
-                    Panel de Control
-                  </button>
-                  <button onClick={() => handleNavigation('/Metricas')} className="text-white text-lg hover:bg-blue-800 flex items-center gap-2 border-b border-white pb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h3v11H3zM9 4h3v17H9zM15 7h3v14h-3z" />
-                    </svg>
-                    Métricas
-                  </button>
-                </>
+              {user?.rol === 'admin' && !PanelControl && (
+                <button onClick={() => handleNavigation('/PanelControl')} className="text-white text-lg hover:bg-blue-800 flex items-center gap-2 border-b border-white pb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75" />
+                  </svg>
+                  Panel de Control
+                </button>
+              )}
+              {user?.rol === 'admin' && !Metricas && (
+                <button onClick={() => handleNavigation('/Metricas')} className="text-white text-lg hover:bg-blue-800 flex items-center gap-2 border-b border-white pb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 10h3v11H3zM9 4h3v17H9zM15 7h3v14h-3z" />
+                  </svg>
+                  Métricas
+                </button>
               )}
               <button onClick={handleLogout} className="text-white text-lg hover:bg-blue-800 flex items-center gap-2 border-b border-white pb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-5 h-5">
@@ -201,6 +201,7 @@ function Navbar({ toggleMenu, isMenuOpen, handleLogout }) {
             </div>
           </div>
         )}
+
       </nav>
 
       {/* Modal del Perfil del Usuario */}
