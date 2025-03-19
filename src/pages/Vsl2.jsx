@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 
 export default function WorkshopLanding() {
-    const [timeLeft, setTimeLeft] = useState(3600000);
+    const [timeLeft, setTimeLeft] = useState(0);
     const [showExtraContent, setShowExtraContent] = useState(false);
     const videoRef = useRef(null);
 
@@ -28,9 +28,24 @@ export default function WorkshopLanding() {
     }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setTimeLeft(prevTime => (prevTime <= 0 ? 3600000 : prevTime - 1000));
-        }, 1000);
+        // Verifica si ya hay un tiempo de finalización almacenado
+        let endTime = localStorage.getItem("endTime");
+
+        if (!endTime) {
+            // Si no hay, establece uno nuevo (1 hora desde ahora)
+            endTime = Date.now() + 3600000;
+            localStorage.setItem("endTime", endTime);
+        }
+
+        const updateTimer = () => {
+            const timeRemaining = endTime - Date.now();
+            setTimeLeft(timeRemaining > 0 ? timeRemaining : 0);
+        };
+
+        // Actualiza el contador inmediatamente y luego cada segundo
+        updateTimer();
+        const interval = setInterval(updateTimer, 1000);
+
         return () => clearInterval(interval);
     }, []);
 
