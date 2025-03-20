@@ -1,31 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 
 export default function WorkshopLanding() {
     const [timeLeft, setTimeLeft] = useState(0);
     const [showExtraContent, setShowExtraContent] = useState(false);
-    const videoRef = useRef(null);
 
     const benefits = [
-        { text: "Acceso a cursos exclusivos de marketing y gestión para odontólogos.", icon: "📖" },
-        { text: "Técnicas avanzadas de fotografía dental para potenciar tu imagen profesional.", icon: "📷" },
-        { text: "Sesiones personalizadas de coaching para el crecimiento de tu clínica.", icon: "🎯" },
-        { text: "Networking con profesionales de la odontología a nivel internacional.", icon: "🌍" },
-        { text: "Recursos y herramientas digitales para optimizar la gestión de pacientes.", icon: "🛠️" },
-        { text: "Casos de estudio y mentorías en implantología y estética dental.", icon: "🦷" },
-        { text: "Acceso exclusivo a eventos, webinars y conferencias del sector.", icon: "🎤" }
+        { text: "Acceso a cursos exclusivos de marketing y gestión para odontólogos.", img: "/DARIO CONSTANZA BOOK.png" },
+        { text: "Técnicas avanzadas de fotografía dental para potenciar tu imagen profesional.", img: "/NOTEBOOK DARIO 2.png" },
+        { text: "Sesiones personalizadas de coaching para el crecimiento de tu clínica.", img: "/BUSINESS CARDS DARIO.png" },
+        { text: "Networking con profesionales de la odontología a nivel internacional.", img: "/comunidad dario.png" },
+        { text: "Recursos y herramientas digitales para optimizar la gestión de pacientes.", img: "/comunidad dario2.png" },
+        { text: "Casos de estudio y mentorías en implantología y estética dental.", img: "/DARIO CONSTANZA BOOK 2.png" },
+        { text: "Acceso exclusivo a eventos, webinars y conferencias del sector.", img: "/NOTEBOOK DARIO.png" }
     ];
-
-    useEffect(() => {
-        const handleMessage = (event) => {
-            const { data } = event;
-            if (data.message === "panda_timeupdate" && data.currentTime >= 1) {
-                setShowExtraContent(true);
-            }
-        };
-        window.addEventListener("message", handleMessage);
-        return () => window.removeEventListener("message", handleMessage);
-    }, []);
 
     useEffect(() => {
         let endTime = localStorage.getItem("endTime");
@@ -88,48 +76,64 @@ export default function WorkshopLanding() {
                     </div>
                 </motion.div>
 
-                <motion.div className="flex justify-center items-center text-white bg-[#ffb921] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl"
+                <motion.div className="flex justify-center items-center text-white bg-[#ffb921] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3"
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
                 >
-                    Oferta exclusiva por tiempo limitado 🚀 {minutes}:{seconds}
+                    🚀 Oferta exclusiva por tiempo limitado 🚀
                 </motion.div>
+                <div className="flex justify-center w-full">
+                    <motion.div
+                        className="inline-flex justify-center items-center text-white bg-[#ffb921] text-3xl md:text-4xl font-bold p-2 rounded-lg shadow-lg"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1, duration: 1 }}
+                    >
+                        {minutes}:{seconds}
+                    </motion.div>
+                </div>
 
-                <motion.div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6"
+                {/* Sección de Beneficios con imágenes */}
+                <motion.div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg"
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
                 >
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-[#ffc400] border-b-4 border-[#ffc400] mx-auto">
                         Aprende, crece y destaca en la odontología
                     </h2>
+
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {benefits.map((benefit, index) => (
-                            <motion.div key={index} className="flex items-center gap-3 p-3 border-yellow-500/50 rounded-lg bg-[#fff8e1] shadow-md h-36"
-                                whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}
-                            >
-                                {benefit.icon} <span>{benefit.text}</span>
-                            </motion.div>
-                        ))}
+                        {benefits.map((benefit, index) => {
+                            const ref = useRef(null);
+                            const isInView = useInView(ref, { amount: 0.5 });
+
+                            return (
+                                <motion.div
+                                    ref={ref}
+                                    key={index}
+                                    className="flex flex-row items-center gap-x-6 p-4 border-yellow-500/50 rounded-lg bg-[#fff8e1] shadow-md h-32"
+                                    animate={{ scale: isInView ? 1.05 : 1 }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <img
+                                        src={benefit.img}
+                                        alt={benefit.text}
+                                        className="w-24 h-24 object-cover flex-shrink-0 rounded-lg"
+                                    />
+                                    <span className="text-base md:text-lg">{benefit.text}</span>
+                                </motion.div>
+                            );
+                        })}
                     </div>
+
+
                 </motion.div>
 
                 <motion.button
                     onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20mi%20prueba%20gratuita%20de%207%20días.", "_blank")}
-                    className="bg-gradient-to-r from-black via-[#ffc400] to-black text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-3 mb-8 transition-transform hover:scale-105 shadow-lg"
+                    className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-3 mb-8 transition-transform hover:scale-105 shadow-lg"
                     whileHover={{ scale: 1.1 }}
                 >
                     ¡Sí! Quiero mi prueba gratuita de 7 días
                 </motion.button>
-
-                {/* Imágenes adicionales */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
-                    <img src="/DARIO CONSTANZA BOOK.png" alt="Dario Constanza Book" />
-                    <img src="/NOTEBOOK DARIO 2.png" alt="Notebook Dario" />
-                    <img src="/BUSINESS CARDS DARIO.png" alt="Business Cards Dario" />
-                    <img src="/comunidad dario.png" alt="Comunidad Dario" />
-                    <img src="/comunidad dario2.png" alt="Comunidad Dario 2" />
-                    <img src="/DARIO CONSTANZA BOOK 2.png" alt="Dario Constanza Book 2" />
-                    <img src="/NOTEBOOK DARIO.png" alt="Notebook Dario 1" />
-                    <img src="/Notebook DC.png" alt="Notebook DC" />
-                </div>
             </div>
         </div>
     );
