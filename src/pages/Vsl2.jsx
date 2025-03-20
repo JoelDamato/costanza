@@ -28,11 +28,9 @@ export default function WorkshopLanding() {
     }, []);
 
     useEffect(() => {
-        // Verifica si ya hay un tiempo de finalización almacenado
         let endTime = localStorage.getItem("endTime");
 
         if (!endTime) {
-            // Si no hay, establece uno nuevo (1 hora desde ahora)
             endTime = Date.now() + 3600000;
             localStorage.setItem("endTime", endTime);
         }
@@ -42,7 +40,6 @@ export default function WorkshopLanding() {
             setTimeLeft(timeRemaining > 0 ? timeRemaining : 0);
         };
 
-        // Actualiza el contador inmediatamente y luego cada segundo
         updateTimer();
         const interval = setInterval(updateTimer, 1000);
 
@@ -59,10 +56,10 @@ export default function WorkshopLanding() {
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#ffc400] to-black font-sans">
-            <motion.img src="/LOGO1.png" alt="Logo" className='w-[250px] mt-4 md:w-1/2' 
+            <motion.img src="/LOGO1.png" alt="Logo" className='w-[250px] mt-4 md:w-1/2'
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
             />
-            
+
             <div className="bg-white rounded-2xl max-w-4xl w-[96%] p-2 md:p-6 mx-5 shadow-lg mt-2 md:mt-7">
                 <header className="text-center">
                     <motion.h1 className="text-black text-3xl md:text-5xl font-bold drop-shadow-lg mt-2 mb-2"
@@ -76,7 +73,7 @@ export default function WorkshopLanding() {
                         Capacitación, tecnología y estrategia para transformar tu práctica dental.
                     </motion.p>
                 </header>
-                
+
                 <motion.div className="text-center flex justify-center items-center w-full mb-5 bg-black"
                     initial={{ scale: 0.8, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ duration: 1 }}
                 >
@@ -90,13 +87,13 @@ export default function WorkshopLanding() {
                         ></iframe>
                     </div>
                 </motion.div>
-                
+
                 <motion.div className="flex justify-center items-center text-white bg-[#ffb921] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl"
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
                 >
-                Oferta exclusiva por tiempo limitado   🚀   {minutes}:{seconds}
+                    Oferta exclusiva por tiempo limitado 🚀 {minutes}:{seconds}
                 </motion.div>
-                
+
                 <motion.div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-6"
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
                 >
@@ -113,7 +110,7 @@ export default function WorkshopLanding() {
                         ))}
                     </div>
                 </motion.div>
-                
+
                 <motion.button
                     onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20mi%20prueba%20gratuita%20de%207%20días.", "_blank")}
                     className="bg-gradient-to-r from-black via-[#ffc400] to-black text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-3 mb-8 transition-transform hover:scale-105 shadow-lg"
@@ -121,6 +118,18 @@ export default function WorkshopLanding() {
                 >
                     ¡Sí! Quiero mi prueba gratuita de 7 días
                 </motion.button>
+
+                {/* Imágenes adicionales */}
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-5">
+                    <img src="/DARIO CONSTANZA BOOK.png" alt="Dario Constanza Book" />
+                    <img src="/NOTEBOOK DARIO 2.png" alt="Notebook Dario" />
+                    <img src="/BUSINESS CARDS DARIO.png" alt="Business Cards Dario" />
+                    <img src="/comunidad dario.png" alt="Comunidad Dario" />
+                    <img src="/comunidad dario2.png" alt="Comunidad Dario 2" />
+                    <img src="/DARIO CONSTANZA BOOK 2.png" alt="Dario Constanza Book 2" />
+                    <img src="/NOTEBOOK DARIO.png" alt="Notebook Dario 1" />
+                    <img src="/Notebook DC.png" alt="Notebook DC" />
+                </div>
             </div>
         </div>
     );
