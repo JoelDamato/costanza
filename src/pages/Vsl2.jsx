@@ -3,7 +3,6 @@ import { motion, useInView } from "framer-motion";
 
 export default function WorkshopLanding() {
     const [timeLeft, setTimeLeft] = useState(0);
-    const [showExtraContent, setShowExtraContent] = useState(false);
 
     const benefits = [
         { text: "Acceso a cursos exclusivos de marketing y gestión para odontólogos.", img: "/DARIO CONSTANZA BOOK.png" },
@@ -17,20 +16,16 @@ export default function WorkshopLanding() {
 
     useEffect(() => {
         let endTime = localStorage.getItem("endTime");
-
         if (!endTime) {
             endTime = Date.now() + 3600000;
             localStorage.setItem("endTime", endTime);
         }
-
         const updateTimer = () => {
             const timeRemaining = endTime - Date.now();
             setTimeLeft(timeRemaining > 0 ? timeRemaining : 0);
         };
-
         updateTimer();
         const interval = setInterval(updateTimer, 1000);
-
         return () => clearInterval(interval);
     }, []);
 
@@ -81,6 +76,7 @@ export default function WorkshopLanding() {
                 >
                     🚀 Oferta exclusiva por tiempo limitado 🚀
                 </motion.div>
+
                 <div className="flex justify-center w-full">
                     <motion.div
                         className="inline-flex justify-center items-center text-white bg-[#ffb921] text-3xl md:text-4xl font-bold p-2 rounded-lg shadow-lg"
@@ -92,19 +88,27 @@ export default function WorkshopLanding() {
                     </motion.div>
                 </div>
 
-                {/* Sección de Beneficios con imágenes */}
+                {timeLeft < 60000 && (
+                    <motion.p
+                        className="text-red-600 font-bold mt-2 text-center"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                    >
+                        ⏳ ¡Última hora para acceder a tu prueba gratuita!
+                    </motion.p>
+                )}
+
+                {/* Sección de Beneficios */}
                 <motion.div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg"
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
                 >
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-[#ffc400] border-b-4 border-[#ffc400] mx-auto">
                         Aprende, crece y destaca en la odontología
                     </h2>
-
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {benefits.map((benefit, index) => {
                             const ref = useRef(null);
                             const isInView = useInView(ref, { amount: 0.5 });
-
                             return (
                                 <motion.div
                                     ref={ref}
@@ -113,24 +117,58 @@ export default function WorkshopLanding() {
                                     animate={{ scale: isInView ? 1.05 : 1 }}
                                     transition={{ duration: 0.3 }}
                                 >
-                                    <img
-                                        src={benefit.img}
-                                        alt={benefit.text}
-                                        className="w-24 h-24 object-cover flex-shrink-0 rounded-lg"
-                                    />
+                                    <img src={benefit.img} alt={benefit.text} className="w-24 h-24 object-cover flex-shrink-0 rounded-lg" />
                                     <span className="text-base md:text-lg">{benefit.text}</span>
                                 </motion.div>
                             );
                         })}
                     </div>
-
-
                 </motion.div>
 
+                {/* Sección Testimonios */}
+                <motion.div className="bg-white rounded-lg shadow-lg p-6 mt-10"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h3 className="text-center text-2xl md:text-4xl font-bold text-[#ffc400] mb-6">Lo que dicen nuestros colegas</h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {[1, 2, 3].map((i) => (
+                            <div key={i} className="bg-[#fff8e1] p-4 rounded-lg shadow-md">
+                                <img src={`/testimonio${i}.jpg`} alt="Testimonio" className="w-20 h-20 rounded-full object-cover mb-2" />
+                                <p className="text-sm italic mb-2">"Transformó completamente mi consulta. Ahora tengo más pacientes y menos estrés."</p>
+                                <p className="font-semibold">Dr. Nombre Apellido</p>
+                            </div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* Sección ¿Esto es para vos? */}
+                <motion.section className="bg-[#000000] text-white rounded-lg p-6 mt-10 shadow-md"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <h2 className="text-2xl md:text-4xl font-bold text-center text-[#ffc400] mb-4">¿Esto es para vos?</h2>
+                    <p className="text-lg md:text-xl text-center">
+                        ✔️ Si sos odontólogo y querés destacar frente a tu competencia...
+                        <br />
+                        ✔️ Si querés aprender a comunicar con impacto y atraer pacientes ideales...
+                        <br />
+                        ✔️ Si te cansaste de no saber cómo escalar tu clínica...
+                    </p>
+                </motion.section>
+
+                {/* CTA Mejorado con animación */}
                 <motion.button
                     onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20mi%20prueba%20gratuita%20de%207%20días.", "_blank")}
-                    className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-3 mb-8 transition-transform hover:scale-105 shadow-lg"
+                    className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 mb-10 transition-transform hover:scale-105 shadow-lg"
                     whileHover={{ scale: 1.1 }}
+                    animate={{
+                        scale: [1, 1.05, 1],
+                        boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,185,33,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
+                    }}
+                    transition={{ repeat: Infinity, duration: 2 }}
                 >
                     ¡Sí! Quiero mi prueba gratuita de 7 días
                 </motion.button>
