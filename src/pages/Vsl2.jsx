@@ -158,20 +158,41 @@ export default function WorkshopLanding() {
                         ✔️ Si te cansaste de no saber cómo escalar tu clínica...
                     </p>
                 </motion.section>
-
-                {/* CTA Mejorado con animación */}
-                <motion.button
-                    onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20mi%20prueba%20gratuita%20de%207%20días.", "_blank")}
-                    className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 mb-10 transition-transform hover:scale-105 shadow-lg"
-                    whileHover={{ scale: 1.1 }}
-                    animate={{
-                        scale: [1, 1.05, 1],
-                        boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,185,33,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
-                    }}
-                    transition={{ repeat: Infinity, duration: 2 }}
+                <motion.div
+                    className="bg-white border-4 border-dashed border-[#ffc400] rounded-xl p-6 mt-10 shadow-xl text-center"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1 }}
                 >
-                    ¡Sí! Quiero mi prueba gratuita de 7 días
-                </motion.button>
+                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
+                        Esto Es Todo Lo Que Vas A Recibir, Más Los <span className="text-green-600">BONOS GRATIS</span>
+                    </h2>
+
+                    <ul className="text-left text-lg md:text-xl font-medium mb-6 max-w-3xl mx-auto">
+                        <li className="mb-2">📘 Acceso completo al Workshop de Marketing Dental... <span className="text-red-600 font-bold">$497 USD</span></li>
+                        <li className="mb-2">🛠️ Derechos de uso para aplicar los sistemas en tu clínica... <span className="text-red-600 font-bold">$497 USD</span></li>
+                        <li className="mb-2">🎯 <strong>Bono #1:</strong> Plantillas listas para publicar en redes... <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li className="mb-2">📧 <strong>Bono #2:</strong> Secuencia de emails automatizados... <span className="text-red-600 font-bold">$197 USD</span></li>
+                        <li className="mb-2">👨‍👩‍👧 <strong>Bono #3:</strong> Acceso a grupo privado de odontólogos... <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li className="mb-2">📞 <strong>Bono #4:</strong> Llamada estratégica personalizada... <span className="text-red-600 font-bold">$359 USD</span></li>
+                    </ul>
+
+                    <p className="text-2xl font-bold text-red-600 line-through mb-2">$2,144 En Valor Total</p>
+                    <p className="text-3xl font-bold text-green-600 mb-4">Pero Hoy Lo Obtienes Todo Por Sólo $497 USD</p>
+                    <p className="text-base italic text-gray-600">Opción de prueba gratuita disponible por tiempo limitado ⏳</p>
+                    <motion.button
+                        onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20mi%20prueba%20gratuita%20de%207%20días.", "_blank")}
+                        className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 transition-transform hover:scale-105 shadow-lg"
+                        whileHover={{ scale: 1.1 }}
+                        animate={{
+                            scale: [1, 1.05, 1],
+                            boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,185,33,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
+                        }}
+                        transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                        ¡Sí! Quiero mi prueba gratuita de 7 días
+                    </motion.button>
+                </motion.div>
             </div>
         </div>
     );
