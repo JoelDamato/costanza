@@ -37,6 +37,22 @@ export default function WorkshopLanding() {
 
     const { minutes, seconds } = formatTime(timeLeft);
 
+    const recibirRef = useRef(null);
+
+    const scrollValueStack = () => {
+        if (recibirRef.current) {
+            const topOffset = recibirRef.current.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = topOffset - 30; // Ajustá este valor según cuánto querés que quede más arriba
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
+        }
+    };
+
+
+
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#ffc400] to-black font-sans">
             <motion.img src="/LOGO1.png" alt="Logo" className='w-[250px] mt-4 md:w-1/2'
@@ -71,11 +87,20 @@ export default function WorkshopLanding() {
                     </div>
                 </motion.div>
 
-                <motion.div className="flex justify-center items-center text-white bg-[#ffb921] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3"
-                    initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 1 }}
+                <motion.div
+                    onClick={scrollValueStack}
+                    whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 0 15px rgba(255, 185, 33, 0.9)"
+                    }}
+                    className="flex justify-center items-center text-white bg-[#ffb921] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 cursor-pointer"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
                 >
                     🚀 Oferta exclusiva por tiempo limitado 🚀
                 </motion.div>
+
 
                 <div className="flex justify-center w-full">
                     <motion.div
@@ -158,7 +183,9 @@ export default function WorkshopLanding() {
                         ✔️ Si te cansaste de no saber cómo escalar tu clínica...
                     </p>
                 </motion.section>
+                {/* Value stack */}
                 <motion.div
+                    ref={recibirRef}
                     className="bg-white border-4 border-dashed border-[#ffc400] rounded-xl p-6 mt-10 shadow-xl text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -190,7 +217,7 @@ export default function WorkshopLanding() {
                         }}
                         transition={{ repeat: Infinity, duration: 2 }}
                     >
-                        ¡Sí! Quiero mi prueba gratuita de 7 días
+                        ¡Prueba Gratuita!
                     </motion.button>
                 </motion.div>
             </div>
