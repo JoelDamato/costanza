@@ -9,7 +9,7 @@ export default function WorkshopLanding() {
     const scrollToValueStack = () => {
         if (valueStackRef.current) {
             const topOffset = valueStackRef.current.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = topOffset - 100;
+            const offsetPosition = topOffset - 30;
             window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
         }
     };
@@ -17,31 +17,31 @@ export default function WorkshopLanding() {
     const benefits = [
         {
             img: "/DARIO CONSTANZA BOOK.png",
-            text: "Acceso a cursos exclusivos de marketing y gestión para odontólogos."
+            text: "Dominá el juego desde adentro: transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
             img: "/NOTEBOOK DARIO 2.png",
-            text: "Técnicas avanzadas de fotografía dental para potenciar tu imagen profesional."
+            text: "Pacientes que te buscan, no que te comparan: aprendé a posicionarte como referente sin sentir que estás vendiendo todo el tiempo."
         },
         {
             img: "/BUSINESS CARDS DARIO.png",
-            text: "Sesiones personalizadas de coaching para el crecimiento de tu clínica."
+            text: "Imagen que vende por vos: mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
             img: "/comunidad dario.png",
-            text: "Networking con profesionales de la odontología a nivel internacional."
+            text: "Gestión que no te roba tiempo: organizá tu consultorio como un negocio con herramientas simples que te devuelven horas de vida."
         },
         {
             img: "/comunidad dario2.png",
-            text: "Recursos y herramientas digitales para optimizar la gestión de pacientes."
+            text: "Finanzas que te permiten vivir de esto: aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
         },
         {
             img: "/DARIO CONSTANZA BOOK 2.png",
-            text: "Casos de estudio y mentorías en implantología y estética dental."
+            text: "Recuperá el control de tu carrera, tus ingresos y tu tiempo con un sistema probado y sin fórmulas vacías."
         },
         {
             img: "/NOTEBOOK DARIO.png",
-            text: "Acceso exclusivo a eventos, webinars y conferencias del sector."
+            text: "Volvé a sentirte orgulloso de lo que construís cada día en tu profesión."
         }
     ];
 
@@ -88,10 +88,15 @@ export default function WorkshopLanding() {
                 {/* HEADER */}
                 <header className="text-center">
                     <h1 className="text-black text-3xl md:text-5xl font-bold drop-shadow-lg mt-2 mb-2">
-                        Impulsando la Odontología del Futuro
+                        Esto es de odontólogos, para odontólogos
                     </h1>
-                    <p className="text-1xl text-[#ffc400] mb-3 font-bold">
-                        Capacitación, tecnología y estrategia para transformar tu práctica dental.
+                    <p className="text-lg md:text-xl text-gray-800 mb-3">
+                        Cuando empezaste esta carrera, te imaginabas ayudando a la gente, viviendo bien de tu trabajo y teniendo una vida estable.
+                        Pero algo se desvió. Ahora sentís que trabajás el doble, ganás menos de lo que merecés y que estás siempre apagando incendios.
+                        <br /><br />
+                        Este programa está pensado para que tomes el control total de tu carrera, recuperes tiempo, mejores tus ingresos y vuelvas a sentirte orgulloso de lo que construís cada día.
+                        <br /><br />
+                        Porque sí: esa versión de tu profesión que alguna vez soñaste, existe. Solo tenés que dejar de postergarla.
                     </p>
                 </header>
 
@@ -120,19 +125,19 @@ export default function WorkshopLanding() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5, duration: 1 }}
                 >
-                    🚀 Oferta exclusiva por tiempo limitado 🚀
+                    🚀 Transformá tu consultorio hoy 🚀
                 </motion.div>
 
                 {/* BENEFICIOS */}
                 <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-[#ffc400] border-b-4 border-[#ffc400] mx-auto">
-                        Aprende, crece y destaca en la odontología con estos beneficios
+                        Los 7 pilares para una práctica rentable y sin estrés
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {benefits.map((benefit, index) => (
                             <motion.div
                                 key={index}
-                                className="flex items-center gap-4 p-4 border-yellow-500/50 rounded-lg bg-[#fff8e1] shadow-md h-32"
+                                className="flex items-start gap-4 p-4 border-yellow-500/50 rounded-lg bg-[#fff8e1] shadow-md"
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -140,41 +145,45 @@ export default function WorkshopLanding() {
                                 <img
                                     src={benefit.img}
                                     alt={benefit.text}
-                                    className="w-20 h-20 object-cover rounded-lg flex-shrink-0"
+                                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg flex-shrink-0 mt-1"
                                 />
-                                <span className="text-base md:text-lg">{benefit.text}</span>
+                                <span className="text-sm md:text-base text-gray-800 leading-snug">
+                                    {benefit.text}
+                                </span>
                             </motion.div>
                         ))}
                     </div>
                 </div>
 
+
                 {/* VALUE STACK */}
                 <motion.div
                     ref={valueStackRef}
-                    className="bg-white border-4 border-dashed border-[#ffc400] rounded-xl p-6 mt-10 shadow-xl text-center"
+                    className="bg-white border-4 border-dashed border-[#ffc400] rounded-xl p-5 mt-5 shadow-xl text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
-                        Esto Es Todo Lo Que Vas A Recibir, Más Los <span className="text-green-600">BONOS GRATIS</span>
+                        Esto es TODO lo que vas a recibir con <span className="text-green-600">FOCUS DENTAL</span>
                     </h2>
 
                     <ul className="text-left text-lg md:text-xl font-medium mb-6 max-w-3xl mx-auto space-y-2">
-                        <li>📘 Acceso completo al Workshop de Marketing Dental... <span className="text-red-600 font-bold">$497 USD</span></li>
-                        <li>🛠️ Derechos de uso para aplicar los sistemas en tu clínica... <span className="text-red-600 font-bold">$497 USD</span></li>
-                        <li>🎯 <strong>Bono #1:</strong> Plantillas listas para publicar en redes... <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>📧 <strong>Bono #2:</strong> Secuencia de emails automatizados... <span className="text-red-600 font-bold">$197 USD</span></li>
-                        <li>👨‍👩‍👧 <strong>Bono #3:</strong> Acceso a grupo privado de odontólogos... <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>📞 <strong>Bono #4:</strong> Llamada estratégica personalizada... <span className="text-red-600 font-bold">$359 USD</span></li>
+                        <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-red-600 font-bold">$997 USD</span></li>
+                        <li>🖼️ Bono #1: Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
+                        <li>📲 Bono #2: Secuencias de mensajes para recuperar pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
+                        <li>👥 Bono #3: Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li>📂 Bono #4: Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li>🛠️ Bono #5: Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
+                        <li>🧾 Bono #6: Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250+ USD</span></li>
                     </ul>
 
-                    <p className="text-2xl font-bold text-red-600 line-through mb-2">$2,144 En Valor Total</p>
-                    <p className="text-3xl font-bold text-green-600 mb-4">Pero Hoy Lo Obtienes Todo Por Sólo $497 USD</p>
-                    <p className="text-base italic text-gray-600">Opción de prueba gratuita disponible por tiempo limitado ⏳</p>
+                    <p className="text-2xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
+                    <p className="text-3xl font-bold text-green-600 mb-4">Hoy solo por $197 USD</p>
+                    <p className="text-base italic text-gray-600">✅ Sin adivinar. Sin fórmulas vacías. Sin ser influencer.</p>
 
                     <motion.button
-                        onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20mi%20prueba%20gratuita%20de%207%20días.", "_blank")}
+                        onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20acceder%20al%20Programa%20Focus%20Dental", "_blank")}
                         className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 transition-transform hover:scale-105 shadow-lg"
                         whileHover={{ scale: 1.1 }}
                         animate={{
@@ -183,9 +192,29 @@ export default function WorkshopLanding() {
                         }}
                         transition={{ repeat: Infinity, duration: 2 }}
                     >
-                        ¡Prueba Gratuita!
+                        ¡Quiero acceder ahora!
                     </motion.button>
                 </motion.div>
+                {/* CIERRE INSPIRADOR */}
+                <div className="bg-white mt-5 p-5 rounded-xl shadow-md text-lg text-gray-800">
+                    <blockquote className="italic border-l-4 border-[#ffc400] pl-4">
+                        Sé lo que estás pensando. ¿Y si esto no es para mí? ¿Y si no me sale?
+                        <br /><br />
+                        Yo también estuve ahí. Dudando. Probando cosas sueltas.
+                        Hasta que entendí que no necesitaba saberlo todo. Solo necesitaba el sistema correcto.
+                        <br /><br />
+                        Y eso es lo que estás a punto de recibir.
+                        <br /><br />
+                        <strong>Una hoja de ruta. Un GPS para dejar de improvisar.</strong>
+                        <br /><br />
+                        Hoy tenés la posibilidad de acceder con una inversión mínima… pero el acceso no va a estar siempre abierto.
+                        <br /><br />
+                        Cuando cierro inscripciones, cierro de verdad.
+                        <br /><br />
+                        Porque <strong>prefiero acompañar a pocos odontólogos comprometidos, que vender a muchos sin resultados.</strong>
+                    </blockquote>
+                    <p className="mt-6 text-center font-bold text-xl">🎯 Si sentís que es el momento, no lo pienses más.</p>
+                </div>
             </div>
         </div>
     );
