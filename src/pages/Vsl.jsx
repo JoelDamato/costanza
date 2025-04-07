@@ -17,31 +17,23 @@ export default function WorkshopLanding() {
     const benefits = [
         {
             img: "/DARIO CONSTANZA BOOK.png",
-            text: "Dominá el juego desde adentro: transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
+            text: "🧠 Dominá el juego desde adentro: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
             img: "/NOTEBOOK DARIO 2.png",
-            text: "Pacientes que te buscan, no que te comparan: aprendé a posicionarte como referente sin sentir que estás vendiendo todo el tiempo."
+            text: "🚀 Pacientes que te buscan, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
             img: "/BUSINESS CARDS DARIO.png",
-            text: "Imagen que vende por vos: mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
+            text: "📸 Imagen que vende por vos: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
             img: "/comunidad dario.png",
-            text: "Gestión que no te roba tiempo: organizá tu consultorio como un negocio con herramientas simples que te devuelven horas de vida."
+            text: "💼 Gestión que no te roba tiempo: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
             img: "/comunidad dario2.png",
-            text: "Finanzas que te permiten vivir de esto: aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
-        },
-        {
-            img: "/DARIO CONSTANZA BOOK 2.png",
-            text: "Recuperá el control de tu carrera, tus ingresos y tu tiempo con un sistema probado y sin fórmulas vacías."
-        },
-        {
-            img: "/NOTEBOOK DARIO.png",
-            text: "Volvé a sentirte orgulloso de lo que construís cada día en tu profesión."
+            text: "📊 Finanzas que te permiten vivir de esto: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
         }
     ];
 
@@ -92,8 +84,10 @@ export default function WorkshopLanding() {
                     </h1>
                     <p className="text-lg md:text-xl text-gray-800 mb-3">
                         Cuando empezaste esta carrera, te imaginabas ayudando a la gente, viviendo bien de tu trabajo y teniendo una vida estable.
+                        <br /><br />
                         Pero algo se desvió. Ahora sentís que trabajás el doble, ganás menos de lo que merecés y que estás siempre apagando incendios.
                         <br /><br />
+                        Esa sensación de estancamiento no es normal.
                         Este programa está pensado para que tomes el control total de tu carrera, recuperes tiempo, mejores tus ingresos y vuelvas a sentirte orgulloso de lo que construís cada día.
                         <br /><br />
                         Porque sí: esa versión de tu profesión que alguna vez soñaste, existe. Solo tenés que dejar de postergarla.
@@ -131,7 +125,7 @@ export default function WorkshopLanding() {
                 {/* BENEFICIOS */}
                 <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-[#ffc400] border-b-4 border-[#ffc400] mx-auto">
-                        Los 7 pilares para una práctica rentable y sin estrés
+                        Los 5 pilares para una práctica rentable y sin estrés
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {benefits.map((benefit, index) => (
@@ -155,7 +149,6 @@ export default function WorkshopLanding() {
                     </div>
                 </div>
 
-
                 {/* VALUE STACK */}
                 <motion.div
                     ref={valueStackRef}
@@ -171,7 +164,7 @@ export default function WorkshopLanding() {
                     <ul className="text-left text-lg md:text-xl font-medium mb-6 max-w-3xl mx-auto space-y-2">
                         <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-red-600 font-bold">$997 USD</span></li>
                         <li>🖼️ Bono #1: Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
-                        <li>📲 Bono #2: Secuencias de mensajes para recuperar pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
+                        <li>📲 Bono #2: Mensajes que hacen volver a tus pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
                         <li>👥 Bono #3: Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
                         <li>📂 Bono #4: Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
                         <li>🛠️ Bono #5: Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
@@ -195,6 +188,7 @@ export default function WorkshopLanding() {
                         ¡Quiero acceder ahora!
                     </motion.button>
                 </motion.div>
+
                 {/* CIERRE INSPIRADOR */}
                 <div className="bg-white mt-5 p-5 rounded-xl shadow-md text-lg text-gray-800">
                     <blockquote className="italic border-l-4 border-[#ffc400] pl-4">
