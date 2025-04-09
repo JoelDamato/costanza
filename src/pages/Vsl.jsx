@@ -17,25 +17,26 @@ export default function WorkshopLanding() {
     const benefits = [
         {
             img: "/DARIO CONSTANZA BOOK.png",
-            text: "🧠 Transformá tu mentalidad: De técnico a profesional libre y rentable."
+            text: "🧠 Dominá el juego desde adentro: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
             img: "/NOTEBOOK DARIO 2.png",
-            text: "🚀 Pacientes que te eligen: Posicionate como referente en tu zona sin venderte."
+            text: "🚀 Pacientes que te buscan, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
             img: "/BUSINESS CARDS DARIO.png",
-            text: "📸 Imagen premium: Mostrá tu trabajo profesional aunque no sepas de fotografía."
+            text: "📸 Imagen que vende por vos: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
             img: "/comunidad dario.png",
-            text: "💼 Gestión eficiente: Herramientas simples que te devuelven tiempo y bienestar."
+            text: "💼 Gestión que no te roba tiempo: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
             img: "/comunidad dario2.png",
-            text: "📊 Finanzas conscientes: Cobrá bien, viví mejor y rompé con la montaña rusa."
+            text: "📊 Finanzas que te permiten vivir de esto: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
         }
     ];
+
 
     useEffect(() => {
         const handleMessage = (event) => {
@@ -81,13 +82,16 @@ export default function WorkshopLanding() {
                 {/* HEADER */}
                 <header className="text-center">
                     <h1 className="text-black text-3xl md:text-5xl font-bold drop-shadow-lg mt-2 mb-2">
-                        Construí una práctica libre, rentable y alineada con tu propósito
+                        Esto es de Odontólogos, para odontólogos.
                     </h1>
                     <p className="text-lg md:text-xl text-gray-800 mb-3">
-                        Este programa está diseñado para odontólogos que quieren crecer con propósito. <br /><br />
-                        No se trata solo de atraer más pacientes. Se trata de recuperar tu tiempo, mejorar tus ingresos y volver a disfrutar tu profesión. <br /><br />
-                        Porque sí: es posible vivir bien de la odontología sin sacrificar tu bienestar.
+                        Cuando empezaste esta carrera, te imaginabas ayudando a la gente, viviendo bien de tu trabajo y teniendo una vida estable.<br /><br />
+                        Pero algo se desvió. Ahora sentís que trabajás el doble, ganás menos de lo que merecés y que estás siempre apagando incendios.<br /><br />
+                        Esa sensación de estancamiento no es normal.<br /><br />
+                        Este programa está pensado para que tomes el control total de tu carrera, recuperes tiempo, mejores tus ingresos y vuelvas a sentirte orgulloso de lo que construís cada día.<br /><br />
+                        Porque sí: esa versión de tu profesión que alguna vez soñaste, existe. Solo tenés que dejar de postergarla.
                     </p>
+
                 </header>
 
                 {/* VIDEO */}
