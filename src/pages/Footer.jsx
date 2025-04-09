@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col items-center gap-4">
         {/* Logo */}
         <img
-          src="/LOGO1.png"
+          src="/LOGOS/LOGOTIPO/LOGOTIPO AMARILLO.png"
           alt="Dario Costanza Logo"
           className="w-[150px] mt-[0px] mb-[45px]"
         />
