@@ -51,7 +51,7 @@ export default function WorkshopLanding() {
 
     useEffect(() => {
         const link = document.createElement("link");
-        link.href = "https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap";
+        link.href = "https://fonts.cdnfonts.com/css/garet";
         link.rel = "stylesheet";
         document.head.appendChild(link);
         return () => document.head.removeChild(link);
