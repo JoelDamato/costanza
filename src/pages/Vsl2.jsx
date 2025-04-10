@@ -1,10 +1,17 @@
-// Aquí empieza el código actualizado — podés copiar y pegar directamente en tu archivo
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useInView } from "framer-motion";
 
 export default function WorkshopLanding() {
     const [timeLeft, setTimeLeft] = useState(0);
+
+    // Cargar fuente Garet
+    useEffect(() => {
+        const link = document.createElement("link");
+        link.href = "https://fonts.cdnfonts.com/css/garet";
+        link.rel = "stylesheet";
+        document.head.appendChild(link);
+        return () => document.head.removeChild(link);
+    }, []);
 
     const benefits = [
         { text: "🧠 Mentalidad profesional real: Salí del piloto automático y empezá a pensar como alguien que lidera su consultorio, no que lo sobrevive.", img: "/DARIO CONSTANZA BOOK.png" },
@@ -30,12 +37,13 @@ export default function WorkshopLanding() {
     }, []);
 
     const formatTime = (time) => {
+        const hours = String(Math.floor(time / 3600000)).padStart(2, '0');
         const minutes = String(Math.floor((time % 3600000) / 60000)).padStart(2, '0');
         const seconds = String(Math.floor((time % 60000) / 1000)).padStart(2, '0');
-        return { minutes, seconds };
+        return { hours, minutes, seconds };
     };
 
-    const { minutes, seconds } = formatTime(timeLeft);
+    const { hours, minutes, seconds } = formatTime(timeLeft);
     const recibirRef = useRef(null);
 
     const scrollValueStack = () => {
@@ -47,8 +55,8 @@ export default function WorkshopLanding() {
     };
 
     return (
-        <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#ffc400] to-black font-sans">
-            <motion.img src="/LOGO1.png" alt="Logo" className='w-[250px] mt-4 md:w-1/2'
+        <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#FFCC00] to-black font-[Garet] text-black">
+            <motion.img src="/LOGOS/IMAGOTIPO/amarillo y blanco.png" alt="Logo" className='w-[250px] mt-4 md:w-1/2'
                 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
             />
 
@@ -72,8 +80,7 @@ export default function WorkshopLanding() {
                         ⏰ Tiempo para vos y tu vida<br /><br />
                         Pero en algún momento, eso se desvió.
                         <br /><br />
-                        Hoy te encontrás <strong>trabajando mil horas</strong>, cobrando menos de lo que merecés…
-                        <br />
+                        Hoy te encontrás <strong>trabajando mil horas</strong>, cobrando menos de lo que merecés…<br />
                         O incluso peor: <strong>sin saber por dónde empezar.</strong>
                         <br /><br />
                         Y te cuento algo: <strong>no es tu culpa.</strong><br />
@@ -99,24 +106,24 @@ export default function WorkshopLanding() {
                 {/* CTA */}
                 <motion.div
                     onClick={scrollValueStack}
-                    whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(255, 185, 33, 0.9)" }}
-                    className="flex justify-center items-center text-white bg-[#ffb921] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 cursor-pointer"
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(255, 204, 0, 0.9)" }}
+                    className="flex justify-center items-center text-black bg-[#FFCC00] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 cursor-pointer"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1, duration: 1 }}
                 >
-                    🚀 Empezá tu transformación ahora 🚀
+                    🚀Empezá tu transformación ahora🚀
                 </motion.div>
 
                 {/* Timer */}
                 <div className="flex justify-center w-full">
                     <motion.div
-                        className="inline-flex justify-center items-center text-white bg-[#ffb921] text-3xl md:text-4xl font-bold p-2 rounded-lg shadow-lg"
+                        className="inline-flex justify-center items-center text-white bg-[#FFCC00] text-3xl md:text-4xl font-bold p-2 rounded-lg shadow-lg"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 1, duration: 1 }}
                     >
-                        {minutes}:{seconds}
+                        {hours}:{minutes}:{seconds}
                     </motion.div>
                 </div>
 
@@ -134,7 +141,7 @@ export default function WorkshopLanding() {
                 <motion.div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg"
                     initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1 }}
                 >
-                    <h2 className="text-3xl font-bold text-center mb-8 text-[#ffc400] border-b-4 border-[#ffc400]">
+                    <h2 className="text-3xl font-bold text-center mb-8 text-[#FFCC00] border-b-4 border-[#FFCC00]">
                         Esto no es una formación más
                     </h2>
                     <p className="mb-6 text-lg text-gray-800">
@@ -144,30 +151,32 @@ export default function WorkshopLanding() {
                         ✔️ Para atraer pacientes que valoren tu laburo<br />
                         ✔️ Para tener claridad, dirección y libertad real
                     </p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        {benefits.map((benefit, index) => {
-                            const ref = useRef(null);
-                            const isInView = useInView(ref, { amount: 0.5 });
-                            return (
-                                <motion.div
-                                    ref={ref}
-                                    key={index}
-                                    className="flex flex-row items-start gap-x-6 p-4 border-yellow-500/50 rounded-lg bg-[#fff8e1] shadow-md"
-                                    animate={{ scale: isInView ? 1.05 : 1 }}
-                                    transition={{ duration: 0.3 }}
-                                >
-                                    <img src={benefit.img} alt={benefit.text} className="w-24 h-24 object-cover flex-shrink-0 rounded-lg" />
-                                    <span className="text-base md:text-lg">{benefit.text}</span>
-                                </motion.div>
-                            );
-                        })}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
+                        {benefits.map((benefit, index) => (
+                            <motion.div
+                                key={index}
+                                className="flex items-start gap-4 p-4 border border-[#FFCC00]/40 rounded-lg bg-[#FFFBEA] shadow-sm"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: index * 0.1 }}
+                            >
+                                <img
+                                    src={benefit.img}
+                                    alt=""
+                                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg flex-shrink-0 mt-1"
+                                />
+                                <span className="text-sm md:text-base text-gray-800 leading-snug">
+                                    {benefit.text}
+                                </span>
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
 
                 {/* Value Stack */}
                 <motion.div
                     ref={recibirRef}
-                    className="bg-white border-4 border-dashed border-[#ffc400] rounded-xl p-6 mt-10 shadow-xl text-center"
+                    className="bg-white border-4 border-dashed border-[#FFCC00] rounded-xl p-6 mt-10 shadow-xl text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
@@ -191,11 +200,11 @@ export default function WorkshopLanding() {
 
                     <motion.button
                         onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20acceder%20a%20Focus%20Dental%20ahora", "_blank")}
-                        className="bg-[#ffb921] text-white text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 transition-transform hover:scale-105 shadow-lg"
+                        className="bg-[#FFCC00] text-black text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 transition-transform hover:scale-105 shadow-lg"
                         whileHover={{ scale: 1.1 }}
                         animate={{
                             scale: [1, 1.05, 1],
-                            boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,185,33,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
+                            boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,204,0,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
                         }}
                         transition={{ repeat: Infinity, duration: 2 }}
                     >
