@@ -102,7 +102,7 @@ function Navbar({ toggleMenu, isMenuOpen, handleLogout }) {
         <div className="flex items-center gap-2">
           {/* Logo clickeable que redirige a /Dashboard */}
           <button onClick={() => handleNavigation('/Dashboard')} className="focus:outline-none">
-            <img src="/LOGO1.png" alt="Logo Dario Costanza" className="h-auto w-[150px]" />
+            <img src="/LOGOS/IMAGOTIPO/amarillo y blanco.png" alt="Logo Dario Costanza" className="h-10 w-auto" />
           </button>
         </div>
         <div className="hidden sm:flex gap-4">

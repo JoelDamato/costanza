@@ -80,11 +80,11 @@ function Home() {
 
   return (
     <div
-      className="w-screen min-h-screen pb-5 flex flex-col items-center justify-center bg-cover bg-center bg-black/95"
+      className="w-screen min-h-screen pt-5 pb-5 flex flex-col items-center justify-center bg-cover bg-center bg-black/95"
     >
       {/* Logo */}
       <img
-        src="/LOGO1.png"
+        src="/LOGOS/IMAGOTIPO/amarillo y blanco.png"
         alt="Logo"
         className="w-[350px] mb-5"
       />

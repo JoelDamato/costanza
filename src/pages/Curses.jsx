@@ -48,7 +48,7 @@ function Curses() {
           loading="lazy"
           className="w-full max-w-md sm:max-w-lg rounded-lg"
         />
-        <img src="/LOGO1.png" alt=""
+        <img src="/LOGOS/IMAGOTIPO/amarillo y blanco.png" alt=""
           loading="lazy"
           className="absolute top-20 text-shadow text-white font-bold text-center text-2xl sm:text-4xl px-4" />
       </div>
