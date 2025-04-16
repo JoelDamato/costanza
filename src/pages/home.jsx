@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { User } from "lucide-react";
+import { motion } from "framer-motion";
+import { User, Eye, Mic, Heart, Target } from "lucide-react";
 
 export default function HomePage() {
-
   useEffect(() => {
     const link = document.createElement("link");
     link.href = "https://fonts.cdnfonts.com/css/garet";
@@ -12,11 +12,34 @@ export default function HomePage() {
     return () => document.head.removeChild(link);
   }, []);
 
+  const pilares = [
+    {
+      title: "Presencia",
+      desc: "Estar ahí, completamente, para vos. Sin juicios, sin agenda, con entrega total.",
+      icon: <Eye size={40} className="text-[#FFCC00]" />,
+    },
+    {
+      title: "Escucha profunda",
+      desc: "Escuchar lo que decís, lo que no decís, y lo que necesita ser dicho.",
+      icon: <Mic size={40} className="text-[#FFCC00]" />,
+    },
+    {
+      title: "Compasión",
+      desc: "Una mirada amorosa, humana y comprometida con tu proceso.",
+      icon: <Heart size={40} className="text-[#FFCC00]" />,
+    },
+    {
+      title: "Sentido",
+      desc: "Cada conversación busca reconectar con lo que realmente importa.",
+      icon: <Target size={40} className="text-[#FFCC00]" />,
+    },
+  ];
+
   return (
     <div className="flex min-h-screen flex-col bg-white font-garet">
 
-      {/* Header con ícono de login */}
-      <header className="flex justify-between items-center px-6 py-4 bg-black shadow-md">
+      {/* Header */}
+      <header className="sticky top-0 z-50 flex justify-between items-center px-6 py-4 bg-black shadow-md transition-all duration-300">
         <Link to="/" aria-label="Ir al inicio">
           <img
             src="/LOGOS/IMAGOTIPO/amarillo y blanco.png"
@@ -24,63 +47,77 @@ export default function HomePage() {
             className="h-10 w-auto"
           />
         </Link>
-
         <Link to="/login" aria-label="Iniciar sesión">
           <User size={28} className="text-white hover:text-[#FFCC00] transition" />
         </Link>
       </header>
 
-
       {/* Hero */}
-      <section className="relative px-4 py-3 md:py-36 bg-white overflow-hidden">
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        className="relative px-4 py-3 md:py-36 bg-white overflow-hidden"
+      >
         <div className="container mx-auto max-w-6xl text-center space-y-6">
-          <h1 className="text-3xl md:text-6xl font-bold text-gray-900 leading-tight">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-3xl md:text-6xl font-bold text-gray-900 leading-tight"
+          >
             Acompañando procesos de transformación con propósito y presencia
-          </h1>
-          <p className="text-l text-gray-600 max-w-2xl mx-auto">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="text-l text-gray-600 max-w-2xl mx-auto"
+          >
             Soy Darío Costanza, coach profesional desde hace más de 15 años. Estoy acá para potenciar tu bienestar desde una presencia cercana, profesional y motivadora.
-          </p>
+          </motion.p>
         </div>
-      </section>
+      </motion.section>
 
       {/* Biografía */}
-      <section className="py-3 px-4 bg-[#E0E0E0]">
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-3 px-4 bg-[#E0E0E0]"
+      >
         <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12 items-center">
-          <img
+          <motion.img
             src="/dario.jpg"
             alt="Darío Costanza"
             className="rounded-3xl shadow-lg"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
           />
           <div className="space-y-4">
             <h2 className="text-3xl font-bold text-gray-900">Sobre mí</h2>
             <p className="text-lg text-gray-800">
-              Empecé este camino como parte de mi propio proceso personal. Hoy, después de más de 3.000 horas de sesiones, sigo creyendo en el poder transformador de una conversación con sentido.
+              Soy odontólogo, especializado en estética dental e implantología, y apasionado por el marketing y la fotografía aplicada a la odontología.
             </p>
             <p className="text-lg text-gray-800">
-              Mi mirada sobre el coaching es integral: creo en el trabajo con el cuerpo, las emociones y el lenguaje. No busco “arreglar” personas, sino acompañar desde la presencia, la escucha y la compasión.
+              Fundé CODA Odontología con el propósito de unir tecnología, diseño de sonrisas y gestión clínica para transformar la experiencia del paciente y el modelo de negocio odontológico.
             </p>
             <p className="text-lg text-gray-800">
-              Me formé en instituciones internacionales y trabajo con líderes, profesionales y personas que desean reconectar con lo esencial.
+              Acompaño a otros profesionales a potenciar sus prácticas a través de mentorías, cursos de marketing y fotografía dental, combinando visión clínica, estrategia y creatividad.
             </p>
           </div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Filosofía */}
-      <section className="py-3 px-4">
-        <div className="container mx-auto max-w-4xl text-center space-y-8">
-          <h2 className="text-3xl font-bold text-gray-900">Mi filosofía de trabajo</h2>
-          <p className="text-lg text-gray-700">
-            Creo en un coaching ético, humano y profundo. Cada encuentro es único. Acompaño desde el respeto, la intuición y el silencio cuando hace falta.
-          </p>
-          <p className="text-lg text-gray-700">
-            Trabajo con personas que quieren vivir más alineadas consigo mismas, desarrollar su liderazgo o sostener conversaciones difíciles desde la autenticidad.
-          </p>
-        </div>
-      </section>
-
-      {/* Pilares */}
-      <section className="py-3 mb-6 px-4 bg-white">
+      {/* Pilares con íconos y animación */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-3 mb-6 px-4 bg-white"
+      >
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-8">
             <span className="bg-[#FFCC00] text-gray-900 px-4 py-1.5 rounded-full text-sm font-medium uppercase tracking-wide">
@@ -90,23 +127,44 @@ export default function HomePage() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {[
-              { title: "Presencia", desc: "Estar ahí, completamente, para vos. Sin juicios, sin agenda, con entrega total." },
-              { title: "Escucha profunda", desc: "Escuchar lo que decís, lo que no decís, y lo que necesita ser dicho." },
-              { title: "Compasión", desc: "Una mirada amorosa, humana y comprometida con tu proceso." },
-              { title: "Sentido", desc: "Cada conversación busca reconectar con lo que realmente importa." },
-            ].map((pillar, idx) => (
-              <div key={idx} className="bg-[#E0E0E0] p-8 rounded-2xl shadow-md border border-gray-200">
+            {pilares.map((pillar, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                className="bg-[#E0E0E0] p-8 rounded-2xl shadow-md border border-gray-200 hover:shadow-xl transition relative group"
+              >
+                <div className="mb-4 flex justify-center items-center">
+                  <motion.div
+                    whileHover={{
+                      y: -6,
+                      scale: 1.15,
+                      rotate: [-3, 3, -2, 2, 0], // leve vibración orgánica
+                    }}
+                    transition={{ type: "spring", stiffness: 180, damping: 10 }}
+                    className="transition duration-300 group-hover:drop-shadow-[0_8px_25px_rgba(255,204,0,0.6)]"
+                  >
+                    {pillar.icon}
+                  </motion.div>
+                </div>
                 <h3 className="text-xl font-semibold mb-2 text-gray-900">{pillar.title}</h3>
                 <p className="text-gray-700">{pillar.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
+
+
         </div>
-      </section>
+      </motion.section>
 
       {/* CTA */}
-      <section className="py-6 px-4 bg-[#FFCC00] text-gray-900 text-center">
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+        className="py-6 px-4 bg-[#FFCC00] text-gray-900 text-center"
+      >
         <div className="container mx-auto max-w-3xl space-y-6">
           <h2 className="text-4xl font-bold">¿Te gustaría empezar tu proceso?</h2>
           <p className="text-lg">
@@ -117,7 +175,7 @@ export default function HomePage() {
               href="https://calendly.com/dario-costanza"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-[#E0E0E0] transition"
+              className="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-[#E0E0E0] hover:shadow-md transition"
             >
               Agendar sesión
             </a>
@@ -125,11 +183,11 @@ export default function HomePage() {
               to="/contact"
               className="border border-white text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-gray-900 transition"
             >
-              Escribime
+              Hablemos
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }
