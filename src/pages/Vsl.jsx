@@ -84,6 +84,19 @@ export default function WorkshopLanding() {
                     <h1 className="text-black text-3xl md:text-5xl font-bold drop-shadow-lg mt-2 mb-2">
                         Esto es de Odontólogos, para odontólogos.
                     </h1>
+                    {/* VIDEO */}
+                    <div className="text-center flex justify-center items-center w-full mb-5 bg-black">
+                        <div className="relative w-full max-w-4xl aspect-video mt-5">
+                            <iframe
+                                src="https://player.vimeo.com/video/1051695808?h=4211e0dbc5"
+                                className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
+                                frameBorder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowFullScreen
+                                loading="lazy"
+                            ></iframe>
+                        </div>
+                    </div>
                     <p className="text-lg md:text-xl text-gray-800 mb-3">
                         Cuando empezaste esta carrera, te imaginabas ayudando a la gente, viviendo bien de tu trabajo y teniendo una vida estable.<br /><br />
                         Pero algo se desvió. Ahora sentís que trabajás el doble, ganás menos de lo que merecés y que estás siempre apagando incendios.<br /><br />
@@ -93,20 +106,6 @@ export default function WorkshopLanding() {
                     </p>
 
                 </header>
-
-                {/* VIDEO */}
-                <div className="text-center flex justify-center items-center w-full mb-5 bg-black">
-                    <div className="relative w-full max-w-4xl aspect-video mt-5">
-                        <iframe
-                            src="https://player.vimeo.com/video/1051695808?h=4211e0dbc5"
-                            className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
-                            frameBorder="0"
-                            allow="autoplay; fullscreen; picture-in-picture"
-                            allowFullScreen
-                            loading="lazy"
-                        ></iframe>
-                    </div>
-                </div>
 
                 {/* CTA */}
                 <motion.div
