@@ -117,12 +117,12 @@ export default function WorkshopLanding() {
                                 🚀 Accede a mi formación 🚀
                             </motion.div>
                             <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
-                                <p className="mb-1">
+                                <p className="mb-2">
                                     Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
                                 </p>
-                                <p className="text-xl font-bold text-[#FFCC00]">
+                                <div className="bg-[#FFCC00] text-white text-xl font-bold py-2 px-4 rounded-md inline-block shadow-md" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
                                     ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
-                                </p>
+                                </div>
                             </div>
                         </>
                     )}
@@ -186,13 +186,13 @@ export default function WorkshopLanding() {
                     <p className="text-xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
                     <p className="text-3xl font-bold text-green-600 mb-2">Hoy por $197 USD</p>
 
-                    <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
-                        <p className="mb-1">
+                    <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
+                        <p className="mb-2">
                             Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
                         </p>
-                        <p className="text-xl font-bold text-[#FFCC00]">
+                        <div className="bg-[#FFCC00] text-white text-xl font-bold py-2 px-4 rounded-md inline-block shadow-md" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
                             ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
-                        </p>
+                        </div>
                     </div>
 
                     <motion.button
