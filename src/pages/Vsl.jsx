@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
 
 export default function WorkshopLanding() {
-    const [timeLeft, setTimeLeft] = useState(3600000);
+    const [timeLeft, setTimeLeft] = useState(0);
     const [showExtraContent, setShowExtraContent] = useState(false);
     const valueStackRef = useRef(null);
 
@@ -17,36 +17,32 @@ export default function WorkshopLanding() {
     const benefits = [
         {
             img: "/DARIO CONSTANZA BOOK.png",
-            text: "🧠 Dominá el juego desde adentro: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
+            text: "<strong>🧠 Dominá el juego desde adentro</strong>: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
             img: "/NOTEBOOK DARIO 2.png",
-            text: "🚀 Pacientes que te buscan, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
+            text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
             img: "/BUSINESS CARDS DARIO.png",
-            text: "📸 Imagen que vende por vos: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
+            text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
             img: "/comunidad dario.png",
-            text: "💼 Gestión que no te roba tiempo: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
+            text: "<strong>💼 Gestión que no te roba tiempo</strong>: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
             img: "/comunidad dario2.png",
-            text: "📊 Finanzas que te permiten vivir de esto: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
+            text: "<strong>📊 Finanzas que te permiten vivir de esto</strong>: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
         }
     ];
 
-
     useEffect(() => {
-        const handleMessage = (event) => {
-            const { data } = event;
-            if (data.message === "panda_timeupdate" && data.currentTime >= 1) {
-                setShowExtraContent(true);
-            }
-        };
-        window.addEventListener("message", handleMessage);
-        return () => window.removeEventListener("message", handleMessage);
+        const timeout = setTimeout(() => {
+            setShowExtraContent(true);
+        }, 3000);
+
+        return () => clearTimeout(timeout);
     }, []);
 
     useEffect(() => {
@@ -58,20 +54,24 @@ export default function WorkshopLanding() {
     }, []);
 
     useEffect(() => {
+        const deadline = new Date("2025-05-17T23:59:59").getTime();
         const interval = setInterval(() => {
-            setTimeLeft(prevTime => (prevTime <= 0 ? 3600000 : prevTime - 1000));
+            const now = new Date().getTime();
+            const distance = deadline - now;
+            setTimeLeft(distance > 0 ? distance : 0);
         }, 1000);
         return () => clearInterval(interval);
     }, []);
 
     const formatTime = (time) => {
-        const hours = String(Math.floor(time / 3600000)).padStart(2, '0');
-        const minutes = String(Math.floor((time % 3600000) / 60000)).padStart(2, '0');
-        const seconds = String(Math.floor((time % 60000) / 1000)).padStart(2, '0');
-        return { hours, minutes, seconds };
+        const days = Math.floor(time / (1000 * 60 * 60 * 24));
+        const hours = String(Math.floor((time / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        const minutes = String(Math.floor((time / 1000 / 60) % 60)).padStart(2, '0');
+        const seconds = String(Math.floor((time / 1000) % 60)).padStart(2, '0');
+        return { days, hours, minutes, seconds };
     };
 
-    const { hours, minutes, seconds } = formatTime(timeLeft);
+    const { days, hours, minutes, seconds } = formatTime(timeLeft);
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#FFCC00] to-black font-[Garet] text-black">
@@ -81,9 +81,10 @@ export default function WorkshopLanding() {
 
                 {/* HEADER */}
                 <header className="text-center">
-                    <h1 className="text-black text-3xl md:text-5xl font-bold drop-shadow-lg mt-2 mb-2">
+                    <h1 className="text-black text-3xl md:text-5xl font-bold underline decoration-[#FFCC00] underline-offset-4 drop-shadow-lg mt-2 mb-2">
                         Esto es de Odontólogos, para odontólogos.
                     </h1>
+
                     {/* VIDEO */}
                     <div className="text-center flex justify-center items-center w-full mb-5 bg-black">
                         <div className="relative w-full max-w-4xl aspect-video mt-5">
@@ -97,31 +98,43 @@ export default function WorkshopLanding() {
                             ></iframe>
                         </div>
                     </div>
+
+                    {/* CTA al minuto 0 */}
+                    {showExtraContent && (
+                        <>
+                            <motion.div
+                                onClick={scrollToValueStack}
+                                whileHover={{ scale: 1.05 }}
+                                className="flex justify-center items-center text-black bg-[#FFCC00] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 cursor-pointer"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: 0.5, duration: 1 }}
+                            >
+                                🚀 Accede a mi formación 🚀
+                            </motion.div>
+                            <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
+                                <p className="mb-1">
+                                    Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
+                                </p>
+                                <p className="text-xl font-bold text-[#FFCC00]">
+                                    ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
+                                </p>
+                            </div>
+                        </>
+                    )}
+
                     <p className="text-lg md:text-xl text-gray-800 mb-3">
                         Cuando empezaste esta carrera, te imaginabas ayudando a la gente, viviendo bien de tu trabajo y teniendo una vida estable.<br /><br />
                         Pero algo se desvió. Ahora sentís que trabajás el doble, ganás menos de lo que merecés y que estás siempre apagando incendios.<br /><br />
-                        Esa sensación de estancamiento no es normal.<br /><br />
-                        Este programa está pensado para que tomes el control total de tu carrera, recuperes tiempo, mejores tus ingresos y vuelvas a sentirte orgulloso de lo que construís cada día.<br /><br />
+                        <strong>Esa sensación de estancamiento no es normal.</strong><br /><br />
+                        Este programa está pensado para que <strong>tomes el control total</strong> de tu carrera, <strong>recuperes tiempo</strong>, <strong>mejores tus ingresos</strong> y vuelvas a sentirte orgulloso de lo que construís cada día.<br /><br />
                         Porque sí: esa versión de tu profesión que alguna vez soñaste, existe. Solo tenés que dejar de postergarla.
                     </p>
-
                 </header>
-
-                {/* CTA */}
-                <motion.div
-                    onClick={scrollToValueStack}
-                    whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(255, 204, 0, 0.9)" }}
-                    className="flex justify-center items-center text-black bg-[#FFCC00] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 cursor-pointer"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.5, duration: 1 }}
-                >
-                    🚀 Transformá tu consultorio hoy 🚀
-                </motion.div>
 
                 {/* BENEFICIOS */}
                 <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
-                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-[#FFCC00] border-b-4 border-[#FFCC00] mx-auto">
+                    <h2 className="text-3xl font-bold text-center mb-8 underline decoration-[#FFCC00] underline-offset-4">
                         Los 5 pilares para una práctica rentable y sin estrés
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
@@ -138,9 +151,7 @@ export default function WorkshopLanding() {
                                     alt=""
                                     className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg flex-shrink-0 mt-1"
                                 />
-                                <span className="text-sm md:text-base text-gray-800 leading-snug">
-                                    {benefit.text}
-                                </span>
+                                <span className="text-sm md:text-base text-gray-800 leading-snug" dangerouslySetInnerHTML={{ __html: benefit.text }} />
                             </motion.div>
                         ))}
                     </div>
@@ -154,23 +165,31 @@ export default function WorkshopLanding() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold text-black mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold underline decoration-[#FFCC00] underline-offset-4 mb-6">
                         Esto es TODO lo que vas a recibir con <span className="text-green-600">FOCUS DENTAL</span>
                     </h2>
 
-                    <ul className="text-left text-lg md:text-xl font-medium mb-6 max-w-3xl mx-auto space-y-2">
-                        <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-red-600 font-bold">$997 USD</span></li>
-                        <li>🖼️ Bono #1: Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
-                        <li>📲 Bono #2: Mensajes que hacen volver a tus pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
-                        <li>👥 Bono #3: Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>📂 Bono #4: Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>🛠️ Bono #5: Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
-                        <li>🧾 Bono #6: Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250+ USD</span></li>
+                    <ul className="text-center text-base md:text-lg font-medium mb-6 max-w-3xl mx-auto space-y-2">
+                        <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-black font-bold">$997 USD</span></li>
+                        <li>🖼️ Bono #1: Pack de imágenes listas para tu consultorio – <span className="text-black font-bold">$97 USD</span></li>
+                        <li>📲 Bono #2: Mensajes que hacen volver a tus pacientes – <span className="text-black font-bold">$197 USD</span></li>
+                        <li>👥 Bono #3: Comunidad privada de odontólogos – <span className="text-black font-bold">$297 USD</span></li>
+                        <li>📂 Bono #4: Recursos descargables de gestión – <span className="text-black font-bold">$297 USD</span></li>
+                        <li>🛠️ Bono #5: Herramientas digitales que te ahorran tiempo – <span className="text-black font-bold">$147 USD</span></li>
+                        <li>🧾 Bono #6: Descuentos exclusivos en insumos y equipamiento – <span className="text-black font-bold">$250+ USD</span></li>
                     </ul>
 
-                    <p className="text-2xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
-                    <p className="text-3xl font-bold text-green-600 mb-4">Hoy solo por $197 USD</p>
-                    <p className="text-base italic text-gray-600">✅ Sin adivinar. Sin fórmulas vacías. Sin ser influencer.</p>
+                    <p className="text-xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
+                    <p className="text-3xl font-bold text-green-600 mb-2">Hoy por $197 USD</p>
+
+                    <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
+                        <p className="mb-1">
+                            Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
+                        </p>
+                        <p className="text-xl font-bold text-[#FFCC00]">
+                            ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
+                        </p>
+                    </div>
 
                     <motion.button
                         onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20acceder%20al%20Programa%20Focus%20Dental", "_blank")}
@@ -194,17 +213,24 @@ export default function WorkshopLanding() {
                         Yo también estuve ahí. Dudando. Probando cosas sueltas.
                         Hasta que entendí que no necesitaba saberlo todo. Solo necesitaba el sistema correcto.
                         <br /><br />
-                        Y eso es lo que estás a punto de recibir.
-                        <br /><br />
                         <strong>Una hoja de ruta. Un GPS para dejar de improvisar.</strong>
                         <br /><br />
                         Hoy tenés la posibilidad de acceder con una inversión mínima… pero el acceso no va a estar siempre abierto.
                         <br /><br />
                         Porque <strong>prefiero acompañar a pocos odontólogos comprometidos, que vender a muchos sin resultados.</strong>
                     </blockquote>
+
                     <p className="mt-6 text-center font-bold text-xl text-[#FFCC00]">
                         🎯 Si sentís que llegó tu momento, no sigas postergándolo.
                     </p>
+
+                    <motion.button
+                        onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental", "_blank")}
+                        className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mt-5 mx-auto block"
+                        whileHover={{ scale: 1.05 }}
+                    >
+                        QUIERO MÁS INFO
+                    </motion.button>
                 </div>
             </div>
         </div>
