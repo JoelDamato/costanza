@@ -54,7 +54,7 @@ export default function WorkshopLanding() {
     }, []);
 
     useEffect(() => {
-        const deadline = new Date("2025-05-17T23:59:59").getTime();
+        const deadline = new Date("2025-05-17T00:00:00").getTime();
         const interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = deadline - now;
@@ -75,7 +75,11 @@ export default function WorkshopLanding() {
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#FFCC00] to-black font-[Garet] text-black">
-            <img src="/LOGOS/IMAGOTIPO/amarillo y blanco.png" alt="Logo" className="w-[250px] mt-4 md:w-1/2" />
+            <img
+                src="/LOGOS/IMAGOTIPO/amarillo y blanco.png"
+                alt="Logo Darío Costanza"
+                className="h-10 w-auto mt-2"
+            />
 
             <div className="bg-white rounded-2xl max-w-4xl w-[96%] p-2 md:p-6 mx-5 shadow-lg mt-2 md:mt-7">
 
