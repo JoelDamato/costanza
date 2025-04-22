@@ -13,7 +13,9 @@ const Footer = () => {
 
         {/* Texto principal */}
         <p className="text-center text-md font-bold mt-[-50px]">
-          Dario Costanza 2025®️ | Todos los derechos reservados ©️
+          Dario Costanza 2025
+          <span className="text-[#FFCC00] align-middle">&reg;</span> | Todos los derechos reservados
+          <span className="text-[#FFCC00] align-middle"> &copy;</span>
         </p>
 
         {/* Términos */}
