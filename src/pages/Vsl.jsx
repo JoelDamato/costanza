@@ -16,24 +16,28 @@ export default function WorkshopLanding() {
 
     const benefits = [
         {
-            img: "/DARIO CONSTANZA BOOK.png",
+            img: "/Small Book Cover Mockup copia.png",
             text: "<strong>🧠 Dominá el juego desde adentro</strong>: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
-            img: "/NOTEBOOK DARIO 2.png",
+            img: "/Notebook PSD Mockup copia.png",
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
-            img: "/BUSINESS CARDS DARIO.png",
+            img: "/Free Business Cards  Scene Mockup copia.png",
             text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
-            img: "/comunidad dario.png",
+            img: "/Ilustración_sin_título.png",
             text: "<strong>💼 Gestión que no te roba tiempo</strong>: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
-            img: "/comunidad dario2.png",
+            img: "/pattern.png",
             text: "<strong>📊 Finanzas que te permiten vivir de esto</strong>: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
+        },
+        {
+            img: "/business card zoom.png",
+            text: "<strong>💬 No estás solo en esto</strong>: Conectá con una comunidad de odontólogos que comparten tus desafíos y crecen juntos."
         }
     ];
 
@@ -152,7 +156,7 @@ export default function WorkshopLanding() {
                                 <img
                                     src={benefit.img}
                                     alt=""
-                                    className="w-28 h-28 md:w-32 md:h-32 object-cover rounded-xl"
+                                    className="w-full h-auto max-h-25 object-contain rounded-xl"
                                 />
                                 <span className="text-base md:text-lg text-gray-800 leading-relaxed" dangerouslySetInnerHTML={{ __html: benefit.text }} />
                             </motion.div>
