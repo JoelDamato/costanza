@@ -16,27 +16,27 @@ export default function WorkshopLanding() {
 
     const benefits = [
         {
-            img: "/Small Book Cover Mockup copia.png",
+            img: "https://i.ibb.co/rGg9t0ht/agenda.png",
             text: "<strong>🧠 Dominá el juego desde adentro</strong>: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
-            img: "/Notebook PSD Mockup copia.png",
+            img: "https://i.ibb.co/27dThx0K/mapssinfondo.png",
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
-            img: "/Free Business Cards  Scene Mockup copia.png",
+            img: "https://i.ibb.co/vxr1jMZ1/Chat-GPT-Image-22-abr-2025-17-38-58.png",
             text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
-            img: "/Ilustración_sin_título.png",
+            img: "https://i.ibb.co/1tPV773h/fondotranspc.png",
             text: "<strong>💼 Gestión que no te roba tiempo</strong>: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
-            img: "/pattern.png",
+            img: "https://i.ibb.co/wFtZBHBw/finanzas.png",
             text: "<strong>📊 Finanzas que te permiten vivir de esto</strong>: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
         },
         {
-            img: "/business card zoom.png",
+            img: "https://i.ibb.co/NgJqry0C/comunidad.png",
             text: "<strong>💬 No estás solo en esto</strong>: Conectá con una comunidad de odontólogos que comparten tus desafíos y crecen juntos."
         }
     ];
@@ -149,14 +149,15 @@ export default function WorkshopLanding() {
                         {benefits.map((benefit, index) => (
                             <motion.div
                                 key={index}
-                                className="flex flex-col items-center gap-4 p-6 border rounded-xl bg-[#ffcc00] shadow-lg hover:shadow-2xl transition-all duration-300 text-center"
+                                className="flex flex-col items-center gap-4 p-6 border border-[#ffcc00] rounded-xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 text-center min-h-[320px]"
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: index * 0.1 }}
                             >
+
                                 <img
                                     src={benefit.img}
                                     alt=""
-                                    className="w-full h-auto max-h-25 object-contain rounded-xl"
+                                    className="w-auto h-60 sm:h-52 object-contain rounded-xl"
                                 />
                                 <span className="text-base md:text-lg text-gray-800 leading-relaxed" dangerouslySetInnerHTML={{ __html: benefit.text }} />
                             </motion.div>
@@ -173,9 +174,15 @@ export default function WorkshopLanding() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-bold underline decoration-[#FFCC00] underline-offset-4 mb-6">
+                    <h2 className="text-3xl md:text-4xl font-bold underline decoration-[#FFCC00] underline-offset-4 mb-4">
                         Esto es TODO lo que vas a recibir con <span className="text-green-600">FOCUS DENTAL</span>
                     </h2>
+
+                    <img
+                        src="https://i.ibb.co/RGcDgqdJ/general-2.png"
+                        alt="Logo Darío Costanza"
+                        className="w-full h-auto max-h-25 object-contain rounded-xl mb-4"
+                    />
 
                     <ul className="text-center text-base md:text-lg font-medium mb-6 max-w-3xl mx-auto space-y-2">
                         <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-black font-bold">$997 USD</span></li>
