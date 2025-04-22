@@ -9,7 +9,7 @@ import PoliticaReembolso from './components/Politicaderembolso';
 
 const Home = lazy(() => import('./pages/home.jsx'));
 const Login = lazy(() => import('./pages/login.jsx'));
-const VSl = lazy(() => import('./pages/Vsl.jsx'));
+const Formación = lazy(() => import('./pages/Formación.jsx'));
 const VSl2 = lazy(() => import('./pages/Vsl2.jsx'));
 const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
 const Cursos = lazy(() => import('./pages/Cursos.jsx'));
@@ -27,7 +27,7 @@ function App() {
           <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/vsl" element={<VSl />} />
+              <Route path="/Formación" element={<Formación />} />
               <Route path="/vsl2" element={<VSl2 />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Dashboard" element={<Dashboard />} />
