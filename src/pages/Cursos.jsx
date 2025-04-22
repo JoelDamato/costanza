@@ -5,7 +5,11 @@ import useUserStore from '../store/users';
 import NotFound from './NotFound.jsx'; // 👈 Añadido componente NotFound
 
 function Cursos() {
-  const API_BASE_URL = "https://back-cursos.onrender.com";
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const user = useUserStore((state) => state.user);

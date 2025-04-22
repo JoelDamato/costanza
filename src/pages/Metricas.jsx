@@ -22,11 +22,11 @@ const Metricas = () => {
   const clearUserData = useUserStore((state) => state.clearUserData);
   const navigate = useNavigate();
 
-  // Determinar la URL base en función del entorno
-  const API_BASE_URL = "https://back-cursos.onrender.com"
-  // process.env.NODE_ENV === 'production'
-  //   ? 'https://back-cursos.onrender.com'
-  //   : 'http://localhost:5000';
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
+
 
   useEffect(() => {
     const fetchMetrics = async () => {

@@ -32,7 +32,10 @@ function PanelControl() {
   const showProfile = useUserStore((state) => state.showProfile);
   const setShowProfile = useUserStore((state) => state.setShowProfile);
 
-  const API_BASE_URL = "https://back-cursos.onrender.com";
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
 
   // Función para generar contraseña aleatoria
   const generateRandomPassword = (length = 12) => {
