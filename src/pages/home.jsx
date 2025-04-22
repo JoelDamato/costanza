@@ -89,9 +89,9 @@ export default function HomePage() {
       >
         <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12 items-center">
           <motion.img
-            src="/dario.jpg"
+            src="https://i.ibb.co/DD4Qm0Yh/dario-1.png"
             alt="Darío Costanza"
-            className="rounded-3xl shadow-lg"
+            className="rounded-3xl"
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           />

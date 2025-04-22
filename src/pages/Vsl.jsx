@@ -110,7 +110,7 @@ export default function WorkshopLanding() {
                                 <p className="mb-2">
                                     Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
                                 </p>
-                                <div className="bg-[#FFCC00] text-white text-xl font-bold py-2 px-4 rounded-md inline-block shadow-md" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
+                                <div className="bg-black text-[#FFCC00] text-xl font-bold py-2 px-4 rounded-md inline-block ">
                                     ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
                                 </div>
                             </div>
@@ -195,7 +195,7 @@ export default function WorkshopLanding() {
                         <p className="mb-2">
                             Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
                         </p>
-                        <div className="bg-[#FFCC00] text-white text-xl font-bold py-2 px-4 rounded-md inline-block shadow-md" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
+                        <div className="bg-black text-[#FFCC00] text-xl font-bold py-2 px-2 rounded-md inline-block ">
                             ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
                         </div>
                     </div>
