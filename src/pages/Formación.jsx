@@ -143,7 +143,7 @@ export default function WorkshopLanding() {
                 {/* BENEFICIOS */}
                 <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-3xl font-bold text-center mb-8 underline decoration-[#FFCC00] underline-offset-4">
-                        Los 5 pilares para una práctica rentable y sin estrés
+                        Los 6 pilares para una práctica rentable y sin estrés
                     </h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
                         {benefits.map((benefit, index) => (
