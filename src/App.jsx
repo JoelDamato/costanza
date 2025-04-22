@@ -2,6 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import Spinner from './components/Spinner';
 import Footer from './pages/Footer.jsx';
+import Politicas from './components/Politicas';
+import Condiciones from './components/Condiciones';
+import PoliticaReembolso from './components/Politicaderembolso';
+
 
 const Home = lazy(() => import('./pages/home.jsx'));
 const Login = lazy(() => import('./pages/login.jsx'));
@@ -35,6 +39,11 @@ function App() {
  
               <Route path="/Metricas" element={<Metricas />} />
               <Route path="*" element={<NotFound />} />
+              <Route path="/politica-privacidad" element={<Politicas />} />
+<Route path="/terminos-condiciones" element={<Condiciones />} />
+<Route path="/politica-compra" element={<PoliticaReembolso />} />
+
+
             </Routes>
           </Suspense>
         </Router>

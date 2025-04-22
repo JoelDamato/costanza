@@ -85,7 +85,7 @@ export default function HomePage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="py-3 px-4 bg-[#E0E0E0]"
+        className="py-2 px-4 bg-[#E0E0E0]"
       >
         <div className="container mx-auto max-w-5xl grid md:grid-cols-2 gap-12 items-center">
           <motion.img
@@ -95,7 +95,7 @@ export default function HomePage() {
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
           />
-          <div className="space-y-4">
+          <div className="space-y-2">
             <h2 className="text-3xl font-bold text-gray-900">Sobre mí</h2>
             <p className="text-lg text-gray-800">
               Soy odontólogo, especializado en estética dental e implantología, y apasionado por el marketing y la fotografía aplicada a la odontología.
@@ -165,28 +165,7 @@ export default function HomePage() {
         transition={{ duration: 0.8 }}
         className="py-6 px-4 bg-[#FFCC00] text-gray-900 text-center"
       >
-        <div className="container mx-auto max-w-3xl space-y-6">
-          <h2 className="text-4xl font-bold">¿Te gustaría empezar tu proceso?</h2>
-          <p className="text-lg">
-            Si sentís que es momento de mirar hacia adentro, rediseñar tu forma de vivir o liderar, estoy acá para acompañarte con compromiso y alegría.
-          </p>
-          <div className="flex justify-center gap-4 flex-wrap">
-            <a
-              href="https://calendly.com/dario-costanza"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-[#E0E0E0] hover:shadow-md transition"
-            >
-              Agendar sesión
-            </a>
-            <Link
-              to="/contact"
-              className="border border-white text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-gray-900 transition"
-            >
-              Hablemos
-            </Link>
-          </div>
-        </div>
+      
       </motion.section>
     </div>
   );

@@ -314,12 +314,7 @@ function PanelControl() {
           >
             Registro
           </button>
-          <button
-            className={`px-3 py-2 text-sm sm:text-base rounded-lg ${activeSection === 'cupones' ? 'bg-gray-400 text-black' : 'bg-gray-200'}`}
-            onClick={() => setActiveSection('cupones')}
-          >
-            Cupones
-          </button>
+    
           <button
             className={`px-3 py-2 text-sm sm:text-base rounded-lg ${activeSection === 'editar' ? 'bg-gray-400 text-black' : 'bg-gray-200'}`}
             onClick={() => setActiveSection('editar')}
@@ -376,65 +371,17 @@ function PanelControl() {
                   Cursos:
                   <div className="flex flex-col mt-2 space-y-2">
                     <label className="flex items-center justify-between">
-                      <span>Focus</span>
+                      <span>Focus Dental</span>
                       <input
                         type="checkbox"
                         value="Focus"
-                        checked={cursos.includes('Focus')}
+                        checked={cursos.includes('Focus Dental')}
                         onChange={handleCursoChange}
                         className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
                       />
                     </label>
-                    <label className="flex items-center justify-between">
-                      <span>Master Fade</span>
-                      <input
-                        type="checkbox"
-                        value="Master Fade"
-                        checked={cursos.includes('Master Fade')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>Cutting Mastery</span>
-                      <input
-                        type="checkbox"
-                        value="Cutting Mastery"
-                        checked={cursos.includes('Cutting Mastery')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>Colorimetria</span>
-                      <input
-                        type="checkbox"
-                        value="Colorimetria"
-                        checked={cursos.includes('Colorimetria')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>GROWTH BARBER</span>
-                      <input
-                        type="checkbox"
-                        value="GROWTH BARBER"
-                        checked={cursos.includes('GROWTH BARBER')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>REGALO DE LANZAMIENTO</span>
-                      <input
-                        type="checkbox"
-                        value="REGALO DE LANZAMIENTO"
-                        checked={cursos.includes('REGALO DE LANZAMIENTO')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
+               
+        
                   </div>
                 </label>
               </div>
@@ -468,42 +415,7 @@ function PanelControl() {
         </div>
       )}
 
-      {/* Sección para gestionar cupones */}
-      {activeSection === 'cupones' && (
-        <>
-          <div className="w-4/5">
-            <label className="block text-black font-semibold tracking-wide mb-2">
-              Email del Usuario:
-              <input
-                className="w-full px-4 py-2 border rounded-md mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                type="email"
-                value={email}
-                placeholder="ejemplo@correo.com"
-                onChange={(e) => setEmail(e.target.value.toLowerCase())}
-                required
-              />
-            </label>
-          </div>
-
-          <div className="bg-gray-200 w-full m-5 p-6 rounded-lg shadow-lg text-white">
-            <h2 className="text-xl text-black font-bold mb-4 text-center">Gestionar Cupones</h2>
-            <div className="flex justify-center gap-4 mt-4">
-              <button
-                onClick={() => handleCouponChange('add')}
-                className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition"
-              >
-                Sacar Cupón
-              </button>
-              <button
-                onClick={() => handleCouponChange('remove')}
-                className="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition"
-              >
-                Dar Cupón
-              </button>
-            </div>
-          </div>
-        </>
-      )}
+        
 
       {/* Sección para editar usuario */}
       {activeSection === 'editar' && (
@@ -540,65 +452,18 @@ function PanelControl() {
                   Cursos:
                   <div className="flex flex-col mt-2 space-y-2">
                     <label className="flex items-center justify-between">
-                      <span>Focus</span>
+                      <span>Focus Dental</span>
                       <input
                         type="checkbox"
-                        value="Focus"
-                        checked={cursos.includes('Focus')}
+                        value="Focus Dental"
+                        checked={cursos.includes('Focus Dental')}
                         onChange={handleCursoChange}
                         className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
                       />
                     </label>
-                    <label className="flex items-center justify-between">
-                      <span>Master Fade</span>
-                      <input
-                        type="checkbox"
-                        value="Master Fade"
-                        checked={cursos.includes('Master Fade')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>Cutting Mastery</span>
-                      <input
-                        type="checkbox"
-                        value="Cutting Mastery"
-                        checked={cursos.includes('Cutting Mastery')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>Colorimetria</span>
-                      <input
-                        type="checkbox"
-                        value="Colorimetria"
-                        checked={cursos.includes('Colorimetria')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>GROWTH BARBER</span>
-                      <input
-                        type="checkbox"
-                        value="GROWTH BARBER"
-                        checked={cursos.includes('GROWTH BARBER')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
-                    <label className="flex items-center justify-between">
-                      <span>REGALO DE LANZAMIENTO</span>
-                      <input
-                        type="checkbox"
-                        value="REGALO DE LANZAMIENTO"
-                        checked={cursos.includes('REGALO DE LANZAMIENTO')}
-                        onChange={handleCursoChange}
-                        className="relative w-10 h-5 rounded-full appearance-none bg-gray-300 checked:bg-green-500 transition-colors duration-200 cursor-pointer"
-                      />
-                    </label>
+                
+                  
+            
                   </div>
                 </label>
               </div>

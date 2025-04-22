@@ -20,17 +20,18 @@ const Footer = () => {
 
         {/* Términos */}
         <p className="text-center text-sm">
-          <a href="/politicas-de-privacidad" className="hover:underline">
-            Políticas de privacidad
-          </a>
-          {" | "}
-          <a href="/terminos-condiciones" className="hover:underline">
-            Términos de condiciones y uso
-          </a>
-          {" | "}
-          <a href="/politica-compra" className="hover:underline">
-            Política de compra
-          </a>
+        <a href="/politica-privacidad" className="hover:underline">
+  Políticas de privacidad
+</a>
+{" | "}
+<a href="/terminos-condiciones" className="hover:underline">
+  Términos de condiciones y uso
+</a>
+{" | "}
+<a href="/politica-compra" className="hover:underline">
+  Política de compra y reembolso
+</a>
+
         </p>
       </div>
     </footer>
