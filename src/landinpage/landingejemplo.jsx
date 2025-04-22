@@ -14,7 +14,7 @@ export default function WorkshopLanding() {
 
       // Verificar si el mensaje es del evento panda_timeupdate
       if (data.message === "panda_timeupdate") {
-        console.log(`Tiempo actual del video: ${data.currentTime}s`);
+        // console.log(`Tiempo actual del video: ${data.currentTime}s`);
 
         // Mostrar contenido adicional si el tiempo alcanza 180 segundos
         if (data.currentTime >= 180) {

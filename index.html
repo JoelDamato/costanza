@@ -1,92 +1,98 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/erickgomez.png" />
-    <script async src="https://player.pandavideo.com.br/api.v2.js"></script>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Erick Gomez ACADEMY.</title>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/LOGOS/IMAGOTIPO/amarillo y blanco.png" />
+  <script async src="https://player.pandavideo.com.br/api.v2.js"></script>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BHRFWDN9ZG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dario Costanza</title>
 
-  gtag('config', 'G-BHRFWDN9ZG');
-</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BHRFWDN9ZG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // 1) Leemos los parámetros de la URL actual
-    const params = new URLSearchParams(window.location.search);
+    gtag('config', 'G-BHRFWDN9ZG');
+  </script>
 
-    // 2) Revisamos si vienen UTM (o cualquier otro) y los juntamos
-    const utmParts = [];
-    if (params.has('utm_source')) {
-      utmParts.push('utm_source=' + params.get('utm_source'));
-    }
-    if (params.has('utm_medium')) {
-      utmParts.push('utm_medium=' + params.get('utm_medium'));
-    }
-    if (params.has('utm_campaign')) {
-      utmParts.push('utm_campaign=' + params.get('utm_campaign'));
-    }
-    if (params.has('utm_term')) {
-      utmParts.push('utm_term=' + params.get('utm_term'));
-    }
-    if (params.has('utm_content')) {
-      utmParts.push('utm_content=' + params.get('utm_content'));
-    }
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1) Leemos los parámetros de la URL actual
+      const params = new URLSearchParams(window.location.search);
 
-    // 3) Armamos la URL base de Calendly
-    //    (cambia aquí "tu-cuenta" y "tu-evento" por lo tuyo)
-    let calendlyBase = 'https://calendly.com/tu-cuenta/tu-evento';
+      // 2) Revisamos si vienen UTM (o cualquier otro) y los juntamos
+      const utmParts = [];
+      if (params.has('utm_source')) {
+        utmParts.push('utm_source=' + params.get('utm_source'));
+      }
+      if (params.has('utm_medium')) {
+        utmParts.push('utm_medium=' + params.get('utm_medium'));
+      }
+      if (params.has('utm_campaign')) {
+        utmParts.push('utm_campaign=' + params.get('utm_campaign'));
+      }
+      if (params.has('utm_term')) {
+        utmParts.push('utm_term=' + params.get('utm_term'));
+      }
+      if (params.has('utm_content')) {
+        utmParts.push('utm_content=' + params.get('utm_content'));
+      }
 
-    // 4) Si hay parámetros, se los pegamos
-    if (utmParts.length > 0) {
-      calendlyBase += '/?' + utmParts.join('&');
-    }
+      // 3) Armamos la URL base de Calendly
+      //    (cambia aquí "tu-cuenta" y "tu-evento" por lo tuyo)
+      let calendlyBase = 'https://calendly.com/tu-cuenta/tu-evento';
 
-    // 5) Cambiamos el href del botón (el que tenga ID = "calendly-button")
-    const calendlyBtn = document.getElementById('calendly-button');
-    if (calendlyBtn) {
-      calendlyBtn.setAttribute('href', calendlyBase);
-    }
-  });
-</script>
+      // 4) Si hay parámetros, se los pegamos
+      if (utmParts.length > 0) {
+        calendlyBase += '/?' + utmParts.join('&');
+      }
 
-    <!-- Meta Pixel Code -->
-    <script>
-      var head = document.head;
-      var script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.src = "https://t.erickgomezacademy.com/v1/lst/universal-script?ph=fb1590df5598c8770c1c7fbfb13870b527b36e3e2b2ee95bbf0bd268b93a649c&tag=!clicked&ref_url=" + encodeURI(document.URL) ;
-      head.appendChild(script);
-      </script>
-      
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      // 5) Cambiamos el href del botón (el que tenga ID = "calendly-button")
+      const calendlyBtn = document.getElementById('calendly-button');
+      if (calendlyBtn) {
+        calendlyBtn.setAttribute('href', calendlyBase);
+      }
+    });
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    var head = document.head;
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = "https://t.erickgomezacademy.com/v1/lst/universal-script?ph=fb1590df5598c8770c1c7fbfb13870b527b36e3e2b2ee95bbf0bd268b93a649c&tag=!clicked&ref_url=" + encodeURI(document.URL);
+    head.appendChild(script);
+  </script>
+
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1075795590314989');
-      fbq('track', 'PageView');
-    </script>
-    <!-- End Meta Pixel Code -->
-  </head>
-  <body>
-    <noscript>
-      <img height="1" width="1" style="display:none"
+    fbq('init', '1075795590314989');
+    fbq('track', 'PageView');
+  </script>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+  <noscript>
+    <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=1075795590314989&ev=PageView&noscript=1" />
-    </noscript>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+  </noscript>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+
 </html>

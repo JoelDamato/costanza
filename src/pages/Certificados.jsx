@@ -19,9 +19,10 @@ function Certificados() {
   const setShowProfile = useUserStore((state) => state.setShowProfile);
 
   // Determinar la URL base en función del entorno
-  const API_BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://back-cursos.onrender.com'
-    : 'http://localhost:5000';
+  const API_BASE_URL = "https://back-cursos.onrender.com"
+  // process.env.NODE_ENV === 'production'
+  //   ? 'https://back-cursos.onrender.com'
+  //   : 'http://localhost:5000';
 
   useEffect(() => {
     // Verificar si hay un token almacenado
@@ -38,15 +39,15 @@ function Certificados() {
           Authorization: `Bearer ${token}`, // Enviar el token si es necesario
         }
       })
-      .then(response => {
-        // Guardar los datos del usuario en el estado global con Zustand
-        setUserData(response.data);
-        // Generar el certificado automáticamente
-        generateCertificate(response.data.nombre);
-      })
-      .catch(error => {
-        console.error('Error fetching user data:', error);
-      });
+        .then(response => {
+          // Guardar los datos del usuario en el estado global con Zustand
+          setUserData(response.data);
+          // Generar el certificado automáticamente
+          generateCertificate(response.data.nombre);
+        })
+        .catch(error => {
+          console.error('Error fetching user data:', error);
+        });
     } else {
       console.error('No email found in localStorage');
     }
@@ -82,20 +83,20 @@ function Certificados() {
       console.error('El usuario no tiene un nombre definido');
       return;
     }
-    
+
     axios.post(`${API_BASE_URL}/api/certificado/generate-image`, {
       name: userName,
       imageUrl: 'https://i.ibb.co/wCWc3Vs/f524d28a-a7ff-4c86-a90c-4d384ea7e20a.jpg'
     }, {
       responseType: 'blob',
     })
-    .then(response => {
-      const url = URL.createObjectURL(new Blob([response.data]));
-      setCertificadoUrl(url);
-    })
-    .catch(error => {
-      console.error('Error generating certificate:', error);
-    });
+      .then(response => {
+        const url = URL.createObjectURL(new Blob([response.data]));
+        setCertificadoUrl(url);
+      })
+      .catch(error => {
+        console.error('Error generating certificate:', error);
+      });
   };
 
   // Función para abrir el modal con la imagen ampliada
@@ -131,10 +132,10 @@ function Certificados() {
       {/* Mostrar el certificado generado */}
       {certificadoUrl && (
         <div className="mt-10">
-          <img 
-            src={certificadoUrl} 
-            alt="Certificado" 
-            className="w-196 h-auto rounded-lg shadow-xl cursor-pointer" 
+          <img
+            src={certificadoUrl}
+            alt="Certificado"
+            className="w-196 h-auto rounded-lg shadow-xl cursor-pointer"
             onClick={openModal} // Abrir modal al hacer clic en la imagen
           />
         </div>
@@ -154,13 +155,13 @@ function Certificados() {
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
           <div className="relative">
-            <img 
-              src={certificadoUrl} 
-              alt="Certificado ampliado" 
+            <img
+              src={certificadoUrl}
+              alt="Certificado ampliado"
               className="w-full max-w-3xl h-auto rounded-lg shadow-xl"
             />
-            <button 
-              className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2" 
+            <button
+              className="absolute top-4 right-4 text-white bg-red-600 rounded-full p-2"
               onClick={closeModal}
             >
               &times;

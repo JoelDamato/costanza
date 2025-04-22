@@ -1,10 +1,10 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts"
-import { Users, BookOpen, UserCheck, Clock, Ticket } from "lucide-react"
-import axios from "axios"
-import Navbar from "../components/Navbar"
+import { useState, useEffect } from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { Users, BookOpen, UserCheck, Clock, Ticket } from "lucide-react";
+import axios from "axios";
+import Navbar from "../components/Navbar";
+import useUserStore from '../store/users';
+import { useNavigate } from "react-router-dom";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8", "#FF69B4", "#4BC0C0", "#36A2EB"]
 
@@ -19,10 +19,14 @@ const Metricas = () => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const clearUserData = useUserStore((state) => state.clearUserData);
+  const navigate = useNavigate();
 
   // Determinar la URL base en función del entorno
-  const API_BASE_URL =
-    process.env.NODE_ENV === "production" ? "https://back-cursos.onrender.com" : "http://localhost:5000"
+  const API_BASE_URL = "https://back-cursos.onrender.com"
+  // process.env.NODE_ENV === 'production'
+  //   ? 'https://back-cursos.onrender.com'
+  //   : 'http://localhost:5000';
 
   useEffect(() => {
     const fetchMetrics = async () => {
@@ -114,9 +118,34 @@ const Metricas = () => {
     )
   }
 
+  // Function to log out
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('nombre');
+    clearUserData();
+    navigate('/');
+  };
+
+  // Function to show/hide profile
+  const toggleProfile = () => {
+    setShowProfile(!showProfile);
+    setIsMenuOpen(false);
+  };
+
+  // Function to show/hide menu (on mobile)
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar
+        toggleProfile={toggleProfile}
+        handleLogout={handleLogout}
+        toggleMenu={toggleMenu}
+        isMenuOpen={isMenuOpen}
+      />
       <div className="bg-gray-100 p-6 w-full min-h-screen">
         <h1 className="text-3xl font-bold mb-6 text-gray-800">Dashboard de Métricas</h1>
 

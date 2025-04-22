@@ -8,9 +8,10 @@ function Perfil() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const API_BASE_URL = process.env.NODE_ENV === 'production'
-    ? 'https://back-cursos.onrender.com'
-    : 'http://localhost:5000';
+  const API_BASE_URL = "https://back-cursos.onrender.com"
+  // process.env.NODE_ENV === 'production'
+  //   ? 'https://back-cursos.onrender.com'
+  //   : 'http://localhost:5000';
 
   const handlePasswordChange = async (e) => {
     e.preventDefault();
@@ -75,9 +76,8 @@ function Perfil() {
 
         {message && (
           <p
-            className={`text-sm mb-4 text-center ${
-              message.includes('exitosamente') ? 'text-green-400' : 'text-red-400'
-            }`}
+            className={`text-sm mb-4 text-center ${message.includes('exitosamente') ? 'text-green-400' : 'text-red-400'
+              }`}
           >
             {message}
           </p>
@@ -126,20 +126,19 @@ function Perfil() {
 
         <button
           type="submit"
-          className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${
-            loading ? 'opacity-50 cursor-not-allowed' : ''
-          }`}
+          className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${loading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
           disabled={loading}
         >
           {loading ? 'Actualizando...' : 'Guardar Cambios'}
         </button>
       </form>
       <button
-  onClick={() => navigate('/Dashboard')}
-  className="mt-6 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
->
-  Volver
-</button>
+        onClick={() => navigate('/Dashboard')}
+        className="mt-6 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded focus:outline-none focus:shadow-outline"
+      >
+        Volver
+      </button>
 
     </div>
   );
