@@ -28,7 +28,7 @@ export default function WorkshopLanding() {
             text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
-            img: "https://i.ibb.co/1tPV773h/fondotranspc.png",
+            img: "https://i.ibb.co/N68NtPTs/732b8122-3e80-4330-8507-87a70f9d787d.png",
             text: "<strong>💼 Gestión que no te roba tiempo</strong>: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
@@ -165,7 +165,6 @@ export default function WorkshopLanding() {
                     </div>
                 </div>
 
-
                 {/* VALUE STACK */}
                 <motion.div
                     ref={valueStackRef}
@@ -196,7 +195,7 @@ export default function WorkshopLanding() {
 
                     <div className="flex flex-col items-center mb-2">
                         <p className="text-xl font-bold text-red-600 line-through mb-1">$1,985 USD</p>
-                        <div className="bg-green-100 border border-green-600 text-green-800 text-3xl font-extrabold py-2 px-6 rounded-xl shadow-md tracking-wide">
+                        <div className="bg-green-100 border border-green-600 text-green-800 text-3xl font-extrabold py-2 mb-4 px-6 rounded-xl shadow-md tracking-wide">
                             $197 USD
                         </div>
                     </div>
