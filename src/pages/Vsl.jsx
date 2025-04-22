@@ -106,6 +106,14 @@ export default function WorkshopLanding() {
                     {/* CTA al minuto 0 */}
                     {showExtraContent && (
                         <>
+                            <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
+                                <p className="mb-2">
+                                    Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
+                                </p>
+                                <div className="bg-[#FFCC00] text-white text-xl font-bold py-2 px-4 rounded-md inline-block shadow-md" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
+                                    ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
+                                </div>
+                            </div>
                             <motion.div
                                 onClick={scrollToValueStack}
                                 whileHover={{ scale: 1.05 }}
@@ -116,14 +124,6 @@ export default function WorkshopLanding() {
                             >
                                 🚀 Accede a mi formación 🚀
                             </motion.div>
-                            <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
-                                <p className="mb-2">
-                                    Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
-                                </p>
-                                <div className="bg-[#FFCC00] text-white text-xl font-bold py-2 px-4 rounded-md inline-block shadow-md" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>
-                                    ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
-                                </div>
-                            </div>
                         </>
                     )}
 
@@ -145,21 +145,21 @@ export default function WorkshopLanding() {
                         {benefits.map((benefit, index) => (
                             <motion.div
                                 key={index}
-                                className="flex items-start gap-4 p-4 border border-[#FFCC00]/40 rounded-lg bg-[#FFFBEA] shadow-sm"
-                                initial={{ opacity: 0, y: 20 }}
+                                className="flex flex-col items-center gap-4 p-6 border rounded-xl bg-[#ffcc00] shadow-lg hover:shadow-2xl transition-all duration-300 text-center"
                                 whileInView={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.3, delay: index * 0.1 }}
                             >
                                 <img
                                     src={benefit.img}
                                     alt=""
-                                    className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg flex-shrink-0 mt-1"
+                                    className="w-28 h-28 md:w-32 md:h-32 object-cover rounded-xl"
                                 />
-                                <span className="text-sm md:text-base text-gray-800 leading-snug" dangerouslySetInnerHTML={{ __html: benefit.text }} />
+                                <span className="text-base md:text-lg text-gray-800 leading-relaxed" dangerouslySetInnerHTML={{ __html: benefit.text }} />
                             </motion.div>
                         ))}
                     </div>
                 </div>
+
 
                 {/* VALUE STACK */}
                 <motion.div
@@ -183,8 +183,13 @@ export default function WorkshopLanding() {
                         <li>🧾 Bono #6: Descuentos exclusivos en insumos y equipamiento – <span className="text-black font-bold">$250+ USD</span></li>
                     </ul>
 
-                    <p className="text-xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
-                    <p className="text-3xl font-bold text-green-600 mb-2">Hoy por $197 USD</p>
+                    <div className="flex flex-col items-center mb-2">
+                        <p className="text-xl font-bold text-red-600 line-through mb-1">$1,985 USD</p>
+                        <div className="bg-green-100 border border-green-600 text-green-800 text-3xl font-extrabold py-2 px-6 rounded-xl shadow-md tracking-wide">
+                            $197 USD
+                        </div>
+                    </div>
+
 
                     <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
                         <p className="mb-2">
@@ -224,9 +229,15 @@ export default function WorkshopLanding() {
                         Porque <strong>prefiero acompañar a pocos odontólogos comprometidos, que vender a muchos sin resultados.</strong>
                     </blockquote>
 
-                    <p className="mt-6 text-center font-bold text-xl text-[#FFCC00]">
+                    <motion.p
+                        className="mt-6 text-center font-bold text-xl text-[#FFCC00] bg-black/80 rounded-lg px-4 py-3 shadow-lg backdrop-blur-sm inline-block mx-auto w-fit"
+                        style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6 }}
+                    >
                         🎯 Si sentís que llegó tu momento, no sigas postergándolo.
-                    </p>
+                    </motion.p>
 
                     <motion.button
                         onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental", "_blank")}
