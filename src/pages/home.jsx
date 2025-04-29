@@ -2,6 +2,9 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { User, Eye, Mic, Heart, Target } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 export default function HomePage() {
   useEffect(() => {
@@ -156,6 +159,51 @@ export default function HomePage() {
 
         </div>
       </motion.section>
+
+      {/* Slider de Clientes */}
+      <section className="pb-6 bg-white">
+        <h2 className="text-3xl font-bold text-center text-gray-900">Ellos confiaron en mí:</h2>
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30}
+          slidesPerView={2}
+          breakpoints={{
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 5 },
+          }}
+          loop={true}
+          grabCursor={true}
+          autoplay={{
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          className="max-w-7xl mx-auto px-4"
+        >
+          {[
+            'Círculo Odontológico de San Juan.webp',
+            'Colegio Odontológico de la Provincia de Córdoba.webp',
+            'La dental 2.webp',
+            'Centro de formación de sonrisas (negro).webp',
+            'Círculo Odontológico de Salta (negro).webp',
+            'Círculo Odontológico de Jesús María.webp',
+          ].map((logo, idx) => (
+            <SwiperSlide key={idx} className="flex justify-center items-center pt-6">
+              <div className="h-32 w-32 flex justify-center items-center bg-transparent">
+                <img
+                  src={`/WepP/${logo}`}
+                  alt={`Logo ${idx + 1}`}
+                  className="h-28 md:h-24 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            </SwiperSlide>
+
+
+          ))}
+        </Swiper>
+      </section>
 
       {/* CTA */}
       <motion.section
