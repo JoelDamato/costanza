@@ -1,5 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 export default function WorkshopLanding() {
     const [timeLeft, setTimeLeft] = useState(0);
@@ -223,6 +226,58 @@ export default function WorkshopLanding() {
                         ¡Quiero transformar mi consultorio!
                     </motion.button>
                 </motion.div>
+
+                {/* Slider de Clientes */}
+                <section className="pb-6 pt-6 bg-white">
+                    <div className="text-center">
+                        <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight">
+                            Ellos confiaron en mí:
+                        </h2>
+                        <div className="w-24 h-1 mx-auto bg-[#FFCC00] mt-3 rounded"></div>
+                    </div>
+
+                    <Swiper
+                        modules={[Autoplay]}
+                        spaceBetween={30}
+                        slidesPerView={2}
+                        breakpoints={{
+                            640: { slidesPerView: 3 },
+                            1024: { slidesPerView: 5 },
+                        }}
+                        loop={true}
+                        grabCursor={true}
+                        autoplay={{
+                            delay: 1,
+                            disableOnInteraction: false,
+                            pauseOnMouseEnter: true,
+                        }}
+                        speed={2000}
+                        allowTouchMove={false}
+                        className="max-w-7xl mx-auto px-4"
+                    >
+
+                        {[
+                            'Círculo Odontológico de San Juan.webp',
+                            'Colegio Odontológico de la Provincia de Córdoba.webp',
+                            'La dental 2.webp',
+                            'Centro de formación de sonrisas (negro).webp',
+                            'Círculo Odontológico de Salta (negro).webp',
+                            'Círculo Odontológico de Jesús María.webp',
+                        ].map((logo, idx) => (
+                            <SwiperSlide key={idx} className="flex justify-center items-center pt-6">
+                                <div className="h-32 w-32 flex justify-center items-center bg-transparent">
+                                    <img
+                                        src={`/WepP/${logo}`}
+                                        alt={`Logo ${idx + 1}`}
+                                        className="h-28 md:h-24 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
+                                        loading="lazy"
+                                        decoding="async"
+                                    />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </section>
 
                 {/* CIERRE */}
                 <div className="bg-white mt-5 p-5 rounded-xl shadow-md text-lg text-gray-800">

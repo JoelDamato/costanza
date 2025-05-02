@@ -162,7 +162,13 @@ export default function HomePage() {
 
       {/* Slider de Clientes */}
       <section className="pb-6 bg-white">
-        <h2 className="text-3xl font-bold text-center text-gray-900">Ellos confiaron en mí:</h2>
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight">
+            Ellos confiaron en mí:
+          </h2>
+          <div className="w-24 h-1 mx-auto bg-[#FFCC00] mt-3 rounded"></div>
+        </div>
+
         <Swiper
           modules={[Autoplay]}
           spaceBetween={30}
@@ -174,12 +180,15 @@ export default function HomePage() {
           loop={true}
           grabCursor={true}
           autoplay={{
-            delay: 2000,
+            delay: 1,
             disableOnInteraction: false,
             pauseOnMouseEnter: true,
           }}
+          speed={2000}
+          allowTouchMove={false}
           className="max-w-7xl mx-auto px-4"
         >
+
           {[
             'Círculo Odontológico de San Juan.webp',
             'Colegio Odontológico de la Provincia de Córdoba.webp',
@@ -199,8 +208,6 @@ export default function HomePage() {
                 />
               </div>
             </SwiperSlide>
-
-
           ))}
         </Swiper>
       </section>
