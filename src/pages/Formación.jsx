@@ -19,15 +19,15 @@ export default function WorkshopLanding() {
 
     const benefits = [
         {
-            img: "https://i.ibb.co/rGg9t0ht/agenda.png",
+            img: "/23.png",
             text: "<strong>🧠 Dominá el juego desde adentro</strong>: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
-            img: "https://i.ibb.co/27dThx0K/mapssinfondo.png",
+            img: "/21.png",
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
-            img: "https://i.ibb.co/vxr1jMZ1/Chat-GPT-Image-22-abr-2025-17-38-58.png",
+            img: "/22.png",
             text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
@@ -35,7 +35,7 @@ export default function WorkshopLanding() {
             text: "<strong>💼 Gestión que no te roba tiempo</strong>: Organizá tu consultorio como un negocio, con herramientas simples que te devuelven horas de vida."
         },
         {
-            img: "https://i.ibb.co/wFtZBHBw/finanzas.png",
+            img: "/24.png",
             text: "<strong>📊 Finanzas que te permiten vivir de esto</strong>: Aprendé a cobrar bien, manejar tu dinero y dejar de tener un buen mes y uno flojo."
         },
         {
@@ -124,7 +124,7 @@ export default function WorkshopLanding() {
                             <motion.div
                                 onClick={scrollToValueStack}
                                 whileHover={{ scale: 1.05 }}
-                                className="flex justify-center items-center text-black bg-[#FFCC00] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 cursor-pointer"
+                                className="flex justify-center items-center text-black bg-[#FFCC00] text-base md:text-2xl font-bold p-3 rounded-lg shadow-lg mx-auto w-full max-w-xl mb-3 mt-3 cursor-pointer"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ delay: 0.5, duration: 1 }}
@@ -133,6 +133,59 @@ export default function WorkshopLanding() {
                             </motion.div>
                         </>
                     )}
+
+                    {/* Slider de Clientes */}
+                    <section className="pb-6 pt-6 bg-white">
+                        <div className="text-center">
+                            <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight">
+                                Ellos confiaron en mí:
+                            </h2>
+                            <div className="w-24 h-1 mx-auto bg-[#FFCC00] mt-3 rounded"></div>
+                        </div>
+
+                        <Swiper
+                            modules={[Autoplay]}
+                            spaceBetween={30}
+                            slidesPerView={2}
+                            breakpoints={{
+                                640: { slidesPerView: 3 },
+                                1024: { slidesPerView: 5 },
+                            }}
+                            loop={true}
+                            grabCursor={true}
+                            autoplay={{
+                                delay: 1,
+                                disableOnInteraction: false,
+                                pauseOnMouseEnter: true,
+                            }}
+                            speed={2000}
+                            allowTouchMove={false}
+                            className="max-w-7xl mx-auto px-4"
+                        >
+
+                            {[
+                                'Círculo Odontológico de San Juan.webp',
+                                'Colegio Odontológico de la Provincia de Córdoba.webp',
+                                'La dental 2.webp',
+                                'Centro de formación de sonrisas (negro).webp',
+                                'Círculo Odontológico de Salta (negro).webp',
+                                'Círculo Odontológico de Jesús María.webp',
+                            ].map((logo, idx) => (
+                                <SwiperSlide key={idx} className="flex justify-center items-center pt-6">
+                                    <div className="h-32 w-32 flex justify-center items-center bg-transparent">
+                                        <img
+                                            src={`/WepP/${logo}`}
+                                            alt={`Logo ${idx + 1}`}
+                                            className="h-20 sm:h-24 md:h-28 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
+                                            loading="lazy"
+                                            decoding="async"
+                                        />
+
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </section>
 
                     <p className="text-lg md:text-xl text-gray-800 mb-3">
                         Cuando empezaste esta carrera, te imaginabas ayudando a la gente, viviendo bien de tu trabajo y teniendo una vida estable.<br /><br />
@@ -187,13 +240,14 @@ export default function WorkshopLanding() {
                     />
 
                     <ul className="text-center text-base md:text-lg font-medium mb-6 max-w-3xl mx-auto space-y-2">
-                        <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-black font-bold">$997 USD</span></li>
-                        <li>🖼️ Bono #1: Pack de imágenes listas para tu consultorio – <span className="text-black font-bold">$97 USD</span></li>
-                        <li>📲 Bono #2: Mensajes que hacen volver a tus pacientes – <span className="text-black font-bold">$197 USD</span></li>
-                        <li>👥 Bono #3: Comunidad privada de odontólogos – <span className="text-black font-bold">$297 USD</span></li>
-                        <li>📂 Bono #4: Recursos descargables de gestión – <span className="text-black font-bold">$297 USD</span></li>
-                        <li>🛠️ Bono #5: Herramientas digitales que te ahorran tiempo – <span className="text-black font-bold">$147 USD</span></li>
-                        <li>🧾 Bono #6: Descuentos exclusivos en insumos y equipamiento – <span className="text-black font-bold">$250+ USD</span></li>
+                        <li><strong>🎓 Acceso completo al Programa Focus Dental – </strong><span className="text-red-600 font-bold">$997 USD</span></li>
+                        <li>🖼️<strong> Bono #1: </strong>Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
+                        <li>📲<strong> Bono #2: </strong>Mensajes que hacen volver a tus pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
+                        <li>👥<strong> Bono #3: </strong>Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li>📂<strong> Bono #4: </strong>Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li>🛠️<strong> Bono #5: </strong>Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
+                        <li>🎁<strong> Bono #6: </strong>Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250 USD</span></li>
+                        <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario – SOLO los primeros 50 en ingresar – <span className="text-red-600 font-bold">$497 USD</span></li>
                     </ul>
 
                     <div className="flex flex-col items-center mb-2">
@@ -226,58 +280,6 @@ export default function WorkshopLanding() {
                         ¡Quiero transformar mi consultorio!
                     </motion.button>
                 </motion.div>
-
-                {/* Slider de Clientes */}
-                <section className="pb-6 pt-6 bg-white">
-                    <div className="text-center">
-                        <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight">
-                            Ellos confiaron en mí:
-                        </h2>
-                        <div className="w-24 h-1 mx-auto bg-[#FFCC00] mt-3 rounded"></div>
-                    </div>
-
-                    <Swiper
-                        modules={[Autoplay]}
-                        spaceBetween={30}
-                        slidesPerView={2}
-                        breakpoints={{
-                            640: { slidesPerView: 3 },
-                            1024: { slidesPerView: 5 },
-                        }}
-                        loop={true}
-                        grabCursor={true}
-                        autoplay={{
-                            delay: 1,
-                            disableOnInteraction: false,
-                            pauseOnMouseEnter: true,
-                        }}
-                        speed={2000}
-                        allowTouchMove={false}
-                        className="max-w-7xl mx-auto px-4"
-                    >
-
-                        {[
-                            'Círculo Odontológico de San Juan.webp',
-                            'Colegio Odontológico de la Provincia de Córdoba.webp',
-                            'La dental 2.webp',
-                            'Centro de formación de sonrisas (negro).webp',
-                            'Círculo Odontológico de Salta (negro).webp',
-                            'Círculo Odontológico de Jesús María.webp',
-                        ].map((logo, idx) => (
-                            <SwiperSlide key={idx} className="flex justify-center items-center pt-6">
-                                <div className="h-32 w-32 flex justify-center items-center bg-transparent">
-                                    <img
-                                        src={`/WepP/${logo}`}
-                                        alt={`Logo ${idx + 1}`}
-                                        className="h-28 md:h-24 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
-                                        loading="lazy"
-                                        decoding="async"
-                                    />
-                                </div>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                </section>
 
                 {/* CIERRE */}
                 <div className="bg-white mt-5 p-5 rounded-xl shadow-md text-lg text-gray-800">

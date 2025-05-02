@@ -202,10 +202,11 @@ export default function HomePage() {
                 <img
                   src={`/WepP/${logo}`}
                   alt={`Logo ${idx + 1}`}
-                  className="h-28 md:h-24 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
+                  className="h-20 sm:h-24 md:h-28 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
                   loading="lazy"
                   decoding="async"
                 />
+
               </div>
             </SwiperSlide>
           ))}

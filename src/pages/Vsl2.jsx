@@ -170,14 +170,15 @@ export default function WorkshopLanding() {
                         Esto es TODO lo que vas a recibir con <span className="text-green-600">FOCUS DENTAL</span>
                     </h2>
 
-                    <ul className="text-left text-lg md:text-xl font-medium mb-6 max-w-3xl mx-auto space-y-2">
-                        <li>🎓 Acceso completo al Programa Focus Dental – <span className="text-red-600 font-bold">$997 USD</span></li>
-                        <li>🖼️ Bono #1: Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
-                        <li>📲 Bono #2: Mensajes que hacen volver a tus pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
-                        <li>👥 Bono #3: Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>📂 Bono #4: Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>🛠️ Bono #5: Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
-                        <li>🧾 Bono #6: Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250+ USD</span></li>
+                    <ul className="text-center text-base md:text-lg font-medium mb-6 max-w-3xl mx-auto space-y-2">
+                        <li><strong>🎓 Acceso completo al Programa Focus Dental – </strong><span className="text-red-600 font-bold">$997 USD</span></li>
+                        <li>🖼️<strong> Bono #1: </strong>Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
+                        <li>📲<strong> Bono #2: </strong>Mensajes que hacen volver a tus pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
+                        <li>👥<strong> Bono #3: </strong>Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li>📂<strong> Bono #4: </strong>Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
+                        <li>🛠️<strong> Bono #5: </strong>Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
+                        <li>🎁<strong> Bono #6: </strong>Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250 USD</span></li>
+                        <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario – SOLO los primeros 50 en ingresar – <span className="text-red-600 font-bold">$497 USD</span></li>
                     </ul>
 
                     <p className="text-2xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
@@ -240,7 +241,7 @@ export default function WorkshopLanding() {
                                     <img
                                         src={`/WepP/${logo}`}
                                         alt={`Logo ${idx + 1}`}
-                                        className="h-28 md:h-24 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
+                                        className="h-20 sm:h-24 md:h-28 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
                                         loading="lazy"
                                         decoding="async"
                                     />
