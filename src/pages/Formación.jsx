@@ -20,7 +20,7 @@ export default function WorkshopLanding() {
             text: "<strong>🧠 Dominá el juego desde adentro</strong>: Transformá tu mentalidad para dejar de pensar como técnico y empezar a crecer como profesional libre y rentable."
         },
         {
-            img: "https://i.ibb.co/27dThx0K/mapssinfondo.png",
+            img: "https://i.ibb.co/xtsZnVpq/PINUBI.webp",
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {

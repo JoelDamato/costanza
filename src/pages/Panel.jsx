@@ -6,6 +6,7 @@ import Modal from '../components/Modal'; // Componente Modal
 import Spinner from '../components/Spinner'; // Tu componente Spinner
 import useUserStore from '../store/users';
 import { useNavigate } from 'react-router-dom';
+import Link from "../components/link"
 
 function PanelControl() {
   const [nombre, setNombre] = useState('');
@@ -304,9 +305,10 @@ function PanelControl() {
           <Spinner />
         </div>
       )}
-
+<Link />
       {/* Navegación entre secciones */}
       <div className="bg-gray-200 w-screen rounded-xl sm:rounded-2xl flex justify-center p-4 shadow-lg mb-5 overflow-x-auto sm:overflow-hidden whitespace-nowrap">
+      
         <div className="flex gap-2 sm:gap-4">
           <button
             className={`px-3 py-2 text-sm sm:text-base rounded-lg ${activeSection === 'crear' ? 'bg-gray-400 text-black' : 'bg-gray-200'}`}
