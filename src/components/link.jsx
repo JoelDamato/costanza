@@ -7,13 +7,19 @@ function PagoMercadoPago() {
   const [error, setError] = useState("");
   const [link, setLink] = useState("");
 
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
+
   const generarLinkDePago = async () => {
     setLoading(true);
     setError("");
     setLink("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/generar-link", {
+     
+      const response = await fetch(`${API_BASE_URL}/api/generar-link`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, price: parseFloat(price) })
