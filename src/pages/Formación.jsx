@@ -330,7 +330,7 @@ export default function WorkshopLanding() {
                     </motion.p>
 
                     <motion.button
-                        onClick={() => window.open("https://wa.me/+5493512153675?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental", "_blank")}
+                        onClick={() => window.open("https://wa.me/5491170587318?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental", "_blank")}
                         className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mt-5 mx-auto block"
                         whileHover={{ scale: 1.05 }}
                     >
