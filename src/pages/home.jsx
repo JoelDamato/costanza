@@ -228,19 +228,13 @@ export default function HomePage() {
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <a
-              href="https://calendly.com/dario-costanza"
+              href="https://wa.me/5491170587318?text=¡Hola!%20Quiero%20empezar%20mi%20proceso"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white text-gray-900 font-semibold px-6 py-3 rounded-full hover:bg-[#E0E0E0] hover:shadow-md transition"
-            >
-              Agendar sesión
-            </a>
-            <Link
-              to="/contact"
               className="border border-white text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-gray-900 transition"
             >
               Hablemos
-            </Link>
+            </a>
           </div>
         </div>
       </motion.section>
