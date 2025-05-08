@@ -328,10 +328,16 @@ export default function WorkshopLanding() {
                     >
                         🎯 Si sentís que llegó tu momento, no sigas postergándolo.
                     </motion.p>
-
+                    <div className="w-48 h-48 overflow-hidden mx-auto mt-2 rounded">
+                        <img 
+                            src="/Garantia s fondo.png" 
+                            alt="Descripción de la imagen"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
                     <motion.button
                         onClick={() => window.open("https://wa.me/5491170587318?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental", "_blank")}
-                        className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mt-5 mx-auto block"
+                        className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mx-auto block"
                         whileHover={{ scale: 1.05 }}
                     >
                         QUIERO MÁS INFO

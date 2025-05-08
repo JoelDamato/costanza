@@ -289,7 +289,14 @@ export default function WorkshopLanding() {
                         <br /><br />
                         Porque <strong>prefiero acompañar a pocos odontólogos comprometidos, que vender a muchos sin resultados.</strong>
                     </blockquote>
-                    <p className="mt-6 text-center font-bold text-xl text-[#FFCC00]">
+                    <div className="w-48 h-48 overflow-hidden mx-auto mt-2 rounded">
+                        <img 
+                            src="/Garantia s fondo.png" 
+                            alt="Descripción de la imagen"
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+                    <p className="text-center font-bold text-xl text-[#FFCC00]">
                         🎯 Si sentís que llegó tu momento, no sigas postergándolo.
                     </p>
                 </div>
