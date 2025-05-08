@@ -65,12 +65,8 @@ export default function HomePage() {
         className="relative px-4 py-16 md:py-24 bg-[#F8F5F0] overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
-          <img
-            src="https://i.ibb.co/DD4Qm0Yh/dario-1.png"
-            alt="Darío Costanza"
-            className="w-full h-full object-cover object-center md:object-right scale-[0.85] origin-center"
-          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
+
         </div>
 
         <div className="container mx-auto max-w-6xl relative z-10">
@@ -101,20 +97,7 @@ export default function HomePage() {
                 Acompaño a odontólogos a ver su profesión desde otra perspectiva. A conectar con su propósito, a liderar
                 su clínica y su vida desde la presencia, la compasión y el sentido.
               </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  to="/contacto"
-                  className="inline-block bg-[#FFCC00] hover:bg-[#E6B800] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 text-center shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                >
-                  QUIERO SABER MÁS
-                </Link>
-              </motion.div>
+      
             </div>
             <div className="md:w-1/2">
               {/* This div is intentionally empty to maintain the layout while using the background image */}
@@ -190,18 +173,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2 overflow-hidden rounded-lg shadow-lg">
-              <motion.img
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                whileHover={{ scale: 1.05, rotate: -1 }}
-                src="/placeholder.svg?key=pd54d"
-                alt="Clínica Dental"
-                className="w-full h-auto object-cover rounded-lg transform transition-all duration-500"
-              />
-            </div>
+
             <div className="md:w-1/2 space-y-6">
               <motion.div
                 initial={{ opacity: 0, x: 20 }}
@@ -250,156 +222,16 @@ export default function HomePage() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Link
-                  to="/sobre-mi"
-                  className="inline-block bg-transparent hover:bg-[#FFCC00] text-black font-bold py-3 px-8 rounded-full transition-all duration-300 text-center border-2 border-[#FFCC00] shadow-md hover:shadow-lg transform hover:-translate-y-1"
-                >
-                  Conocer más
-                </Link>
+             
               </motion.div>
             </div>
           </div>
         </div>
       </motion.section>
 
-      {/* Testimonios */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-16 px-4 bg-white relative overflow-hidden"
-      >
-        {/* Background decoration */}
-        <div className="absolute -top-24 -right-24 w-64 h-64 bg-[#FFCC00]/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-32 -left-32 w-96 h-96 bg-[#FFCC00]/10 rounded-full blur-3xl"></div>
+     
 
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <div className="text-center mb-12">
-            <motion.span
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-[#FFCC00] text-gray-900 px-4 py-1.5 rounded-full text-sm font-medium uppercase tracking-wide shadow-md inline-block"
-            >
-              Testimonios
-            </motion.span>
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-4xl font-bold mt-4 text-gray-900"
-            >
-              Experiencias de transformación
-            </motion.h2>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((_, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 + 0.4, duration: 0.5 }}
-                whileHover={{
-                  y: -10,
-                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                }}
-                className="bg-[#F8F5F0] p-6 rounded-lg shadow-md transition-all duration-300 border border-gray-100"
-              >
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-center gap-4">
-                    <img
-                      src={`/thoughtful-artist.png?key=nlgd9&height=60&width=60&query=person%20${idx + 1}`}
-                      alt={`Odontólogo ${idx + 1}`}
-                      className="w-12 h-12 rounded-full object-cover border-2 border-[#FFCC00] shadow-md"
-                    />
-                    <div>
-                      <h3 className="font-bold">Odontólogo {idx + 1}</h3>
-                      <div className="flex text-[#FFCC00]">
-                        {[...Array(5)].map((_, i) => (
-                          <motion.span
-                            key={i}
-                            initial={{ opacity: 0, scale: 0 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: idx * 0.1 + i * 0.1 + 0.5 }}
-                          >
-                            ★
-                          </motion.span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 italic relative">
-                    <span className="absolute -top-2 -left-2 text-4xl text-[#FFCC00]/30">"</span>
-                    "Este espacio me ayudó a reconectar con mi propósito y liderar mi clínica desde un lugar más
-                    consciente y humano."
-                    <span className="absolute -bottom-5 -right-2 text-4xl text-[#FFCC00]/30">"</span>
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* CTA final */}
-      <motion.section
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-        className="py-16 px-4 bg-[#FFCC00] text-gray-900 text-center relative overflow-hidden"
-      >
-        {/* Background decorations */}
-        <div className="absolute top-0 left-0 w-full h-full">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-xl"></div>
-        </div>
-
-        <div className="container mx-auto max-w-3xl relative z-10">
-          <motion.h2
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-3xl md:text-4xl font-bold mb-6 drop-shadow-sm"
-          >
-            ¿Querés mirar tu profesión desde otro lugar?
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-lg mb-8"
-          >
-            Te invito a explorar nuevas formas de liderar tu camino como odontólogo, desde el propósito y el bienestar
-            integral.
-          </motion.p>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Link
-              to="/contacto"
-              className="inline-flex items-center gap-2 bg-black hover:bg-gray-800 text-white font-bold py-4 px-10 rounded-full transition-all duration-300 text-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <Calendar size={24} />
-              QUIERO TRANSFORMARME
-            </Link>
-          </motion.div>
-        </div>
-      </motion.section>
     </div>
   )
 }
