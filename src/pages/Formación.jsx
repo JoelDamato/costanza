@@ -61,7 +61,7 @@ export default function WorkshopLanding() {
     }, []);
 
     useEffect(() => {
-        const deadline = new Date("2025-05-17T00:00:00").getTime();
+        const deadline = new Date("2025-05-18T00:00:00").getTime();
         const interval = setInterval(() => {
             const now = new Date().getTime();
             const distance = deadline - now;
@@ -137,7 +137,7 @@ export default function WorkshopLanding() {
                         <>
                             <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
                                 <p className="mb-2">
-                                    Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
+                                    Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
                                 </p>
                                 <div className="bg-black text-[#FFCC00] text-xl font-bold py-2 px-4 rounded-md inline-block ">
                                     ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
@@ -279,10 +279,9 @@ export default function WorkshopLanding() {
                         </div>
                     </div>
 
-
                     <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
                         <p className="mb-2">
-                            Precio lanzamiento disponible hasta el <span className="font-bold">17 de mayo</span>
+                            Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
                         </p>
                         <div className="bg-black text-[#FFCC00] text-xl font-bold py-2 px-2 rounded-md inline-block ">
                             ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
