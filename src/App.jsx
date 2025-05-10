@@ -27,7 +27,7 @@ function App() {
           <Suspense fallback={<Spinner />}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/Formación" element={<Formación />} />
+              <Route path="/Formacion" element={<Formación />} />
               <Route path="/vsl2" element={<VSl2 />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Dashboard" element={<Dashboard />} />
