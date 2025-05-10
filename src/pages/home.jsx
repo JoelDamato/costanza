@@ -1,9 +1,11 @@
-"use client"
 
-import { useEffect } from "react"
-import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
-import { User, Eye, Mic, Heart, Target, Calendar } from "lucide-react"
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { User, Eye, Mic, Heart, Target } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
+import 'swiper/css';
 
 export default function HomePage() {
   useEffect(() => {
@@ -163,7 +165,62 @@ export default function HomePage() {
         </div>
       </motion.section>
 
-      {/* Biografía */}
+
+      {/* Slider de Clientes */}
+      <section className="pb-6 bg-white">
+        <div className="text-center">
+          <h2 className="text-3xl font-extrabold text-gray-800 tracking-tight">
+            Ellos confiaron en mí:
+          </h2>
+          <div className="w-24 h-1 mx-auto bg-[#FFCC00] mt-3 rounded"></div>
+        </div>
+
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30}
+          slidesPerView={2}
+          breakpoints={{
+            640: { slidesPerView: 3 },
+            1024: { slidesPerView: 5 },
+          }}
+          loop={true}
+          grabCursor={true}
+          autoplay={{
+            delay: 1,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          }}
+          speed={2000}
+          allowTouchMove={false}
+          className="max-w-7xl mx-auto px-4"
+        >
+
+          {[
+            'Círculo Odontológico de San Juan.webp',
+            'Colegio Odontológico de la Provincia de Córdoba.webp',
+            'La dental 2.webp',
+            'Centro de formación de sonrisas (negro).webp',
+            'Círculo Odontológico de Salta (negro).webp',
+            'Círculo Odontológico de Jesús María.webp',
+          ].map((logo, idx) => (
+            <SwiperSlide key={idx} className="flex justify-center items-center pt-6">
+              <div className="h-32 w-32 flex justify-center items-center bg-transparent">
+                <img
+                  src={`/WepP/${logo}`}
+                  alt={`Logo ${idx + 1}`}
+                  className="h-20 sm:h-24 md:h-28 object-contain transition-transform duration-500 hover:scale-105 hover:brightness-110 drop-shadow-md"
+                  loading="lazy"
+                  decoding="async"
+                />
+
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </section>
+
+      {/* CTA */}
+
       <motion.section
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -171,60 +228,22 @@ export default function HomePage() {
         transition={{ duration: 0.8 }}
         className="py-16 px-4 bg-white"
       >
-        <div className="container mx-auto max-w-6xl">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
 
-            <div className="md:w-1/2 space-y-6">
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="inline-block bg-[#FFCC00] text-black px-4 py-1 rounded-md text-sm font-bold uppercase shadow-md"
-              >
-                Sobre mí
-              </motion.div>
-              <motion.h2
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="text-3xl md:text-4xl font-bold text-black"
-              >
-                Más de 15 años combinando clínica y mentoría
-              </motion.h2>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.5 }}
-                className="text-gray-700"
-              >
-                Mi camino como odontólogo me llevó a comprender que la técnica es solo una parte. El verdadero cambio
-                ocurre cuando te conectás con tu propósito y liderás tu propia práctica desde la presencia y el
-                bienestar integral.
-              </motion.p>
-              <motion.p
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.6 }}
-                className="text-gray-700"
-              >
-                Hoy acompaño a otros odontólogos a mirar su profesión desde un lugar más humano, consciente y alineado
-                con sus valores.
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.7 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-             
-              </motion.div>
-            </div>
+        <div className="container mx-auto max-w-3xl space-y-6">
+          <h2 className="text-4xl font-bold">¿Te gustaría empezar tu proceso?</h2>
+          <p className="text-lg">
+            Si sentís que es momento de mirar hacia adentro, rediseñar tu forma de vivir o liderar, estoy acá para acompañarte con compromiso y alegría.
+          </p>
+          <div className="flex justify-center gap-4 flex-wrap">
+            <a
+              href="https://wa.me/5491170587318?text=¡Hola!%20Quiero%20empezar%20mi%20proceso"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-white text-white font-semibold px-6 py-3 rounded-full hover:bg-white hover:text-gray-900 transition"
+            >
+              Hablemos
+            </a>
+
           </div>
         </div>
       </motion.section>
