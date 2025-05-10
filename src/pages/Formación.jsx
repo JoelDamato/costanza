@@ -115,27 +115,44 @@ export default function WorkshopLanding() {
                         Esto es de Odontólogos, para odontólogos.
                     </h1>
 
-                    {/* VIDEO (Wistia) */}
-                    <div className="text-center flex justify-center items-center w-full mb-5 bg-black">
-                        <div className="relative w-full max-w-4xl aspect-video mt-5">
-                            <style>
-                                {`
-                                    wistia-player[media-id='8eetqfnrcb']:not(:defined) {
-                                        background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/8eetqfnrcb/swatch');
-                                        display: block;
-                                        filter: blur(5px);
-                                        padding-top: 56.25%;
-                                    }
-                                `}
-                            </style>
-                            <wistia-player media-id="8eetqfnrcb" aspect="1.7777777777777777"></wistia-player>
-                        </div>
-                    </div>
+   {/* VIDEO (Wistia) */}
+<div className="text-center flex justify-center items-center w-full mb-5 bg-black">
+  <div className="relative w-full max-w-4xl aspect-video mt-5">
+    <style>
+      {`
+        wistia-player[media-id='chysetux0j']:not(:defined) {
+          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/chysetux0j/swatch');
+          display: block;
+          filter: blur(5px);
+          padding-top: 56.25%;
+        }
+      `}
+    </style>
+
+    <script
+      src="https://fast.wistia.com/player.js"
+      async
+    ></script>
+    <script
+      src="https://fast.wistia.com/embed/chysetux0j.js"
+      async
+      type="module"
+    ></script>
+
+    <div
+      dangerouslySetInnerHTML={{
+        __html: `<wistia-player media-id="chysetux0j" aspect="1.7777777777777777"></wistia-player>`
+      }}
+    />
+  </div>
+</div>
 
 
                     {/* CTA al minuto 0 */}
                     {showExtraContent && (
                         <>
+
+                        {/* 
                             <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
                                 <p className="mb-2">
                                     Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
@@ -144,6 +161,8 @@ export default function WorkshopLanding() {
                                     ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
                                 </div>
                             </div>
+
+                            */}
                             <motion.div
                                 onClick={scrollToValueStack}
                                 whileHover={{ scale: 1.05 }}
@@ -280,7 +299,8 @@ export default function WorkshopLanding() {
                         </div>
                     </div>
 
-                    <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
+         {/* 
+                           <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
                         <p className="mb-2">
                             Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
                         </p>
@@ -288,6 +308,9 @@ export default function WorkshopLanding() {
                             ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
                         </div>
                     </div>
+
+                            */}
+                 
 
                     <motion.button
                         onClick={() => window.open("https://wa.me/5491170587318?text=¡Hola!%20Quiero%20acceder%20al%20Programa%20Focus%20Dental", "_blank")}
@@ -320,7 +343,7 @@ export default function WorkshopLanding() {
                     </blockquote>
 
                     <motion.p
-                        className="mt-6 text-center font-bold text-xl text-[#FFCC00] bg-black/80 rounded-lg px-4 py-3 shadow-lg backdrop-blur-sm inline-block mx-auto w-fit"
+                        className="flex justify-center mt-6 text-center font-bold text-xl text-[#FFCC00] bg-black/80 rounded-lg px-4 py-3 shadow-lg backdrop-blur-sm inline-block mx-auto w-fit"
                         style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
