@@ -18,11 +18,11 @@ function Dashboard() {
   const showProfile = useUserStore((state) => state.showProfile);
   const setShowProfile = useUserStore((state) => state.setShowProfile);
 
-  // Determine base URL based on environment
-  const API_BASE_URL = "https://back-cursos.onrender.com"
-  // process.env.NODE_ENV === 'production'
-  //   ? 'https://back-cursos.onrender.com'
-  //   : 'http://localhost:5000';
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
+
 
   useEffect(() => {
     // Check if token exists

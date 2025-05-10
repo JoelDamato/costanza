@@ -8,10 +8,11 @@ function Perfil() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const API_BASE_URL = "https://back-cursos.onrender.com"
-  // process.env.NODE_ENV === 'production'
-  //   ? 'https://back-cursos.onrender.com'
-  //   : 'http://localhost:5000';
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
+
 
   const handlePasswordChange = async (e) => {
     e.preventDefault();

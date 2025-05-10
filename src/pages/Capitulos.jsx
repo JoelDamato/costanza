@@ -5,13 +5,14 @@ import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import ReactPlayer from "react-player";
 import useUserStore from "../store/users"; // Importar el store de Zustand
-import Ebook from "../components/Colorimetria.jsx";
+
 
 function Capitulos() {
-  const API_BASE_URL = "https://back-cursos.onrender.com"
-  // process.env.NODE_ENV === 'production'
-  //   ? 'https://back-cursos.onrender.com'
-  //   : 'http://localhost:5000';
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
+
 
   const { cursoId, moduleName, chapterId } = useParams();
   const navigate = useNavigate();

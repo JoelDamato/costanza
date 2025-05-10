@@ -12,7 +12,10 @@ function Navbar({ toggleMenu, isMenuOpen, handleLogout }) {
   const [user, setUser] = useState(null); // Datos del usuario
   const [showProfile, setShowProfile] = useState(false); // Visibilidad del modal de perfil
 
-  const API_BASE_URL = "https://back-cursos.onrender.com";
+  const API_BASE_URL = 
+  process.env.NODE_ENV === 'production'
+  ? 'https://back-cos-gim3.onrender.com'
+  : 'http://localhost:5000';
 
   // Llamada a la API para obtener datos del usuario
   useEffect(() => {

@@ -24,6 +24,7 @@ export default function WorkshopLanding() {
         },
         {
             img: "/21.png",
+
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
