@@ -1,18 +1,17 @@
-import { Worker, Viewer } from "@react-pdf-viewer/core";
+
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
-import ReactPlayer from "react-player";
 import useUserStore from "../store/users"; // Importar el store de Zustand
+
 
 
 function Capitulos() {
   const API_BASE_URL = 
-  process.env.NODE_ENV === 'production'
-  ? 'https://back-cos-gim3.onrender.com'
-  : 'http://localhost:5000';
-
+    process.env.NODE_ENV === 'production'
+      ? 'https://back-cos-gim3.onrender.com'
+      : 'http://localhost:5000';
 
   const { cursoId, moduleName, chapterId } = useParams();
   const navigate = useNavigate();
@@ -25,9 +24,69 @@ function Capitulos() {
   const [course, setCourse] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [rol, setRol] = useState(localStorage.getItem("rol") || "");
+  const [tiempoReproducido, setTiempoReproducido] = useState(0);
+const [duracionEstimativa, setDuracionEstimativa] = useState(0);
+const [videoFinalizado, setVideoFinalizado] = useState(false); 
+const [capituloYaCompletado, setCapituloYaCompletado] = useState(false);
+
 
   const user = useUserStore((state) => state.user);
   const clearUserData = useUserStore((state) => state.clearUserData);
+  const playerRef = useRef(null);
+
+  const [texto, setTexto] = useState('');
+
+
+
+
+
+
+
+  useEffect(() => {
+    const verificarProgreso = async () => {
+      try {
+        const email = localStorage.getItem('email');
+        const res = await fetch(`${API_BASE_URL}/api/progresoget?email=${email}`);
+        const data = await res.json();
+  
+        const capituloActualId = `${moduleName}-${parseInt(chapterId, 10)}`;
+        const progresoActual = data.find(p => p.capituloId === capituloActualId && p.estado === 'completado');
+  
+
+        console.log("📊 Progreso desde el backend:", data);
+console.log("🧠 Capítulo actual ID:", `${moduleName}-${parseInt(chapterId, 10)}`);
+console.log("✅ ¿Está completado?:", !!progresoActual);
+
+        if (progresoActual) {
+          setCapituloYaCompletado(true);
+        }
+      } catch (err) {
+        console.error('Error al verificar progreso:', err);
+      }
+    };
+  
+    if (cursoId && moduleName && chapterId) {
+      verificarProgreso();
+    }
+  }, [cursoId, moduleName, chapterId]);
+  
+
+  const currentModuleChapters = course?.chapters?.filter(
+    (chapter) => chapter.module === moduleName
+  ) || [];
+  
+  const currentChapter = currentModuleChapters[parseInt(chapterId, 10) - 1];
+  
+
+  
+
+  // SIEMPRE FUERA DE CONDICIONALES
+  useEffect(() => {
+    if (currentChapter?.duration) {
+      setDuracionEstimativa(currentChapter.duration);
+    }
+  }, [currentChapter]);
+  
 
   useEffect(() => {
     const handleResize = () => {
@@ -43,6 +102,74 @@ function Capitulos() {
       localStorage.setItem("lastChapter", chapterId);
     }
   }, [chapterId]);
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      if (!event.data || typeof event.data !== "object") return;
+  
+      const { message, playerData, currentTime } = event.data;
+  
+      if (message === "panda_allData") {
+        if (playerData?.duration) {
+          setDuracionEstimativa(playerData.duration);
+        }
+      }
+  
+      if (message === "panda_timeupdate" && typeof currentTime === "number") {
+        setTiempoReproducido(currentTime);
+      }
+    };
+  
+    window.addEventListener("message", handleMessage);
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
+  }, []);
+  
+
+  useEffect(() => {
+    if (duracionEstimativa > 0 && tiempoReproducido >= duracionEstimativa * 0.80) {
+      setVideoFinalizado(true);
+    }
+  }, [tiempoReproducido, duracionEstimativa]);
+  
+  function formatSecondsToMinutes(seconds) {
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${mins}:${secs}`;
+  }
+  
+  useEffect(() => {
+    if (!currentChapter?.video) return;
+  
+    const intervalRef = { current: null };
+  
+    window._wq = window._wq || [];
+    window._wq.push({
+      id: currentChapter.video,
+      onReady: function(video) {
+        console.log("🎥 Wistia video listo:", video);
+        
+        intervalRef.current = setInterval(() => {
+          const tiempo = video.time();
+          const duracion = video.duration();
+  
+          setTiempoReproducido(tiempo);
+          setDuracionEstimativa(duracion);
+  
+          if (duracion > 0 && tiempo >= duracion * 0.8) {
+            setVideoFinalizado(true);
+            clearInterval(intervalRef.current);
+          }
+        }, 1000);
+      },
+    });
+  
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [currentChapter?.video]);
+  
 
   useEffect(() => {
     const fetchCourseData = async () => {
@@ -126,12 +253,51 @@ function Capitulos() {
     }
   }, [comments, showComments]);
 
-  const goToNextChapter = () => {
+  const goToNextChapter = async () => {
     const currentIndex = parseInt(chapterId, 10) - 1;
-    if (currentModuleChapters && currentIndex < currentModuleChapters.length - 1) {
-      navigate(`/cursos/${cursoId}/${moduleName}/${currentIndex + 2}`);
+    const nextIndex = currentIndex + 1;
+  
+    const email = localStorage.getItem("email");
+    const capituloActual = `${moduleName}-${parseInt(chapterId, 10)}`;
+    const capituloSiguiente = `${moduleName}-${nextIndex + 1}`;
+  
+    try {
+      // Marcar capítulo actual como finalizado
+      await fetch(`${API_BASE_URL}/api/progreso`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          cursoId,
+          capituloId: capituloActual,
+          accion: "finalizado",
+        }),
+      });
+  
+      // Marcar siguiente como iniciado
+      await fetch(`${API_BASE_URL}/api/progreso`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          cursoId,
+          capituloId: capituloSiguiente,
+          accion: "inicio",
+        }),
+      });
+  
+      // 🧹 Limpiar claves relacionadas al video
+      localStorage.removeItem("lastChapter");
+      // Agregá más si guardás por ejemplo `video_tiempo` o `progreso_video_capituloX`
+  
+      // Navegar
+      window.location.href = `/cursos/${cursoId}/${moduleName}/${nextIndex + 1}`;
+    } catch (error) {
+      console.error("Error al actualizar progreso:", error);
     }
   };
+  
+  
 
   const goToPreviousChapter = () => {
     const currentIndex = parseInt(chapterId, 10) - 1;
@@ -146,95 +312,73 @@ function Capitulos() {
     return <div className="text-white">Cargando curso...</div>;
   }
 
-  const currentModuleChapters = course.chapters.filter(
-    (chapter) => chapter.module === moduleName
-  );
 
   if (currentModuleChapters.length === 0) {
     return <div className="text-white">Módulo no encontrado</div>;
   }
 
-  const currentChapter =
-    currentModuleChapters[parseInt(chapterId, 10) - 1];
 
+  // Después viene:
   if (!currentChapter) {
     return <div className="text-white">Capítulo no encontrado</div>;
   }
+  
 
   return (
-    <div className="py-2 min-h-screen w-screen overflow-y-auto bg-gradient-to-r from-black/80 to-black flex flex-col items-center justify-center">
+<>
       <Navbar />
+      <div className=" pt-5 min-h-screen w-screen overflow-y-auto bg-gradient-to-r from-black/80 to-black flex flex-col items-center justify-center">
+      <h1 className="mt-2 text-4xl text-center mb-6 md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-500 to-gray-200 drop-shadow-lg tracking-wide">
+      {currentChapter.title}
+            </h1>
 
-      <h1 className="text-4xl font-bold mb-6 text-white text-center">
-        {currentChapter.title}
-      </h1>
-      <p className="text-white mb-4 text-center">{currentChapter.description}</p>
-
-      <div className="bg-gradient-to-b from-black/80 to-black w-full sm:rounded-2xl flex flex-col items-center p-8 shadow-lg">
-        {currentChapter.video ? (
-          <div className="w-full h-[180px] md:h-[580px]">
-            <iframe
-              src={currentChapter.video}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          </div>
-        ) : (
-          <p className="text-white">No hay video disponible para este capítulo.</p>
-        )}
-        <div className="w-full flex items-center justify-center">
-          {currentChapter && currentChapter.weib ? (
-            <a
-              href={currentChapter.weib}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 flex items-center space-x-2 transition duration-300"
-            >
-              {/* Ícono SVG de carrito de compras */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0h2v2H17v-2z"
-                />
-              </svg>
-              <span>Adquirir weibook</span>
-            </a>
-          ) : (""
-          )}
-          {currentChapter.link ? (
-            <a
-              href={currentChapter.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg shadow-md hover:bg-blue-700 flex items-center space-x-2 transition duration-300"
-            >
-              {/* Ícono SVG de carrito de compras */}
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" className="h-6 w-6" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
-              </svg>
-
-              <span>Material adicional</span>
-            </a>
-
-          ) : ""}
+      <div className="bg-gradient-to-b from-black/80 to-black w-full sm:rounded-2xl flex flex-col items-center px-8 shadow-lg">
+      {currentChapter.video ? (
+ 
+<div className="w-full pt-1 relative z-0">
+  <div className="wistia_responsive_padding relative" style={{ padding: "56.25% 0 0 0" }}>
+    <div
+      className="wistia_responsive_wrapper"
+      style={{
+        height: "100%",
+        left: 0,
+        top: 0,
+        width: "100%",
+        position: "relative",
+        zIndex: 0,
+      }}
+    >
+      <div
+        className={`wistia_embed wistia_async_${currentChapter.video} seo=true videoFoam=true`}
+        style={{ height: "100%", width: "100%" }}
+      ></div>
+    </div>
+  </div>
+</div>
 
 
-        </div>
+) : (
+  <p className="text-center md:p-20 mt-5 mt-5 text-3xl text-bold text-white">Capítulo bloqueado hasta el sabado 17 de mayo</p>
+)}
+
+{currentChapter?.tarea && (
+  <a
+    href={currentChapter.tarea}
+    download
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <button className="mt-5 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md transition">
+      📥 Descargar Ejercicio
+    </button>
+  </a>
+)}
+
 
 
         <button
           onClick={() => setShowComments(!showComments)}
-          className="bg-gradient-to-r from-black to-black border-b-4  text-white font-bold py-2 px-4 rounded-lg mt-4"
+          className="mt-10 bg-white/40 border-5  text-white font-bold py-2 px-4 rounded-lg mt-4"
         >
           {showComments ? "Ocultar Comentarios" : "Mostrar Comentarios"}
         </button>
@@ -246,20 +390,23 @@ function Capitulos() {
               {comments.map((comment, index) => (
                 <div
                   key={index}
-                  className="bg-gray-800 p-4 rounded-lg shadow flex justify-between items-center"
+                  className="bg-black border-1 border-white p-4 rounded-lg shadow flex justify-between items-center"
                 >
                   <div>
-                    <p className="font-bold text-xl text-white">{comment.userEmail}</p>
-                    <p className="text-white">{comment.content}</p>
+                    <p className="font-bold text-lg text-white">{comment.userEmail}</p>
+                    <p className="text-white text-sm">{comment.content}</p>
                     <p className="text-sm text-gray-500">
                       {new Date(comment.createdAt).toLocaleString()}</p>
                   </div>
                   {comment.userEmail === userName || rol === "admin" ? (
                     <button
                       onClick={() => handleDeleteComment(comment._id)}
-                      className="bg-red-600 text-white py-1 px-2 rounded"
+                      className="bg-red-600 text-white py-1 px-1 rounded"
                     >
-                      Eliminar
+                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+</svg>
+
                     </button>
                   ) : null}
                 </div>
@@ -271,41 +418,107 @@ function Capitulos() {
               placeholder="Escribe tu comentario..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              className="w-full p-2 border rounded mb-2 bg-gray-900 text-white"
+              className="w-full p-2 border rounded mb-2 bg-white/60 text-white"
             />
             <button
               onClick={handleAddComment}
-              className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4 rounded-lg w-full"
+              className="bg-gradient-to-r from-black to-white/20 text-white py-2 px-4 rounded-lg w-full"
             >
               Agregar Comentario
             </button>
           </div>
         )}
 
-        <div className="flex justify-between w-full mt-6">
-          <button
-            onClick={goToPreviousChapter}
-            className="bg-black text-white py-2 px-4 rounded-lg"
-          >
-            Anterior
-          </button>
-          <button
-            onClick={() => navigate(`/${cursoId}`)}
-            className="bg-black text-white py-2 px-4 rounded-lg"
-          >
-            Regresar
-          </button>
-          {parseInt(chapterId, 10) < currentModuleChapters.length && (
-            <button
-              onClick={goToNextChapter}
-              className="bg-black text-white py-2 px-4 rounded-lg"
-            >
-              Siguiente
-            </button>
-          )}
+      
+
+
+<div className="flex flex-col md:flex-row justify-between items-center gap-4 w-full mt-10 px-4 z-10 relative">
+  {/* Botón Anterior o Volver */}
+  {parseInt(chapterId, 10) === 1 ? (
+    <button
+      onClick={() => navigate(`/${cursoId}`)}
+      className="bg-black text-white py-2 px-4 rounded-lg"
+    >
+      Volver
+    </button>
+  ) : (
+    <button
+      onClick={goToPreviousChapter}
+      className="bg-black text-white py-2 px-4 rounded-lg"
+    >
+      Anterior
+    </button>
+  )}
+
+  {/* Botón Siguiente o Finalizar */}
+  {parseInt(chapterId, 10) === currentModuleChapters.length ? (
+    <button
+      onClick={async () => {
+        const email = localStorage.getItem("email");
+        const capituloActual = `${moduleName}-${parseInt(chapterId, 10)}`;
+        try {
+          await fetch(`${API_BASE_URL}/api/progreso`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email,
+              cursoId,
+              capituloId: capituloActual,
+              accion: "finalizado",
+            }),
+          });
+        } catch (error) {
+          console.error("Error al marcar como completado:", error);
+        }
+
+        navigate(`/cursos/${cursoId}`);
+      }}
+      disabled={!(videoFinalizado || capituloYaCompletado)}
+      className={`py-2 px-4 border-2 border-white rounded-lg transition-all ${
+        videoFinalizado || capituloYaCompletado
+          ? "bg-green-500 text-white hover:bg-green-700"
+          : "bg-black text-white cursor-not-allowed opacity-60"
+      }`}
+    >
+      Finalizar
+      {!(videoFinalizado || capituloYaCompletado) && (
+        <div className="text-white mt-1 text-sm">
+          ⏱ Reproducido: {formatSecondsToMinutes(tiempoReproducido)} / {formatSecondsToMinutes(duracionEstimativa)}
         </div>
+      )}
+    </button>
+  ) : (
+    <button
+      onClick={goToNextChapter}
+      disabled={!(videoFinalizado || capituloYaCompletado)}
+      className={`py-2 px-4 border-2 border-white rounded-lg transition-all ${
+        videoFinalizado || capituloYaCompletado
+          ? "bg-green-500 text-white hover:bg-green-700"
+          : "bg-black text-white cursor-not-allowed opacity-60"
+      }`}
+    >
+      Siguiente
+      {!(videoFinalizado || capituloYaCompletado) && (
+        <div className="text-white mt-1 text-sm">
+          ⏱ Reproducido: {formatSecondsToMinutes(tiempoReproducido)} / {formatSecondsToMinutes(duracionEstimativa)}
+        </div>
+      )}
+    </button>
+  )}
+</div>
+
+
+
+
+
+
+
+       
+        
+       
       </div>
     </div>
+    </>
   );
 }
 

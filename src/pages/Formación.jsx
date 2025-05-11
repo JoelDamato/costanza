@@ -120,8 +120,8 @@ export default function WorkshopLanding() {
   <div className="relative w-full max-w-4xl aspect-video mt-5">
     <style>
       {`
-        wistia-player[media-id='chysetux0j']:not(:defined) {
-          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/chysetux0j/swatch');
+        wistia-player[media-id='0sse36yiqn']:not(:defined) {
+          background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/0sse36yiqn/swatch');
           display: block;
           filter: blur(5px);
           padding-top: 56.25%;
@@ -134,18 +134,19 @@ export default function WorkshopLanding() {
       async
     ></script>
     <script
-      src="https://fast.wistia.com/embed/chysetux0j.js"
+      src="https://fast.wistia.com/embed/0sse36yiqn.js"
       async
       type="module"
     ></script>
 
     <div
       dangerouslySetInnerHTML={{
-        __html: `<wistia-player media-id="chysetux0j" aspect="1.7777777777777777"></wistia-player>`
+        __html: `<wistia-player media-id="0sse36yiqn" aspect="1.7777777777777777"></wistia-player>`
       }}
     />
   </div>
 </div>
+
 
 
                     {/* CTA al minuto 0 */}
