@@ -71,8 +71,8 @@ function Home() {
   };
 
 
-  const phoneNumber = "+59891640623"; // Reemplaza con tu número de WhatsApp en formato internacional
-  const message = "Hola, tengo una consulta!."; // Mensaje predefinido opcional
+  const phoneNumber = "+5491170587318";
+  const message = "Hola, tengo una consulta!.";
 
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
     message

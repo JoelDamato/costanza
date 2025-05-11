@@ -72,7 +72,8 @@ function Dashboard() {
 
   const sanitizeCourseTitle = (title) => title.replace(/\s+/g, '-').toLowerCase();
 
-  const phoneNumber = "+59891640623";
+
+  const phoneNumber = "+5491170587318";
   const message = "Hola, tengo una consulta!.";
   const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
 
@@ -95,10 +96,6 @@ function Dashboard() {
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-zinc-900 to-black text-white">
       <Navbar
-        toggleProfile={toggleProfile}
-        handleLogout={handleLogout}
-        toggleMenu={toggleMenu}
-        isMenuOpen={isMenuOpen}
       />
 
       <a
