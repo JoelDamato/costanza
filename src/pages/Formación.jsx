@@ -290,7 +290,7 @@ export default function WorkshopLanding() {
                         <li>📂<strong> Bono #4: </strong>Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
                         <li>🛠️<strong> Bono #5: </strong>Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
                         <li>🎁<strong> Bono #6: </strong>Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250 USD</span></li>
-                        <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario – SOLO los primeros 50 en ingresar – <span className="text-red-600 font-bold">$497 USD</span></li>
+                        <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario – SOLO los primeros 30 en ingresar – <span className="text-red-600 font-bold">$497 USD</span></li>
                     </ul>
 
                     <div className="flex flex-col items-center mb-2">
