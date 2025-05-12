@@ -205,6 +205,16 @@ export default function WorkshopLanding() {
 
                     <p className="text-2xl font-bold text-red-600 line-through mb-2">$1,985 USD</p>
                     <p className="text-3xl font-bold text-green-600 mb-4">Hoy solo por $197 USD</p>
+                      <div className="flex items-center justify-center gap-2 mt-4">
+    <img
+      src="https://flagcdn.com/w40/ar.png"
+      alt="Bandera Argentina"
+      className="w-6 h-4 object-cover rounded-sm"
+    />
+    <p className="text-lg font-semibold text-white">
+      También disponible en Argentina por <span className="text-yellow-400 font-bold">$230.000 ARS</span>
+    </p>
+  </div>
                     <p className="text-base italic text-gray-600">✅ Sin adivinar. Sin fórmulas vacías. Sin ser influencer.</p>
 
                     <motion.button

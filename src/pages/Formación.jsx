@@ -295,9 +295,20 @@ export default function WorkshopLanding() {
 
                     <div className="flex flex-col items-center mb-2">
                         <p className="text-xl font-bold text-red-600 line-through mb-1">$1,985 USD</p>
-                        <div className="bg-green-100 border border-green-600 text-green-800 text-3xl font-extrabold py-2 mb-4 px-6 rounded-xl shadow-md tracking-wide">
+                        <div className="bg-green-100 border border-green-600 text-green-800 text-3xl md:text-6xl font-extrabold py-1 mb-4 px-6 rounded-xl shadow-md tracking-wide">
                             $197 USD
                         </div>
+  <div className="flex items-center justify-center gap-2 mt-1">
+      <img
+      src="https://flagcdn.com/w40/ar.png"
+      alt="Bandera Argentina"
+      className="w-6 h-4 object-cover rounded-sm"
+    />
+    <p className="text-sm font-semibold">
+      
+      En Argentina por <span className="text-green-600 font-bold">$230.000 ARS</span>
+    </p>
+  </div>
                     </div>
 
          {/* 
@@ -311,7 +322,27 @@ export default function WorkshopLanding() {
                     </div>
 
                             */}
-                 
+                 <div className="flex items-center justify-center gap-4 mt-2 px-5">
+
+    <img
+    src="https://i.ibb.co/jPDQkz5N/Screenshot-2025-05-11-215629.png"
+    alt="Tarjeta crédito 1"
+    className="w-24 md:w-40 h-auto"
+  />
+  <img
+    src="https://i.ibb.co/zW4Z4f9w/Screenshot-2025-05-11-205010.png"
+    alt="Tarjeta crédito 1"
+    className="w-24 md:w-40 h-auto"
+  />
+   <img
+    src="https://i.ibb.co/d0qxzjrB/Screenshot-2025-05-11-205343.png"
+    alt="Tarjeta crédito 1"
+    className="w-24 md:w-40 h-auto"
+  />
+
+
+
+</div>
 
                     <motion.button
                         onClick={() => window.open("https://wa.me/5491170587318?text=¡Hola!%20Quiero%20acceder%20al%20Programa%20Focus%20Dental", "_blank")}
@@ -325,6 +356,7 @@ export default function WorkshopLanding() {
                     >
                         ¡Quiero transformar mi consultorio!
                     </motion.button>
+
 
                 </motion.div>
 
