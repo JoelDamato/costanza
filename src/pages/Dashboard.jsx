@@ -104,7 +104,7 @@ function Dashboard() {
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 bg-black text-white px-4 py-3 rounded-full shadow-md flex items-center gap-2 z-50"
       >
-        <img src="/soporte.png" alt="Soporte" className="w-6 h-6" />
+        <img src="https://i.ibb.co/xKKJDBCS/d62368f7-f3e3-48ce-84cd-04a00024000e.png" alt="Soporte" className="w-6 h-6 rounded-lg" />
         Soporte
       </a>
 

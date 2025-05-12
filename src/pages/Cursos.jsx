@@ -201,7 +201,7 @@ function Cursos() {
         <span className="text-sm text-white">Sin imagen</span>
       </div>
     )}
-    <h1 className="text-4xl md:mb-10 font-bold text-center text-transparent bg-gradient-to-b from-gray-300 to-gray-200 bg-clip-text drop-shadow-lg tracking-wide">
+    <h1 className="text-4xl m-3 md:mb-10 font-bold text-center text-transparent bg-gradient-to-b from-gray-300 to-gray-200 bg-clip-text drop-shadow-lg tracking-wide">
       {course.courseTitle}
     </h1>
   </div>
@@ -212,7 +212,7 @@ function Cursos() {
               onClick={() => toggleModule(moduleName)}
               className="w-full text-left text-xl px-4 py-3 font-bold flex justify-between items-center"
             >
-              <span className="text-2xl font-bold text-center text-transparent bg-gradient-to-b from-gray-700 to-gray-200 bg-clip-text drop-shadow-lg tracking-wide">
+              <span className="text-2xl font-bold  text-transparent bg-gradient-to-b from-gray-700 to-gray-200 bg-clip-text drop-shadow-lg tracking-wide">
                 {moduleName}
               </span>
               <span>
