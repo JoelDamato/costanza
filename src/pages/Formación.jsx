@@ -71,23 +71,40 @@ export default function WorkshopLanding() {
         return () => clearInterval(interval);
     }, []);
 
-    useEffect(() => {
-        const script1 = document.createElement('script');
-        script1.src = 'https://fast.wistia.com/player.js';
-        script1.async = true;
-        document.body.appendChild(script1);
-    
-        const script2 = document.createElement('script');
-        script2.src = 'https://fast.wistia.com/embed/8eetqfnrcb.js';
-        script2.async = true;
-        script2.type = 'module';
-        document.body.appendChild(script2);
-    
-        return () => {
-            document.body.removeChild(script1);
-            document.body.removeChild(script2);
-        };
-    }, []);    
+  useEffect(() => {
+  const script1 = document.createElement('script');
+  script1.src = 'https://fast.wistia.com/player.js';
+  script1.async = true;
+  document.body.appendChild(script1);
+
+  const scriptTags = [];
+
+  const ids = ['0sse36yiqn', 'klhc8r6prt', 'vxamn03xcr'];
+  ids.forEach(id => {
+    const script = document.createElement('script');
+    script.src = `https://fast.wistia.com/embed/${id}.js`;
+    script.async = true;
+    script.type = 'module';
+    document.body.appendChild(script);
+    scriptTags.push(script);
+  });
+
+  return () => {
+    // Remover script player.js
+    if (script1.parentNode) {
+      script1.parentNode.removeChild(script1);
+    }
+
+    // Remover scripts de cada video solo si existen en el DOM
+    scriptTags.forEach(script => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    });
+  };
+}, []);
+
+
 
     const formatTime = (time) => {
         const days = Math.floor(time / (1000 * 60 * 60 * 24));
@@ -239,6 +256,37 @@ export default function WorkshopLanding() {
                     </p>
                 </header>
 
+                {/* Testimonios Focus Dental */}
+<section className="w-full max-w-4xl mx-auto px-4 py-10">
+  <h2 className="text-3xl font-bold text-center text-black mb-8 underline decoration-[#FFCC00] underline-offset-4">
+    Testimonios de Focus Dental
+  </h2>
+
+  {[ 'klhc8r6prt', 'vxamn03xcr' ].map((id, index) => (
+    <div key={id} className="relative w-full aspect-video mb-10">
+      <style>
+        {`
+          wistia-player[media-id='${id}']:not(:defined) {
+            background: center / cover no-repeat url('https://fast.wistia.com/embed/medias/${id}/swatch');
+            display: block;
+            filter: blur(4px);
+            padding-top: 56.25%;
+          }
+        `}
+      </style>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: `<wistia-player media-id="${id}" aspect="1.7777777777777777"></wistia-player>`
+        }}
+      />
+    </div>
+  ))}
+
+</section>
+
+
+
+
                 {/* BENEFICIOS */}
                 <div className="max-w-3xl mx-auto p-6 bg-white shadow-lg rounded-lg">
                     <h2 className="text-3xl font-bold text-center mb-8 underline decoration-[#FFCC00] underline-offset-4">
@@ -375,15 +423,115 @@ export default function WorkshopLanding() {
                         Porque <strong>prefiero acompañar a pocos odontólogos comprometidos, que vender a muchos sin resultados.</strong>
                     </blockquote>
 
-                    <motion.p
-                        className="flex justify-center mt-6 text-center font-bold text-xl text-[#FFCC00] bg-black/80 rounded-lg px-4 py-3 shadow-lg backdrop-blur-sm inline-block mx-auto w-fit"
-                        style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        🎯 Si sentís que llegó tu momento, no sigas postergándolo.
-                    </motion.p>
+                
+
+<div className="max-w-4xl mx-auto px-6 py-16 bg-white rounded-xl shadow-lg">
+  <h2 className="text-3xl md:text-4xl font-bold text-center text-black mb-12">
+    Preguntas Frecuentes <span className="text-yellow-500">Focus Dental</span>
+  </h2>
+
+  <div className="divide-y divide-gray-200 space-y-6">
+    
+    {/* Acceso */}
+    <div className="pt-2">
+      <div className="flex items-start gap-4 mb-2">
+        <svg className="w-8 h-8 md:w-6 md:h-6 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 className="text-lg md:text-xl font-semibold text-black">
+          ¿Hasta cuándo tengo acceso a la formación?
+        </h3>
+      </div>
+      <p className="text-gray-700 leading-relaxed">
+        Vas a tener acceso de por vida a todo el contenido. Los bonos exclusivos, como la clase en vivo con Darío, están disponibles solo durante esta etapa de lanzamiento.
+      </p>
+    </div>
+
+    {/* Modalidad */}
+    <div className="pt-6">
+      <div className="flex items-start gap-4 mb-2">
+        <svg className="w-8 h-8 md:w-6 md:h-6 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8h2a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V10a2 2 0 012-2h2m10 0V6a4 4 0 10-8 0v2m8 0H9" />
+        </svg>
+        <h3 className="text-lg md:text-xl font-semibold text-black">
+          ¿Cómo es la modalidad?
+        </h3>
+      </div>
+      <p className="text-gray-700 leading-relaxed">
+        Es 100% online. Podés ver las clases donde quieras, cuando quieras, las veces que necesites. El acceso es tuyo para siempre.
+      </p>
+    </div>
+
+    {/* Inicio */}
+    <div className="pt-6">
+      <div className="flex items-start gap-4 mb-2">
+        <svg className="w-8 h-8 md:w-6 md:h-6 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-3-3v6m10 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <h3 className="text-lg md:text-xl font-semibold text-black">
+          ¿Cuándo empieza el programa?
+        </h3>
+      </div>
+      <p className="text-gray-700 leading-relaxed">
+        El acceso es inmediato. Una vez que te inscribís, ya podés empezar a ver las clases y avanzar a tu ritmo.
+      </p>
+    </div>
+
+    {/* Cuotas */}
+    <div className="pt-6">
+      <div className="flex items-start gap-4 mb-2">
+        <svg className="w-8 h-8 md:w-6 md:h-6 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c1.657 0 3 .895 3 2s-1.343 2-3 2-3 .895-3 2 1.343 2 3 2m0-8V4m0 16v-4" />
+        </svg>
+        <h3 className="text-lg md:text-xl font-semibold text-black">
+          ¿Puedo pagar en cuotas?
+        </h3>
+      </div>
+      <p className="text-gray-700 leading-relaxed">
+        Sí. Aceptamos pagos en cuotas mediante tarjetas de credito.
+      </p>
+    </div>
+
+    {/* Consultas */}
+    <div className="pt-6">
+      <div className="flex items-start gap-4 mb-2">
+        <svg className="w-8 h-8 md:w-6 md:h-6 text-yellow-500 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M8 10h.01M12 10h.01M16 10h.01M21 16v2a2 2 0 01-2 2H5l-2 2V6a2 2 0 012-2h14a2 2 0 012 2v10z" />
+        </svg>
+        <h3 className="text-lg md:text-xl font-semibold text-black">
+          Quiero más información
+        </h3>
+      </div>
+      <p className="text-gray-700 leading-relaxed">
+        ¡Escribime! Estoy para ayudarte. Contame qué duda tenés y te explico todo con claridad.
+      </p>
+    </div>
+    <motion.button
+  onClick={() =>
+    window.open(
+      "https://wa.me/5491170587318?text=Hola,%20estoy%20listo%20para%20inscribirme%20a%20la%20formación%20Focus%20Dental.",
+      "_blank"
+    )
+  }
+  className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mx-auto block"
+  whileHover={{ scale: 1.05 }}
+>
+  QUIERO INSCRIBIRME
+</motion.button>
+
+
+  </div>
+</div>
+
+
+
+
+                         <h2 className="mt-5 text-3xl font-bold text-center mb-8 underline decoration-[#FFCC00] underline-offset-4">
+                        ¿Podés garantizarme resultados?
+                    </h2>
+                    <p className='px-5'>	
+
+Te garantizamos un método probado y un acompañamiento constante, herramientas y soporte práctico , para que puedas tomar decisiones estratégicas y aumentar tu rentabilidad.</p>
                     <div className="w-48 h-48 overflow-hidden mx-auto mt-2 rounded">
                         <img 
                             src="/Garantia s fondo.png" 
