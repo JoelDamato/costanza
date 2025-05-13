@@ -9,6 +9,14 @@ export default function WorkshopLanding() {
     const [showExtraContent, setShowExtraContent] = useState(false);
     const valueStackRef = useRef(null);
 
+    const handleWppClick = (mensaje) => {
+  if (typeof fbq !== "undefined") {
+    fbq('track', 'Contact'); // o 'Lead' si querés otro evento
+  }
+  window.open(`https://wa.me/5491170587318?text=${encodeURIComponent(mensaje)}`, '_blank');
+};
+
+
     const scrollToValueStack = () => {
         if (valueStackRef.current) {
             const topOffset = valueStackRef.current.getBoundingClientRect().top + window.scrollY;
@@ -393,17 +401,17 @@ export default function WorkshopLanding() {
 </div>
 
                     <motion.button
-                        onClick={() => window.open("https://wa.me/5491170587318?text=¡Hola!%20Quiero%20acceder%20al%20Programa%20Focus%20Dental", "_blank")}
-                        className="bg-[#FFCC00] text-black text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 transition-transform hover:scale-105 shadow-lg"
-                        whileHover={{ scale: 1.1 }}
-                        animate={{
-                            scale: [1, 1.05, 1],
-                            boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,204,0,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
-                        }}
-                        transition={{ repeat: Infinity, duration: 2 }}
-                    >
-                        ¡Quiero transformar mi consultorio!
-                    </motion.button>
+  onClick={() => handleWppClick("¡Hola! Quiero acceder al Programa Focus Dental")}
+  className="bg-[#FFCC00] text-black text-xl md:text-2xl font-semibold py-4 px-10 rounded-lg w-full max-w-2xl mx-auto mt-6 transition-transform hover:scale-105 shadow-lg"
+  whileHover={{ scale: 1.1 }}
+  animate={{
+    scale: [1, 1.05, 1],
+    boxShadow: ["0px 0px 0px rgba(0,0,0,0)", "0px 0px 10px rgba(255,204,0,0.8)", "0px 0px 0px rgba(0,0,0,0)"]
+  }}
+  transition={{ repeat: Infinity, duration: 2 }}
+>
+  ¡Quiero transformar mi consultorio!
+</motion.button>
 
 
                 </motion.div>
@@ -506,18 +514,16 @@ export default function WorkshopLanding() {
         ¡Escribime! Estoy para ayudarte. Contame qué duda tenés y te explico todo con claridad.
       </p>
     </div>
-    <motion.button
+<motion.button
   onClick={() =>
-    window.open(
-      "https://wa.me/5491170587318?text=Hola,%20estoy%20listo%20para%20inscribirme%20a%20la%20formación%20Focus%20Dental.",
-      "_blank"
-    )
+    handleWppClick("Hola, estoy listo para inscribirme a la formación Focus Dental.")
   }
   className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mx-auto block"
   whileHover={{ scale: 1.05 }}
 >
   QUIERO INSCRIBIRME
 </motion.button>
+
 
 
   </div>
