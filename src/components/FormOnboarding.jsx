@@ -8,8 +8,7 @@ const FormOnboarding = () => {
   const [loading, setLoading] = useState(true);
   const [aceptoCondiciones, setAceptoCondiciones] = useState(false);
   const [contratoBase64, setContratoBase64] = useState(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
+  const [submitting, setSubmitting] = useState(false);
 
   const sigCanvas = useRef();
 
@@ -183,16 +182,25 @@ const opt = {
     });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+ const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!aceptoCondiciones) return alert("Debés aceptar los términos y condiciones.");
-    if (sigCanvas.current.isEmpty()) return alert("Debés firmar el contrato antes de enviar.");
- setIsSubmitting(true); // 👉 Activa el loading
+  if (!aceptoCondiciones) {
+    alert("Debés aceptar los términos y condiciones.");
+    return;
+  }
 
+  if (sigCanvas.current.isEmpty()) {
+    alert("Debés firmar el contrato antes de enviar.");
+    return;
+  }
+
+  setSubmitting(true); // ⏳ activa loading
+
+  try {
     const firmaDigital = sigCanvas.current.getCanvas().toDataURL("image/png");
     const contratoPdfBase64 = await generarYDescargarPDF(contratoGenerado, firmaDigital);
-setContratoBase64(contratoPdfBase64);
+    setContratoBase64(contratoPdfBase64);
 
     const dataToSend = {
       ...formData,
@@ -204,24 +212,25 @@ setContratoBase64(contratoPdfBase64);
       contratoPdfBase64
     };
 
+    const res = await fetch(`${API_BASE_URL}/api/form`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dataToSend),
+    });
 
-
-    try {
-      const res = await fetch(`${API_BASE_URL}/api/form`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dataToSend),
-      });
-      if (res.ok) {
-        setEnviado(true);
-      } else {
-        throw new Error("Error al enviar");
-      }
-    } catch (error) {
-      console.error("Error al enviar el formulario:", error);
-      setIsSubmitting(false);
+    if (res.ok) {
+      setEnviado(true);
+    } else {
+      throw new Error("Error al enviar");
     }
-  };
+  } catch (error) {
+    console.error("Error al enviar el formulario:", error);
+    alert("Hubo un error al enviar el formulario. Por favor, intentá de nuevo.");
+  } finally {
+    setSubmitting(false); // ✅ desactiva loading siempre
+  }
+};
+
 
 const handleDownload = () => {
   if (!contratoBase64) {
@@ -257,7 +266,7 @@ const placeholders = {
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-white border border-gray-300 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 md:p-10 text-black">
         {enviado ? (
-         <div className="text-center space-y-6 px-4">
+ <div className="text-center space-y-6 px-4">
   <h2 className="text-3xl font-bold">¡Gracias por completar el formulario!</h2>
   <p className="text-gray-700">Tu contrato ha sido registrado correctamente.</p>
 
@@ -383,16 +392,13 @@ const placeholders = {
               </div>
             </div>
 
-<button
+           <button
   type="submit"
-  disabled={isSubmitting}
-  className={`w-full mt-6 font-bold py-3 px-6 rounded-lg transition ${
-    isSubmitting ? "bg-gray-500 cursor-not-allowed" : "bg-black hover:bg-gray-800 text-white"
-  }`}
+  disabled={submitting}
+      className="bg-black text-white py-2 px-6 rounded-lg hover:bg-gray-800 w-full sm:w-auto"
 >
-  {isSubmitting ? "Enviando..." : "Enviar formulario y firmar"}
+  {submitting ? "Enviando..." : "Enviar formulario y firmar"}
 </button>
-
           </form>
         )}
       </div>
