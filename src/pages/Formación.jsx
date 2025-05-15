@@ -5,6 +5,7 @@ import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 
 export default function WorkshopLanding() {
+  
     const [timeLeft, setTimeLeft] = useState(0);
     const [showExtraContent, setShowExtraContent] = useState(false);
     const valueStackRef = useRef(null);
