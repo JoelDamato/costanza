@@ -70,7 +70,7 @@ const FormOnboarding = () => {
 return `
 📄 <b>CONTRATO DE ADHESIÓN AL PROGRAMA DIGITAL "FOCUS DENTAL"</b><br><br>
 
-<b>Entre Dario Costanza</b>, con domicilio en Córdoba, Argentina, en adelante “LA EMPRESA”; y por la otra parte, <b>${nombreCompleto}</b>, identificado con DNI ${dni}, con domicilio en ${domicilioCliente}, en adelante “EL CLIENTE”, se acuerda el siguiente contrato de adhesión al programa digital <b>“FOCUS DENTAL”</b>, el cual se regirá por las siguientes cláusulas:<br><br>
+<b>Entre Dario Costanza</b>, con domicilio en José Betinoti 3212, CP 5008 , Córdoba, Argentina, en adelante “LA EMPRESA”; y por la otra parte, <b>${nombreCompleto}</b>, identificado con DNI ${dni}, con domicilio en ${domicilioCliente}, en adelante “EL CLIENTE”, se acuerda el siguiente contrato de adhesión al programa digital <b>“FOCUS DENTAL”</b>, el cual se regirá por las siguientes cláusulas:<br><br>
 
 <hr>
 
@@ -128,8 +128,7 @@ En mora, el acceso se suspende. Pasados ${diasMora} días, puede cancelarse el a
 
 <b>QUINTA. PROPIEDAD INTELECTUAL Y CONFIDENCIALIDAD</b><br><br>
 
-El contenido es propiedad de LA EMPRESA. No se puede distribuir ni reproducir sin autorización.<br><br>
-
+Todo lo expresado en el programa es de autoridad intelectual , creación y producción audiovisual de Darío Daniel Costanza , la cual no podrá ser ni grabada , ni utilizada por otra persona, ni descargada , ni manipulada , para ningún fin ni bajo ninguna circunstancia.
 <hr>
 
 <b>SEXTA. USO DE IMAGEN</b><br><br>
@@ -257,6 +256,7 @@ const placeholders = {
           <div className="text-center space-y-6 gap-3">
             <h2 className="text-3xl font-bold">¡Gracias por completar el formulario!</h2>
             <p className="text-gray-700">Tu contrato ha sido registrado correctamente.</p>
+            <div></div>
             <button
              onClick={handleDownload} 
               className="mt-4 bg-black/70 text-white py-2 px-6 rounded-lg hover:bg-gray-800"

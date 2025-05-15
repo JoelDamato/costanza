@@ -178,7 +178,6 @@ export default function WorkshopLanding() {
                     {showExtraContent && (
                         <>
 
-                        {/* 
                             <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
                                 <p className="mb-2">
                                     Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
@@ -188,7 +187,7 @@ export default function WorkshopLanding() {
                                 </div>
                             </div>
 
-                            */}
+                            
                             <motion.div
                                 onClick={scrollToValueStack}
                                 whileHover={{ scale: 1.05 }}
@@ -367,7 +366,7 @@ export default function WorkshopLanding() {
   </div>
                     </div>
 
-         {/* 
+     
                            <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
                         <p className="mb-2">
                             Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
@@ -377,7 +376,7 @@ export default function WorkshopLanding() {
                         </div>
                     </div>
 
-                            */}
+                           
                  <div className="flex items-center justify-center gap-4 mt-2 px-5">
 
     <img
