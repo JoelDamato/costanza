@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Navbar from '../components/Navbar';
 import useUserStore from '../store/users';
+import FormOnboardingNuevo from '../components/FormOnboarding';
 
 function Dashboard() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -95,7 +96,10 @@ function Dashboard() {
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-black via-zinc-900 to-black text-white">
+
       <Navbar
+      />
+ <FormOnboardingNuevo
       />
 
       <a
@@ -135,7 +139,7 @@ function Dashboard() {
                     onClick={() => navigate(`/${sanitizeCourseTitle(course.courseTitle)}`)}
                     className="bg-white text-black font-bold py-2 px-4 rounded hover:bg-gray-200 transition"
                   >
-                    Ver Curso
+                    Empezar Formacion
                   </button>
                 ) : (
                   <a
