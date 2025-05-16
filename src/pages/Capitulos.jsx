@@ -328,7 +328,7 @@ console.log("✅ ¿Está completado?:", !!progresoActual);
 <>
       <Navbar />
       <div className=" pt-5 min-h-screen w-screen overflow-y-auto bg-gradient-to-r from-black/80 to-black flex flex-col items-center justify-center">
-      <h1 className="mt-2 text-4xl text-center mb-6 md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-500 to-gray-200 drop-shadow-lg tracking-wide">
+      <h1 className="mt-5 md:mt-12 text-4xl text-center mb-6 md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-gray-500 to-gray-200 drop-shadow-lg tracking-wide">
       {currentChapter.title}
             </h1>
 
