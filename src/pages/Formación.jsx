@@ -37,7 +37,7 @@ export default function WorkshopLanding() {
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
-            img: "/22.png",
+            img: "https://i.ibb.co/vxr1jMZ1/Chat-GPT-Image-22-abr-2025-17-38-58.png",
             text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
