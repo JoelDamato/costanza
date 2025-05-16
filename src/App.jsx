@@ -10,7 +10,7 @@ import PoliticaReembolso from './components/Politicaderembolso';
 const Home = lazy(() => import('./pages/home.jsx'));
 const Login = lazy(() => import('./pages/login.jsx'));
 const Formación = lazy(() => import('./pages/Formación.jsx'));
-const VSl2 = lazy(() => import('./pages/Vsl2.jsx'));
+const Formacion2 = lazy(() => import('./pages/Formacion2.jsx'));
 const Dashboard = lazy(() => import('./pages/Dashboard.jsx'));
 const Cursos = lazy(() => import('./pages/Cursos.jsx'));
 const PanelControl = lazy(() => import('./pages/Panel.jsx'));
@@ -28,7 +28,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/Formacion" element={<Formación />} />
-              <Route path="/vsl2" element={<VSl2 />} />
+              <Route path="/formacion2" element={<Formacion2 />} />
               <Route path="/Login" element={<Login />} />
               <Route path="/Dashboard" element={<Dashboard />} />
               <Route path="/PanelControl" element={<PanelControl />} />
