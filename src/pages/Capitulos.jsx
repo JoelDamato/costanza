@@ -358,7 +358,7 @@ console.log("✅ ¿Está completado?:", !!progresoActual);
 
 
 ) : (
-  <p className="text-center md:p-20 mt-5 mt-5 text-3xl text-bold text-white">Capítulo bloqueado hasta el sabado 17 de mayo</p>
+  <p className="text-center md:p-20 mt-5 mt-5 text-3xl text-bold text-white">Capítulo bloqueado.</p>
 )}
 
 {currentChapter?.tarea && (
@@ -471,7 +471,7 @@ console.log("✅ ¿Está completado?:", !!progresoActual);
           console.error("Error al marcar como completado:", error);
         }
 
-        navigate(`/cursos/${cursoId}`);
+        navigate(`/${cursoId}`);
       }}
       disabled={!(videoFinalizado || capituloYaCompletado)}
       className={`py-2 px-4 border-2 border-white rounded-lg transition-all ${
