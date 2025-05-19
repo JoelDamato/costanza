@@ -127,18 +127,14 @@ export default function WorkshopLanding() {
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#FFCC00] to-black font-[Garet] text-black">
-            <img
-                src="/LOGOS/IMAGOTIPO/amarillo y blanco.png"
-                alt="Logo Darío Costanza"
-                className="h-10 w-auto mt-2"
-            />
+
 
             <div className="bg-white rounded-2xl max-w-4xl w-[96%] p-2 md:p-6 mx-5 shadow-lg mt-2 md:mt-7">
 
                 {/* HEADER */}
                 <header className="text-center">
                     <h1 className="text-black text-3xl md:text-5xl font-bold underline decoration-[#FFCC00] underline-offset-4 drop-shadow-lg mt-2 mb-2">
-                        Esto es de Odontólogos, para odontólogos.
+                        Cómo usar tu carrera para tener algo más que dinero: tiempo para vos, presencia real y paz mental
                     </h1>
 
   {/* VIDEO (Wistia) */}
@@ -179,14 +175,7 @@ export default function WorkshopLanding() {
                     {showExtraContent && (
                         <>
 
-                            <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center mb-2 shadow-sm">
-                                <p className="mb-2">
-                                    Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
-                                </p>
-                                <div className="bg-black text-[#FFCC00] text-xl font-bold py-2 px-4 rounded-md inline-block ">
-                                    ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
-                                </div>
-                            </div>
+                       
 
                             
                             <motion.div
@@ -339,43 +328,24 @@ export default function WorkshopLanding() {
                     />
 
                     <ul className="text-center text-base md:text-lg font-medium mb-6 max-w-3xl mx-auto space-y-2">
-                        <li><strong>🎓 Acceso completo al Programa Focus Dental – </strong><span className="text-red-600 font-bold">$997 USD</span></li>
-                        <li>🖼️<strong> Bono #1: </strong>Pack de imágenes listas para tu consultorio – <span className="text-red-600 font-bold">$97 USD</span></li>
-                        <li>📲<strong> Bono #2: </strong>Mensajes que hacen volver a tus pacientes – <span className="text-red-600 font-bold">$197 USD</span></li>
-                        <li>👥<strong> Bono #3: </strong>Comunidad privada de odontólogos – <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>📂<strong> Bono #4: </strong>Recursos descargables de gestión – <span className="text-red-600 font-bold">$297 USD</span></li>
-                        <li>🛠️<strong> Bono #5: </strong>Herramientas digitales que te ahorran tiempo – <span className="text-red-600 font-bold">$147 USD</span></li>
-                        <li>🎁<strong> Bono #6: </strong>Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250 USD</span></li>
-                        <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario – SOLO los primeros 30 en ingresar – <span className="text-red-600 font-bold">$497 USD</span></li>
+                        <li><strong>🎓 Acceso completo al Programa Focus Dental  </strong></li>
+                        <li>🖼️<strong> Bono #1: </strong>Pack de imágenes listas para tu consultorio</li>
+                        <li>📲<strong> Bono #2: </strong>Mensajes que hacen volver a tus pacientes </li>
+                        <li>👥<strong> Bono #3: </strong>Comunidad privada de odontólogos</li>
+                        <li>📂<strong> Bono #4: </strong>Recursos descargables de gestión</li>
+                        <li>🛠️<strong> Bono #5: </strong>Herramientas digitales que te ahorran tiempo </li>
+                        <li>🎁<strong> Bono #6: </strong>Descuentos exclusivos en insumos y equipamiento</li>
+                        <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario </li>
                     </ul>
 
                     <div className="flex flex-col items-center mb-2">
-                        <p className="text-xl font-bold text-red-600 line-through mb-1">$1,985 USD</p>
-                        <div className="bg-green-100 border border-green-600 text-green-800 text-3xl md:text-6xl font-extrabold py-1 mb-4 px-6 rounded-xl shadow-md tracking-wide">
-                            $197 USD
-                        </div>
-  <div className="flex items-center justify-center gap-2 mt-1">
-      <img
-      src="https://flagcdn.com/w40/ar.png"
-      alt="Bandera Argentina"
-      className="w-6 h-4 object-cover rounded-sm"
-    />
-    <p className="text-sm font-semibold">
-      
-      En Argentina por <span className="text-green-600 font-bold">$230.000 ARS</span>
-    </p>
-  </div>
-                    </div>
 
-     
-                           <div className="bg-white border-2 border-[#FFCC00] text-black font-semibold text-base md:text-lg py-3 px-5 rounded-md text-center shadow-sm">
-                        <p className="mb-2">
-                            Precio lanzamiento disponible hasta el <span className="font-bold">18 de mayo</span>
-                        </p>
-                        <div className="bg-black text-[#FFCC00] text-xl font-bold py-2 px-2 rounded-md inline-block ">
-                            ⏳ {days} días, {hours}:{minutes}:{seconds} ⏳
-                        </div>
                     </div>
+  <div className="bg-yellow-100 border border-yellow-500 text-yellow-800 text-sm font-bold px-4 py-1 rounded-lg shadow-sm mb-2">
+    💳 ¡3 cuotas sin interés disponibles!
+  </div>
+     
+                      
 
                            
                  <div className="flex items-center justify-center gap-4 mt-2 px-5">
