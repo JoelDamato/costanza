@@ -37,7 +37,7 @@ export default function WorkshopLanding() {
             text: "<strong>🚀 Pacientes que te buscan</strong>, no que te comparan: Aprendé a posicionarte como referente en tu zona sin sentir que estás vendiendo todo el tiempo."
         },
         {
-            img: "https://i.ibb.co/vxr1jMZ1/Chat-GPT-Image-22-abr-2025-17-38-58.png",
+            img: "https://i.ibb.co/dwCmYC9r/cam-mock-up.png",
             text: "<strong>📸 Imagen que vende por vos</strong>: Mostrá tu trabajo como un profesional premium, aunque no sepas nada de fotografía o edición."
         },
         {
@@ -318,7 +318,7 @@ export default function WorkshopLanding() {
                     </h2>
 
                     <img
-                        src="https://i.ibb.co/RGcDgqdJ/general-2.png"
+                        src="https://i.ibb.co/B51S2F3Z/Mock-up-dario-sin-fondo.png"
                         alt="Logo Darío Costanza"
                         className="w-full h-auto max-h-25 object-contain rounded-xl mb-4"
                     />
