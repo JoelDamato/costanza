@@ -6,9 +6,30 @@ import 'swiper/css';
 
 export default function WorkshopLanding() {
   
-    const [timeLeft, setTimeLeft] = useState(0);
+
     const [showExtraContent, setShowExtraContent] = useState(false);
     const valueStackRef = useRef(null);
+
+     const [timeLeft, setTimeLeft] = useState(getRemainingTime());
+const [showOffer, setShowOffer] = useState(true);
+
+  function getRemainingTime() {
+    const now = new Date();
+    const tomorrow = new Date();
+    tomorrow.setHours(23, 59, 59, 999);
+    return tomorrow - now;
+  }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(getRemainingTime());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const hours = String(Math.floor(timeLeft / (1000 * 60 * 60))).padStart(2, "0");
+  const minutes = String(Math.floor((timeLeft / (1000 * 60)) % 60)).padStart(2, "0");
+  const seconds = String(Math.floor((timeLeft / 1000) % 60)).padStart(2, "0");
 
     const handleWppClick = (mensaje) => {
   if (typeof fbq !== "undefined") {
@@ -71,14 +92,51 @@ export default function WorkshopLanding() {
     }, []);
 
     useEffect(() => {
-        const deadline = new Date("2025-05-18T00:00:00").getTime();
-        const interval = setInterval(() => {
-            const now = new Date().getTime();
-            const distance = deadline - now;
-            setTimeLeft(distance > 0 ? distance : 0);
-        }, 1000);
-        return () => clearInterval(interval);
-    }, []);
+  // Revisar si ya hay un tiempo guardado
+  const savedStart = localStorage.getItem("focusOfferStart");
+
+  let startTime;
+
+  if (savedStart) {
+    startTime = new Date(savedStart);
+  } else {
+    startTime = new Date();
+    localStorage.setItem("focusOfferStart", startTime.toISOString());
+  }
+
+  const interval = setInterval(() => {
+    const now = new Date();
+    const elapsed = now - new Date(startTime);
+    const total = 24 * 60 * 60 * 1000; // 24 hs en ms
+    const remaining = total - elapsed;
+
+    if (remaining <= 0) {
+      localStorage.removeItem("focusOfferStart");
+      setShowOffer(false);
+      clearInterval(interval);
+    } else {
+      setTimeLeft(remaining);
+    }
+  }, 1000);
+
+  return () => clearInterval(interval);
+}, []);
+
+const formatTime = (ms) => {
+  const hours = String(Math.floor(ms / (1000 * 60 * 60))).padStart(2, "0");
+  const minutes = String(Math.floor((ms / (1000 * 60)) % 60)).padStart(2, "0");
+  const seconds = String(Math.floor((ms / 1000) % 60)).padStart(2, "0");
+  return `${hours}:${minutes}:${seconds}`;
+};
+
+
+    useEffect(() => {
+  const timer = setInterval(() => {
+    setTimeLeft(getRemainingTime());
+  }, 1000);
+  return () => clearInterval(timer);
+}, []);
+
 
   useEffect(() => {
   const script1 = document.createElement('script');
@@ -115,15 +173,8 @@ export default function WorkshopLanding() {
 
 
 
-    const formatTime = (time) => {
-        const days = Math.floor(time / (1000 * 60 * 60 * 24));
-        const hours = String(Math.floor((time / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-        const minutes = String(Math.floor((time / 1000 / 60) % 60)).padStart(2, '0');
-        const seconds = String(Math.floor((time / 1000) % 60)).padStart(2, '0');
-        return { days, hours, minutes, seconds };
-    };
 
-    const { days, hours, minutes, seconds } = formatTime(timeLeft);
+
 
     return (
         <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-black via-[#FFCC00] to-black font-[Garet] text-black">
@@ -308,7 +359,7 @@ export default function WorkshopLanding() {
                 {/* VALUE STACK */}
                 <motion.div
                     ref={valueStackRef}
-                    className="bg-white border-4 border-dashed border-[#FFCC00] rounded-xl p-5 mt-5 shadow-xl text-center"
+                    className="bg-white  rounded-xl p-5 mt-5 shadow-xl text-center"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
@@ -333,6 +384,75 @@ export default function WorkshopLanding() {
                         <li>🎁<strong> Bono #6: </strong>Descuentos exclusivos en insumos y equipamiento – <span className="text-red-600 font-bold">$250 USD</span></li>
                         <li>🎁<strong> Bono #7: </strong>Clase en Vivo con Dario – <span className="text-red-600 font-bold">$497 USD</span></li>
                     </ul>
+{showOffer && (
+        <div className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900 rounded-3xl p-8 md:p-12 mb-6 max-w-2xl mx-auto text-center border-2 border-yellow-400/30 shadow-[0_0_50px_rgba(255,204,0,0.3)] backdrop-blur-sm">
+          {/* Efectos de brillo premium en las esquinas */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-full blur-2xl" />
+          <div className="absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-tl from-yellow-400/20 to-transparent rounded-full blur-2xl" />
+
+          <div className="relative z-10">
+            <h3 className="text-xl md:text-3xl font-bold text-yellow-400 uppercase tracking-wider mb-2 drop-shadow-[0_0_10px_rgba(255,204,0,0.5)]">
+              COMPRANDO <span className="underline font-extrabold text-yellow-300">HOY</span>
+            </h3>
+            <p className="text-2xl md:text-4xl font-extrabold bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-300 bg-clip-text text-transparent mt-2 mb-4 drop-shadow-lg">
+              TE LLEVÁS TODOS LOS BONUS GRATIS
+            </p>
+
+            {/* Contenedor para OFERTA ESPECIAL con subrayado dorado */}
+            <div className="relative inline-block mb-6">
+              <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-wide drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] ">
+                OFERTA ESPECIAL!
+              </h2>
+
+            
+              
+            </div>
+
+            <p className="text-yellow-200 text-base md:text-lg font-medium mb-6 drop-shadow-md">Expira en:</p>
+
+            {/* Contenedor del cronómetro con destello de fondo */}
+            <div className="relative">
+              {/* Destello horizontal detrás de todo el cronómetro */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-full max-w-md h-2 bg-gradient-to-r from-transparent via-yellow-400 to-transparent blur-lg opacity-40 animate-pulse" />
+              </div>
+
+              {/* Destello adicional más intenso */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-3/4 h-1 bg-gradient-to-r from-transparent via-yellow-300 to-transparent blur-md opacity-60" />
+              </div>
+
+              {/* Cronómetro */}
+              <div className="relative z-10 flex justify-center gap-6 mt-4">
+                {["Horas", "Min", "Seg"].map((label, i) => {
+                  const parts = formatTime(timeLeft).split(":")
+                  const timeVal = parts[i]
+                  return (
+                    <div
+                      key={label}
+                      className="relative bg-gradient-to-b from-gray-800 to-black w-20 md:w-24 h-24 md:h-28 rounded-xl flex items-center justify-center shadow-[inset_0_2px_10px_rgba(0,0,0,0.8),0_0_20px_rgba(255,204,0,0.2)] border border-yellow-400/20"
+                    >
+                      {/* Brillo interno en cada número */}
+                      <div className="absolute inset-1 bg-gradient-to-b from-yellow-400/5 to-transparent rounded-lg" />
+
+                      <span className="relative z-10 text-4xl md:text-6xl font-black bg-gradient-to-b from-yellow-300 to-yellow-500 bg-clip-text text-transparent drop-shadow-[0_0_10px_rgba(255,204,0,0.8)]">
+                        {timeVal}
+                      </span>
+                      <div className="absolute -bottom-6 text-xs text-yellow-200 font-semibold uppercase tracking-wider">
+                        {label}
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+
+
+
 
                     <div className="flex flex-col items-center mb-2">
                         <p className="text-xl font-bold text-red-600 line-through mb-1">$1,985 USD</p>
