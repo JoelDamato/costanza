@@ -14,7 +14,7 @@ export default function WorkshopLanding() {
   if (typeof fbq !== "undefined") {
     fbq('track', 'Contact'); // o 'Lead' si querés otro evento
   }
-  window.open(`https://wa.me/15557644626?text=${encodeURIComponent(mensaje)}`, '_blank');
+  window.open(`https://wa.me/549117058-7318?text=${encodeURIComponent(mensaje)}`, '_blank');
 };
 
 

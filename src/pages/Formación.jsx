@@ -35,7 +35,7 @@ const [showOffer, setShowOffer] = useState(true);
   if (typeof fbq !== "undefined") {
     fbq('track', 'Contact'); // o 'Lead' si querés otro evento
   }
-  window.open(`https://wa.me/15557644626?text=${encodeURIComponent(mensaje)}`, '_blank');
+  window.open(`https://wa.me/5491170587318?text=${encodeURIComponent(mensaje)}`, '_blank');
 };
 
 
