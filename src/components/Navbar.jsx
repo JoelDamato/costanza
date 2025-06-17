@@ -115,6 +115,7 @@ function Navbar() {
               <button onClick={() => handleNavigation('/Metricas')} className="text-white py-2 border-b">Métricas</button>
             </>
           )}
+          <button onClick={() => handleNavigation('/PreguntasFrecuentes')} className="text-white py-2 border-b">Preguntas Frecuentes</button>
           <button onClick={handleLogout} className="text-white py-2 border-b hover:bg-red-800/30">Cerrar sesión</button>
         </div>
       )}

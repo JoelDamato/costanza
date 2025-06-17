@@ -18,6 +18,7 @@ const Capitulos = lazy(() => import('./pages/Capitulos.jsx'));
 const Perfil = lazy(() => import('./pages/Perfil.jsx'));
 const Metricas = lazy(() => import('./pages/Metricas.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
+const PreguntasFrecuentes = lazy(() => import('./pages/PreguntasFrecuentes.jsx'));
 
 function App() {
   return (
@@ -34,14 +35,13 @@ function App() {
               <Route path="/PanelControl" element={<PanelControl />} />
               <Route path="/cursos/:cursoId/:moduleName/:chapterId" element={<Capitulos />} />
               <Route path="/:cursoId" element={<Cursos />} />
-
               <Route path="/Perfil" element={<Perfil />} />
- 
               <Route path="/Metricas" element={<Metricas />} />
+              <Route path="/PreguntasFrecuentes" element={<PreguntasFrecuentes />} />
               <Route path="*" element={<NotFound />} />
               <Route path="/politica-privacidad" element={<Politicas />} />
-<Route path="/terminos-condiciones" element={<Condiciones />} />
-<Route path="/politica-compra" element={<PoliticaReembolso />} />
+              <Route path="/terminos-condiciones" element={<Condiciones />} />
+              <Route path="/politica-compra" element={<PoliticaReembolso />} />
 
 
             </Routes>
