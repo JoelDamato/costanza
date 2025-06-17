@@ -111,3 +111,5 @@ const PreguntasFrecuentes = () => {
   )
 }
 
+export default PreguntasFrecuentes
+
