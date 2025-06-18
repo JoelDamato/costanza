@@ -19,6 +19,7 @@ const Perfil = lazy(() => import('./pages/Perfil.jsx'));
 const Metricas = lazy(() => import('./pages/Metricas.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 const PreguntasFrecuentes = lazy(() => import('./pages/PreguntasFrecuentes.jsx'));
+const Bonus = lazy(() => import('./pages/Bonus.jsx'));
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
               <Route path="/politica-privacidad" element={<Politicas />} />
               <Route path="/terminos-condiciones" element={<Condiciones />} />
               <Route path="/politica-compra" element={<PoliticaReembolso />} />
+              <Route path="/Bonus" element={<Bonus />} />
 
 
             </Routes>
