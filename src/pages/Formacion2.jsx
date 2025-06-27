@@ -14,7 +14,7 @@ export default function WorkshopLanding() {
   if (typeof fbq !== "undefined") {
     fbq('track', 'Contact'); // o 'Lead' si querés otro evento
   }
-  window.open(`https://wa.me/15557589976?text=${encodeURIComponent(mensaje)}`, '_blank');
+  window.open(`https://wa.me/5491170587318?text=${encodeURIComponent(mensaje)}`, '_blank');
 };
 
 
@@ -516,7 +516,7 @@ Te garantizamos un método probado y un acompañamiento constante, herramientas 
                         />
                     </div>
                     <motion.button
-                        onClick={() => window.open("https://wa.me/15557589976?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental!", "_blank")}
+                        onClick={() => window.open("https://wa.me/5491170587318?text=¡Hola!%20Quiero%20más%20info%20sobre%20Focus%20Dental!", "_blank")}
                         className="bg-[#FFCC00] text-black text-lg font-bold py-3 px-6 rounded-lg shadow-md mx-auto block"
                         whileHover={{ scale: 1.05 }}
                     >
