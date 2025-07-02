@@ -1,4 +1,3 @@
-
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
@@ -357,9 +356,20 @@ console.log("✅ ¿Está completado?:", !!progresoActual);
 </div>
 
 
-) : (
-  <p className="text-center md:p-20 mt-5 mt-5 text-3xl text-bold text-white">Capítulo bloqueado.</p>
-)}
+) : currentChapter.exep ? (
+        <div className="w-full flex flex-col items-center">
+          <iframe
+            src={`https://drive.google.com/file/d/${currentChapter.exep}/preview`}
+            width="100%"
+            height="600"
+            allow="autoplay"
+            className="rounded-lg bg-white"
+            title="PDF Drive"
+          ></iframe>
+        </div>
+      ) : (
+        <p className="text-center md:p-20 mt-5 text-3xl text-bold text-white">Capítulo bloqueado.</p>
+      )}
 
 {currentChapter?.tarea && (
   <a
@@ -473,15 +483,19 @@ console.log("✅ ¿Está completado?:", !!progresoActual);
 
         navigate(`/${cursoId}`);
       }}
-      disabled={!(videoFinalizado || capituloYaCompletado)}
+      disabled={
+        currentChapter.exep
+          ? false
+          : !(videoFinalizado || capituloYaCompletado)
+      }
       className={`py-2 px-4 border-2 border-white rounded-lg transition-all ${
-        videoFinalizado || capituloYaCompletado
+        currentChapter.exep || videoFinalizado || capituloYaCompletado
           ? "bg-green-500 text-white hover:bg-green-700"
           : "bg-black text-white cursor-not-allowed opacity-60"
       }`}
     >
       Finalizar
-      {!(videoFinalizado || capituloYaCompletado) && (
+      {!currentChapter.exep && !(videoFinalizado || capituloYaCompletado) && (
         <div className="text-white mt-1 text-sm">
           ⏱ Reproducido: {formatSecondsToMinutes(tiempoReproducido)} / {formatSecondsToMinutes(duracionEstimativa)}
         </div>
@@ -490,15 +504,19 @@ console.log("✅ ¿Está completado?:", !!progresoActual);
   ) : (
     <button
       onClick={goToNextChapter}
-      disabled={!(videoFinalizado || capituloYaCompletado)}
+      disabled={
+        currentChapter.exep
+          ? false
+          : !(videoFinalizado || capituloYaCompletado)
+      }
       className={`py-2 px-4 border-2 border-white rounded-lg transition-all ${
-        videoFinalizado || capituloYaCompletado
+        currentChapter.exep || videoFinalizado || capituloYaCompletado
           ? "bg-green-500 text-white hover:bg-green-700"
           : "bg-black text-white cursor-not-allowed opacity-60"
       }`}
     >
       Siguiente
-      {!(videoFinalizado || capituloYaCompletado) && (
+      {!currentChapter.exep && !(videoFinalizado || capituloYaCompletado) && (
         <div className="text-white mt-1 text-sm">
           ⏱ Reproducido: {formatSecondsToMinutes(tiempoReproducido)} / {formatSecondsToMinutes(duracionEstimativa)}
         </div>
