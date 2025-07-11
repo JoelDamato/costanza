@@ -17,17 +17,18 @@ const bonuses = [
 		title: "Mensajes que hacen volver a tus pacientes",
 		img: "https://i.ibb.co/mFGS5Czg/3.png",
 		btn: "Acceder al recurso",
+		link:"https://drive.google.com/drive/folders/1NcGhcVVRdRlPl02180cq7pm-4S_8GiVe?usp=drive_link",
 	},
 	{
 		title: "Herramientas digitales que te ahorran tiempo",
 		img: "https://i.ibb.co/tTWw3gXw/4.png",
-		btn: "Acceder al recurso",
-		link: "https://drive.google.com/drive/folders/16pEvp6wJggcoTGrOrC0seZE2LQ6yjbwn?usp=drive_link",
+		btn: "Acceder al recurso"
 	},
 	{
 		title: "Recursos descargables de gestión",
 		img: "https://i.ibb.co/gMNCNxky/5.png",
 		btn: "Acceder al recurso",
+		link: "https://drive.google.com/drive/folders/16pEvp6wJggcoTGrOrC0seZE2LQ6yjbwn?usp=drive_link",
 	},
 	{
 		title: "Descuentos exclusivos en insumos y equipamiento",
